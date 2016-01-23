@@ -66,6 +66,7 @@ public class OI {
 
 
         // SmartDashboard Buttons
+        SmartDashboard.putData("Turn 90", new Turn90());
         SmartDashboard.putData("Arcade Drive", new ArcadeDrive());
         SmartDashboard.putData("Auton Foward", new AutonFoward());
 

@@ -11,8 +11,12 @@
 
 package org.usfirst.frc9000.FRC2016Stronghold.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc9000.FRC2016Stronghold.OI;
 import org.usfirst.frc9000.FRC2016Stronghold.Robot;
+import org.usfirst.frc9000.FRC2016Stronghold.RobotMap;
 
 /**
  *
@@ -42,6 +46,8 @@ public class ArcadeDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Joystick test = new Joystick(0);
+    RobotMap.driveTrainRobotDrive.arcadeDrive(test);
     }
 
     // Make this return true when this Command no longer needs to run execute()
