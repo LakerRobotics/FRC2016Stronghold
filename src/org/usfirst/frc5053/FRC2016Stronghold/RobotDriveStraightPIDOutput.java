@@ -14,8 +14,9 @@ public class RobotDriveStraightPIDOutput implements PIDOutput {
 
 	@Override
 	public void pidWrite(double motorPower) {
-//TODO	   	double angle = RobotMap.driveGyro.getAngle(); // get current heading
-		//TODO	    RobotMap.driveRobotDrive.drive(motorPower, -angle*Kp*(motorPower/Math.abs(motorPower))); // drive towards heading 0
+	   	double angle = RobotMap.navigationAnalogGyro.getAngle(); // get current heading
+	   	
+			    RobotMap.driveTrainRobotDrive21.drive(motorPower, -angle*Kp*(motorPower/Math.abs(motorPower))); // drive towards heading 0
 	    SmartDashboard.putNumber("Motor Output",motorPower); 
 	}
 
