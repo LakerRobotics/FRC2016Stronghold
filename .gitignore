@@ -50,4 +50,5 @@ Temporary Items
 
 #FRC specifics to ignore
 *~
+.*~
 *.class
