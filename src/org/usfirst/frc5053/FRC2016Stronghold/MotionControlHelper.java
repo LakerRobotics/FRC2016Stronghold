@@ -65,7 +65,7 @@ public class MotionControlHelper {
 
     /**
      * This returns the PIDSource wrapped so when called by the PIDController the motionControlHelper can
-     * adjust the target rate that the PIDController is trying ot achieve
+     * adjust the target rate that the PIDController is trying to achieve
      * @return
      */
 	public PIDSource getM_source() {
@@ -119,42 +119,13 @@ public class MotionControlHelper {
     }
     
 	/**
-	 * The PIDSource is expected to have a setPIDSourceParameter() method on it, otherwise we can not ensure it is
+	 * The PIDSource we to ensure it is
 	 * returning rate to the PIDController
-	 * @throws Exception
 	 */
-	public void ensureSourceProvidesRate() throws Exception{
+	public void ensureSourceProvidesRate() {
 		
-		java.lang.reflect.Method methodSetSourceParm;
-		try {
-//			System.out.println ("Source object class="+m_source.getClass().getName());
-//			Method[] methods = m_source.getClass().getDeclaredMethods();
-			
-//			for(int i=0; i<methods.length; i++) {
-//				System.out.println ("Method="+methods[i].getName());
-//			}                                                    
-			//TODO need to parameterTypes to the getMethod Call;
-			methodSetSourceParm = m_source.getClass().getMethod("setPIDSourceType");
-			//                                        new Gyro().setPIDSourceParameter(pidSource);
-		}
-		catch (SecurityException e) {
-	      throw new Exception("failure in trying got find setsetPIDSourceType() method on the PIDSource Object provided, maybe if exist is is private, but needs to be publice for MotionCotrollerPIDController requires", e);
-		} 
-		catch (NoSuchMethodException e) {
-			throw new Exception("failure in trying got find setPIDSourceType() method on the PIDSource Object provided, apparently one does not exist, as MotionCotrollerPIDController requires", e);
-		}
-		
-		// do the real work, set the PIDSource to return rate
-		try {
-			methodSetSourceParm.invoke(m_source, PIDSourceType.kRate);
-			return;
-		} 
-		catch (IllegalArgumentException e) {
-			throw new Exception("failure in trying got run setPIDSourceType() method on the PIDSource Object provided", e);
-		} 
-		catch (IllegalAccessException e) {
-			throw new Exception("failure in trying got run setPIDSourceParameter() method on the PIDSource Object provided", e);
-		}
+		m_source.setPIDSourceType(PIDSourceType.kRate);
+
 	}
     
     /**
