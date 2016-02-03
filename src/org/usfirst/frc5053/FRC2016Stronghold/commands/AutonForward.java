@@ -11,6 +11,7 @@
 
 package org.usfirst.frc5053.FRC2016Stronghold.commands;
 
+import edu.wpi.first.wpilibj.NamedSendable;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -83,8 +84,8 @@ double targetTolerance = 1 ; //inch
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {{
   		mcPID.enable();
-
-	   double angle = ADIS16448_IMU; // get current heading
+SmartDashboard.putData((NamedSendable) RobotMap.IMU);
+	   double angle = RobotMap.IMU.getAngleZ(); // get current heading
        SmartDashboard.putNumber("angle", angle);
        
        SmartDashboard.putNumber("Left",RobotMap .driveTrainLeftWheelEncoder.getDistance());
