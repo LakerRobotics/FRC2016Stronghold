@@ -84,7 +84,7 @@ double targetTolerance = 1 ; //inch
     protected void execute() {{
   		mcPID.enable();
 
-	   double angle = RobotMap .navigationAnalogGyro.getAngle(); // get current heading
+	   double angle = ADIS16448_IMU; // get current heading
        SmartDashboard.putNumber("angle", angle);
        
        SmartDashboard.putNumber("Left",RobotMap .driveTrainLeftWheelEncoder.getDistance());
