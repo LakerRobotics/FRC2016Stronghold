@@ -84,7 +84,7 @@ double targetTolerance = 1 ; //inch
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {{
   		mcPID.enable();
-SmartDashboard.putData((NamedSendable) RobotMap.IMU);
+//SmartDashboard.putData((NamedSendable) RobotMap.IMU);
 	   double angle = RobotMap.IMU.getAngleZ(); // get current heading
        SmartDashboard.putNumber("angle", angle);
        
