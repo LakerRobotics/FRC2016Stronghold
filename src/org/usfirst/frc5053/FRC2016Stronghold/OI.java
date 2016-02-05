@@ -66,6 +66,7 @@ public class OI {
 
 
         // SmartDashboard Buttons
+        SmartDashboard.putData("engagemotors", new engagemotors());
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
         SmartDashboard.putData("ArcadeDrive", new ArcadeDrive());
         SmartDashboard.putData("AutonForward", new AutonForward(40));
