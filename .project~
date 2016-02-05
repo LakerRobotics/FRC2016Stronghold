@@ -15,6 +15,13 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>edu.wpi.first.wpilib.plugins.core.nature.FRCProjectNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>jars</name>
+			<type>2</type>
+			<location>C:/Users/Michael Weger/workspace/FRC2016Stronghold/build/jars</location>
+		</link>
+	</linkedResources>
 	<filteredResources>
 		<filter>
 			<id>1419649143453</id>
