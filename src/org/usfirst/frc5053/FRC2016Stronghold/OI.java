@@ -64,11 +64,12 @@ public class OI {
 
         operator = new Joystick(1);
         
-        driveStraight = new JoystickButton(operator, 1);
-        driveStraight.whileHeld(new ArcadeDriveStraight());
         shooter = new JoystickButton(operator, 2);
         shooter.whileHeld(new SpinShooter());
+
         driver = new Joystick(0);
+        driveStraight = new JoystickButton(driver, 1);
+        driveStraight.whileHeld(new ArcadeDriveStraight());
         
 
 

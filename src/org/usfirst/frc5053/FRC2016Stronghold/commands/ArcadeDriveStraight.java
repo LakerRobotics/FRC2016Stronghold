@@ -42,6 +42,8 @@ public class ArcadeDriveStraight extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	targetDirectionAngle = RobotMap.navigationAnalogGyro.getAngle();
+    	RobotMap.navigationAnalogGyro.getAngle();
+
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -49,20 +51,23 @@ public class ArcadeDriveStraight extends Command {
     	// This is just a simpe P control, Proportional control of the line follow
     	// if we assume angle is in degrees and if we were off by 20 Degress then we would want how much correction
     	// for example id Kp is 0.025 at 20 degrees we would have 0.5 or half the power toward rotating the robot 
-    	double Kp = 0.025;
+    	double Kp = 1d/180d;//0.025;
     	double angleOff =  RobotMap.navigationAnalogGyro.getAngle() - targetDirectionAngle; // get current heading
     	double joystickPower = Robot.oi.getDriver().getY();
-    	double reverseAngleIfGoingBackwards = joystickPower/Math.abs(joystickPower);
-    	double rotationPower = -angleOff*Kp*(reverseAngleIfGoingBackwards);
-    	RobotMap.driveTrainRobotDrive21.arcadeDrive(/*moveValue*/ joystickPower, /*rotateValue*/ rotationPower); // drive towards heading 0
+    	//double reverseAngleIfGoingBackwards = joystickPower/Math.abs(joystickPower);
+    	double rotationPower = angleOff*Kp;/*(reverseAngleIfGoingBackwards);*/
+    	//RobotMap.driveTrainRobotDrive21.arcadeDrive(/*moveValue*/ joystickPower, /*rotateValue*/ rotationPower); // drive towards heading 0
+    	RobotMap.driveTrainRobotDrive21.tankDrive(joystickPower+rotationPower, joystickPower-rotationPower);
 // Output to the display for debugging
     	SmartDashboard.putNumber("targetDirectionAngle",targetDirectionAngle); 
+     	SmartDashboard.putNumber("Kp",Kp);
     	SmartDashboard.putNumber("angleOff",angleOff);
     	SmartDashboard.putNumber("Motor Output",joystickPower); 
         SmartDashboard.putNumber("Rotation Output",rotationPower); 
         SmartDashboard.putNumber("getAngleX()", RobotMap.IMU.getAngleX());
         SmartDashboard.putNumber("getAngleY()", RobotMap.IMU.getAngleY());
         SmartDashboard.putNumber("getAngleZ()", RobotMap.IMU.getAngleZ());
+        SmartDashboard.putNumber("GetAngle()", RobotMap.navigationAnalogGyro.getAngle());
                    }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -72,6 +77,7 @@ public class ArcadeDriveStraight extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	new ArcadeDrive();
     }
 
     // Called when another command which requires one or more of the same
