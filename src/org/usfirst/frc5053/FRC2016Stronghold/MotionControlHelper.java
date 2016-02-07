@@ -34,7 +34,7 @@ public class MotionControlHelper {
 	/**
      * This helper class just takes a target distance and will provide a motion control speed to get to that target
      * @param aTargetDistance   Where we are trying to get to
-     * @param aRampUpRampDownDistance  Allows control of how fast we accelorate and decelorate
+     * @param aRampUpRampDownDistance  Allows control of how fast we accelerate and decelerate
      * @param aRunningSpeed   the speed we want to travel most of the time, except for ramp up and ramp down
      * @param aInitialMeasuredDistance  so we know where we started from for the ramp up
      */

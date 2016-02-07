@@ -19,26 +19,9 @@ public class MotionControlPIDController extends PIDController {
 		// Gyro and Encoder will have a method called getRate (otherwise we can just throw an exception because 
 		// the developer didn't provide the right kind of mm_source (mainly a Gyro or Encodeer) for the 
 		// motionControlPIDController to work, so we should blow up 
-		java.lang.reflect.Method methodGetRate;
-		try {
-		  methodGetRate = m_motionControlHelper.getM_source().getClass().getMethod("getRate");
-		}
-		catch (SecurityException e) {
-		      throw new Exception("failure in trying got find getRate() method on the PIDSource Object provided, maybe if exist is is private, but needs to be publice for MotionCotrollerPIDController requires", e);
-		} 
-		catch (NoSuchMethodException e) {
-			  throw new Exception("failure in trying got find getRate() method on the PIDSource Object provided, apparently one does not exist, as MotionCotrollerPIDController requires", e);
-		}
 		
-		try {
-			  return (double) methodGetRate.invoke(m_motionControlHelper.getM_source());
-		} 
-		catch (IllegalArgumentException e) {
-		      throw new Exception("failure in trying got run getRate() method on the PIDSource Object provided", e);
-		} 
-		catch (IllegalAccessException e) {
-		      throw new Exception("failure in trying got run getRate() method on the PIDSource Object provided", e);
-		}
+		m_motionControlHelper.getM_source().setPIDSourceType(PIDSourceType.kRate);
+		return m_motionControlHelper.getM_source().pidGet();
 	}
 
 

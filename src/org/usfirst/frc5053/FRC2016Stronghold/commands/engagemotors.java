@@ -45,6 +45,7 @@ public class engagemotors extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	RobotMap .driveTrainMotorsLeft.set(.5);
+    	RobotMap .driveTrainMotorsRight.set(.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()

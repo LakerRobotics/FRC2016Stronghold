@@ -29,7 +29,7 @@ public class Turn90 extends Command {
 	double targetTolerance = 10 ; //degrees
 
     double     ramp =  45; //degrees
-    double maxspeed = 150; //degrees/sec
+    double maxspeed = 150; //degrees/second
     double    start =   0; //degrees
     MotionControlHelper rotationSpeedProfile; 
     
