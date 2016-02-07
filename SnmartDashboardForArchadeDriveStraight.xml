@@ -1,0 +1,69 @@
+<xml version="1.0">
+<dashboard>
+	<widget field="Motor Output" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
+		<location x="706" y="5"/>
+	</widget>
+	<widget field="GetAngle()" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
+		<location x="295" y="312"/>
+	</widget>
+	<widget field="Rotation Output" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
+		<location x="704" y="315"/>
+	</widget>
+	<widget field="RightPower" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="33" y="0"/>
+	</widget>
+	<widget field="LeftPower" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="515"/>
+	</widget>
+	<widget field="getAngleZ()" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="473"/>
+	</widget>
+	<widget field="getAngleY()" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="452"/>
+	</widget>
+	<widget field="getAngleX()" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="431"/>
+	</widget>
+	<widget field="angleOff" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="368"/>
+	</widget>
+	<widget field="Kp" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="347"/>
+	</widget>
+	<widget field="targetDirectionAngle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="326"/>
+	</widget>
+	<widget field="AutonForward: default" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="292"/>
+	</widget>
+	<widget field="AutonForward" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="258"/>
+	</widget>
+	<widget field="Turn90" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="203"/>
+	</widget>
+	<widget field="AllwaysTrackLocation" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="224"/>
+	</widget>
+	<widget field="SpinShooter" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="169"/>
+	</widget>
+	<widget field="ArcadeDriveStraight" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="135"/>
+	</widget>
+	<widget field="AutonForward: Default" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="101"/>
+	</widget>
+	<widget field="ArcadeDrive" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="67"/>
+	</widget>
+	<widget field="Autonomous Command" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="33"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
+		<location x="0" y="0"/>
+	</static-widget>
+</dashboard>
+<live-window>
+</live-window>
+</xml>
