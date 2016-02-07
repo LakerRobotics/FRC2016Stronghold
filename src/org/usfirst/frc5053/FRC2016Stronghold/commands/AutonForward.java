@@ -57,11 +57,11 @@ double targetTolerance = 1 ; //inch
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {{
+    protected void initialize() {
        	RobotMap.navigationAnalogGyro.reset();
         RobotMap.driveTrainLeftWheelEncoder.reset();
         RobotMap.driveTrainRightWheelEncoder.reset();
-        double maxspeed = 200; //in/sec
+        double maxspeed = 80; //in/sec
         double ramp = 24; //inches
         double start = 0; //inches
         RobotMap.driveTrainLeftWheelEncoder.setPIDSourceType(PIDSourceType.kRate);
@@ -79,8 +79,6 @@ double targetTolerance = 1 ; //inch
     	speedFollowerPID = new MotionControlPIDController(Kp,Ki,Kd, speedControl );
     	speedFollowerPID.setAbsoluteTolerance(targetTolerance);
     	speedFollowerPID.setOutputRange(-1, 1);
-        
-       }
     }
 
     // Called repeatedly when this Command is scheduled to run
