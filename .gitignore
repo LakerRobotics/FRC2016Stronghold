@@ -53,3 +53,5 @@ Temporary Items
 \.*~
 *.class
 \build\*
+.classpath~
+.project~
