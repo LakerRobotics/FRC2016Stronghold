@@ -72,7 +72,7 @@ public class OI {
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
         SmartDashboard.putData("ArcadeDrive", new ArcadeDrive());
-        SmartDashboard.putData("AutonForward", new AutonForward(50));
+        SmartDashboard.putData("AutonForward", new AutonForward());
         SmartDashboard.putData("Turn90", new Turn90());
         SmartDashboard.putData("AllwaysTrackLocation", new AllwaysTrackLocation());
         SmartDashboard.putData("SpinShooter", new SpinShooter());
