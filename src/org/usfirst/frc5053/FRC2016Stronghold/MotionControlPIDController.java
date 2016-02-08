@@ -13,14 +13,17 @@ import edu.wpi.first.wpilibj.util.BoundaryException;
 
 public class MotionControlPIDController extends PIDController {
 	MotionControlHelper m_motionControlHelper; 
-	
+	/**
+	 * 
+	 * @return
+	 * @override
+	 * @throws Exception
+	 */
 	public double getRate() throws Exception{
-		//create a new object that hold a method and see if the mm_source happens to have a method call getRate
-		// Gyro and Encoder will have a method called getRate (otherwise we can just throw an exception because 
-		// the developer didn't provide the right kind of mm_source (mainly a Gyro or Encodeer) for the 
-		// motionControlPIDController to work, so we should blow up 
+		// Set the PIDSource to return Rate and then get the Rate.
 		
 		m_motionControlHelper.getM_source().setPIDSourceType(PIDSourceType.kRate);
+		System.out.println("MotionControlPIDController.getRate() return"+m_motionControlHelper.getM_source().pidGet());
 		return m_motionControlHelper.getM_source().pidGet();
 	}
 

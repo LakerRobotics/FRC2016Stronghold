@@ -59,7 +59,7 @@ double targetTolerance = 1 ; //inch
     // Called just before this Command runs the first time
     protected void initialize() {
         SmartDashboard.putNumber("Timeinit",this.timeSinceInitialized());
-       	RobotMap.navigationAnalogGyro.reset();
+       	RobotMap.gyroToUse.reset();
         RobotMap.driveTrainLeftWheelEncoder.reset();
         RobotMap.driveTrainRightWheelEncoder.reset();
         double maxspeed = 80; //in/sec
@@ -70,7 +70,8 @@ double targetTolerance = 1 ; //inch
         // Setup the motion control (i.e. how fast we are going to run and plus, rampUp/rampDown distances)
         // and use the driveStraight PIDOutput to pass along the speed we want to the PID Controller
         MotionControlHelper speedControl = new MotionControlHelper(distance, ramp, maxspeed, start,
-        		                                    RobotMap.driveTrainLeftWheelEncoder,new RobotDriveStraightPIDOutput());
+        		                                    RobotMap.driveTrainLeftWheelEncoder,
+        		                                    new RobotDriveStraightPIDOutput(RobotMap.gyroToUse));
 
         // setup the Pid to control how we follow the Speed
         final double Kp = 0.02;
@@ -86,7 +87,7 @@ double targetTolerance = 1 ; //inch
     protected void execute() {{
     	speedFollowerPID.enable();
 //SmartDashboard.putData((NamedSendable) RobotMap.IMU);
-	   double angle = RobotMap.navigationAnalogGyro.getAngle(); // get current heading
+	   double angle = RobotMap.gyroToUse.getAngle(); // get current heading
        SmartDashboard.putNumber("angle", angle);
        
        SmartDashboard.putNumber("Left",RobotMap.driveTrainLeftWheelEncoder.getDistance());
