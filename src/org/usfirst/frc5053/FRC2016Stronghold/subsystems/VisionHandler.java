@@ -57,7 +57,7 @@ public class VisionHandler extends Subsystem {
 	NIVision.Range greenFilter;
 	NIVision.Range blueFilter;
 	
-	public VisionHandler (CameraServer cam)
+	public VisionHandler ()
 	{
 		redFilter = new NIVision.Range(redLowRange, redHighRange);
 		greenFilter = new NIVision.Range(greenLowRange, greenHighRange);
