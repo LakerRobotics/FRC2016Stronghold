@@ -3,6 +3,9 @@
 	<widget field="Turn90" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="147"/>
 	</widget>
+	<widget field="MotionControlHelper.adjustTargetSpeed Gyro Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="554" y="0"/>
+	</widget>
 	<widget field="MotionControlHelper.adjustTargetSpeed targetSpeed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="364" y="68"/>
 	</widget>

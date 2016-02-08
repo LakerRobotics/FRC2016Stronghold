@@ -55,3 +55,4 @@ Temporary Items
 \build\*
 .classpath~
 .project~
+build/jars/WPILib.jar
