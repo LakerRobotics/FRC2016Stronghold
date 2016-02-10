@@ -88,6 +88,7 @@ public class Turn90 extends Command {
     protected void execute() {
         SmartDashboard.putString("Turn90CodeLocation","entered execute()");
         System.out.println("Turn90CodeLocation "+"entered execute()");
+        SmartDashboard.putBoolean("Turn isenabled",rotationSpeedPID.isEnabled());
     	// get current Angle to report on
     	double currentAngle = RobotMap.gyroToUse.getAngle();
         SmartDashboard.putNumber("Turn angle",currentAngle);
@@ -100,7 +101,7 @@ public class Turn90 extends Command {
     protected boolean isFinished() {
         SmartDashboard.putString("Turn90CodeLocation","entered isFinished()");
     	if(Math.abs(RobotMap.gyroToUse.getAngle()) > Math.abs(turn)) { //TODO make it within tolerance
-       		rotationSpeedPID.disable();
+//       		rotationSpeedPID.disable();
 //       		mcPID.getError()
        		System.out.println("Turn Finished true");  
        	  	RobotMap.driveTrainRobotDrive21.tankDrive(0,0);
