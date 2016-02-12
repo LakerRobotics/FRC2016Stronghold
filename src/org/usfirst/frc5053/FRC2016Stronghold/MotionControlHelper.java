@@ -166,7 +166,8 @@ public class MotionControlHelper {
         private PIDSource m_source; 
 
         public wrapPIDInput(MotionControlHelper motionControlHelper, PIDSource source) {
-            if (motionControlHelper == null) {
+			System.out.println("MotionControlHelper constuctor called");
+        	if (motionControlHelper == null) {
                 throw new NullPointerException("Given MotionControlPIDController was null");
             }
             else{
@@ -183,11 +184,11 @@ public class MotionControlHelper {
         
 		@Override
         public double pidGet(){
+			System.out.println("MotionControlHelper.pidGet()");
         	// have the controller set the target speed,
         	//TODO have WPI redo the PIDController so the calculate() method is protected so we wouldn't have to do this hack 
 			//  if it were protected then we could override calculate() method and allow the target speed to be set ahead of calculation the new PID output
 			try{
-				System.out.println("MotionControlHelper.pidGet()");
 				m_MCHelper.adjustTargetSpeed();
 			}
 			catch (Exception e){
@@ -200,14 +201,15 @@ public class MotionControlHelper {
 
 		@Override
 		public void setPIDSourceType(PIDSourceType pidSource) {
+			System.out.println("ERROR MotionControlHelper.setPIDSourceType() CALLED BEING IGNORED");
+			
 			// TODO Auto-generated method stub
 			
 		}
 
 		@Override
 		public PIDSourceType getPIDSourceType() {
-			// TODO Auto-generated method stub
-			return null;
+			return PIDSourceType.kRate;
 		}
 
     }
