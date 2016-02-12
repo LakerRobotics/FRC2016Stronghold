@@ -201,10 +201,7 @@ public class MotionControlHelper {
 
 		@Override
 		public void setPIDSourceType(PIDSourceType pidSource) {
-			System.out.println("ERROR MotionControlHelper.setPIDSourceType() CALLED BEING IGNORED");
-			
-			// TODO Auto-generated method stub
-			
+			System.out.println("ERROR MotionControlHelper.setPIDSourceType() CALL BEING IGNORED because this Motion control controls Rate");
 		}
 
 		@Override
