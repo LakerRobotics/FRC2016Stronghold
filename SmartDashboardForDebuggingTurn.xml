@@ -1,7 +1,21 @@
 <xml version="1.0">
 <dashboard>
-	<widget field="Turn90" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="147"/>
+	<widget field="Turn isenabled" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="174"/>
+	</widget>
+	<widget field="PID Command 1" type="PIDCommand" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="788"/>
+	</widget>
+	<widget field="Setpoint Command 1: default" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="752"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
+		<location x="-5" y="741"/>
+		<width>136</width>
+		<height>10</height>
+	</static-widget>
+	<widget field="Turn90" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="700"/>
 	</widget>
 	<widget field="MotionControlHelper.adjustTargetSpeed Gyro Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="554" y="0"/>
@@ -10,16 +24,18 @@
 		<location x="364" y="68"/>
 	</widget>
 	<widget field="rotateRobotPIDOutput Rotation Motor Output" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
-		<location x="1036" y="100"/>
+		<location x="1446" y="218"/>
+		<width>418</width>
+		<height>291</height>
 	</widget>
 	<widget field="Turn Gyro Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
-		<location x="327" y="406"/>
+		<location x="994" y="541"/>
 	</widget>
 	<widget field="Turn Gryro Target Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
-		<location x="215" y="101"/>
+		<location x="1003" y="221"/>
 	</widget>
 	<widget field="Turn angle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
-		<location x="628" y="100"/>
+		<location x="1434" y="538"/>
 	</widget>
 	<widget field="AutonForward" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="175" y="68"/>
@@ -70,28 +86,28 @@
 		<location x="2" y="677"/>
 	</widget>
 	<widget field="Gyro Target Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="336"/>
+		<location x="17" y="328"/>
 	</widget>
 	<widget field="Time" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="315"/>
+		<location x="61" y="299"/>
 	</widget>
 	<widget field="rotateRobotPIDOutput" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="124" y="651"/>
 	</widget>
 	<widget field="Kp" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="273"/>
+		<location x="68" y="269"/>
 	</widget>
 	<widget field="angleOff" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="210"/>
+		<location x="46" y="236"/>
 	</widget>
 	<widget field="targetSpeed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="189"/>
+		<location x="28" y="207"/>
 	</widget>
 	<widget field="getAngleZ()" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="126"/>
+		<location x="31" y="151"/>
 	</widget>
 	<widget field="targetDirectionAngle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="105"/>
+		<location x="-17" y="127"/>
 	</widget>
 	<widget field="Gyro Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="84"/>
@@ -106,8 +122,12 @@
 		<location x="0" y="21"/>
 	</widget>
 	<widget field="Motor Output" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="0"/>
+		<location x="-10" y="1"/>
+		<height>22</height>
 	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.WebcamViewerExtension">
+		<location x="659" y="112"/>
+	</static-widget>
 </dashboard>
 <live-window>
 </live-window>

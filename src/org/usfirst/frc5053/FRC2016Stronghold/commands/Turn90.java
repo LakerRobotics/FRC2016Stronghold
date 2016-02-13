@@ -29,12 +29,12 @@ public class Turn90 extends Command {
 	double targetTolerance = 10 ; //degrees
 
     double     ramp =  10; //degrees
-    double maxspeed = 50; //degrees/second
+    double maxspeed = 20; //degrees/second
     double    start =   0; //degrees
     MotionControlHelper rotationSpeedProfile; 
     
-    final double Kp = 0.005;
-    final double Ki = 0.0005;
+    final double Kp = 0.001;
+    final double Ki = 0.000;
     final double Kd = 0.0;
     MotionControlPIDController rotationSpeedPID;
     
@@ -104,8 +104,8 @@ public class Turn90 extends Command {
 //       		rotationSpeedPID.disable();
 //       		mcPID.getError()
        		System.out.println("Turn Finished true");  
-       	  	RobotMap.driveTrainRobotDrive21.tankDrive(0,0);
-       		return true;
+       	  //	RobotMap.driveTrainRobotDrive21.tankDrive(0,0);
+       		return false;
        	}
        	else{
                return false;
