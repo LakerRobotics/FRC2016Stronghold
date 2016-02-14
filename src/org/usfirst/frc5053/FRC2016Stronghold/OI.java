@@ -88,7 +88,7 @@ public class OI {
 
 
         // SmartDashboard Buttons
-        SmartDashboard.putData("ShooterSpin: Default", new ShooterSpin(0.1));
+        SmartDashboard.putData("ShooterSpin: Default", new ShooterSpin(5));
         SmartDashboard.putData("ShooterSpin: Off", new ShooterSpin(0));
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
         SmartDashboard.putData("ArcadeDrive", new ArcadeDrive());

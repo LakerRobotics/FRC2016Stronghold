@@ -724,7 +724,7 @@ Children:
         - !!robotbuilder.data.properties.ParameterSet
           name: Default
           parameters:
-          - {name: setpoint, type: double, value: '0.1'}
+          - {name: setpoint, type: double, value: '5'}
         - !!robotbuilder.data.properties.ParameterSet
           name: 'Off'
           parameters:
