@@ -136,6 +136,7 @@ public class MotionControlHelper {
     	//using the current measurement get the desired rate (i.e. speed)
     	
     	double targetSpeed = getTargetSpeed(this.getMeasurment());
+    	SmartDashboard.putDouble("MotionControlHelper.adjustTargetSpeed Measurement", this.getMeasurment());
     	System.out.println("MotionControlHelper.adjustTargetSpeed targetSpeed"+targetSpeed);
     	this.getRegularPIDControl().setSetpoint(targetSpeed);
     	SmartDashboard.putDouble("MotionControlHelper.adjustTargetSpeed targetSpeed", targetSpeed);
@@ -200,14 +201,13 @@ public class MotionControlHelper {
 
 		@Override
 		public void setPIDSourceType(PIDSourceType pidSource) {
-			// TODO Auto-generated method stub
+			System.out.println("ERROR MotionControlHelper.setPIDSourceType() CALL BEING IGNORED because this Motion control controls Rate");
 			
 		}
 
 		@Override
 		public PIDSourceType getPIDSourceType() {
-			// TODO Auto-generated method stub
-			return null;
+			return PIDSourceType.kRate;
 		}
 
     }

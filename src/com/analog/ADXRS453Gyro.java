@@ -67,6 +67,7 @@ public class ADXRS453Gyro implements Gyro, PIDSource{
 	//thread executor
 	private java.util.Timer executor;
 	private long period;
+	private PIDSourceType m_pidSourceType;
 
 	public  ADXRS453Gyro() {
 		//run at 333Hz loop
@@ -370,17 +371,23 @@ public class ADXRS453Gyro implements Gyro, PIDSource{
 
 	@Override
 	public PIDSourceType getPIDSourceType() {
-		return PIDSourceType.kDisplacement;
+		return m_pidSourceType;
 	}
 
 	@Override
 	public double pidGet() {
-		return getAngle();
+		if (m_pidSourceType == PIDSourceType.kDisplacement){
+			return getAngle();
+		}
+		else if (m_pidSourceType == PIDSourceType.kRate){
+			return getRate();
+		}
+		return 0;
 	}
 
 	@Override
-	public void setPIDSourceType(PIDSourceType arg0) {
+	public void setPIDSourceType(PIDSourceType pidSourceType) {
 		// TODO Auto-generated method stub
-		
+		m_pidSourceType = pidSourceType;
 	}
 }

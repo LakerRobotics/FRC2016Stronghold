@@ -30,7 +30,8 @@ public class RobotDriveStraightPIDOutput implements PIDOutput {
 	@Override
 	public void pidWrite(double motorPower) {
 	   	double angle = m_gyro.getAngle(); // get current heading
-	    double rotationPower = -angle*Kp*(motorPower/Math.abs(motorPower));
+	    //double rotationPower = -angle*Kp*(motorPower/Math.abs(motorPower));
+	   	double rotationPower = 0;
 	   	RobotMap.driveTrainRobotDrive21.arcadeDrive(/*moveValue*/ motorPower, /*rotateValue*/ rotationPower); // drive towards heading 0
 	    SmartDashboard.putNumber("RobotDriveStraitPIDOoutput Motor Output",motorPower);
 	    SmartDashboard.putNumber("RobotDriveStraitPIDOoutput RotationPower", rotationPower);
