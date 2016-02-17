@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 
@@ -42,6 +43,7 @@ public class RobotMap {
     public static SpeedController driveTrainMotorsLeft;
     public static SpeedController driveTrainMotorsRight;
     public static RobotDrive driveTrainRobotDrive21;
+    public static Solenoid scaleTowerSolenoidReach;
     public static AnalogGyro navigationoldAnalogGyro;
     public static Encoder leftShooterLeftShooterWheelEncoder;
     public static SpeedController leftShooterLeftShooterMotor;
@@ -77,6 +79,9 @@ public class RobotMap {
         driveTrainRobotDrive21.setMaxOutput(1.0);
         driveTrainRobotDrive21.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
         driveTrainRobotDrive21.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
+        scaleTowerSolenoidReach = new Solenoid(0, 0);
+        LiveWindow.addActuator("ScaleTower", "SolenoidReach", scaleTowerSolenoidReach);
+        
         navigationoldAnalogGyro = new AnalogGyro(0);
         LiveWindow.addSensor("Navigation", "oldAnalogGyro", navigationoldAnalogGyro);
         navigationoldAnalogGyro.setSensitivity(0.007);
