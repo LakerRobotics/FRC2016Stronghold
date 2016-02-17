@@ -141,7 +141,7 @@ public class MotionControlHelper {
     	this.getRegularPIDControl().setSetpoint(targetSpeed);
     	SmartDashboard.putDouble("MotionControlHelper.adjustTargetSpeed targetSpeed", targetSpeed);
     	
-//    	ensureSourceProvidesRate();
+    	ensureSourceProvidesRate();
     	SmartDashboard.putDouble("MotionControlHelper.adjustTargetSpeed Gyro Rate", m_source.pidGet());
     	// now that we have the speed set properly lets call the PID control and have it adjust the PIDInput (e.g. the motor power) to get closer to the desired speed.
     	//TODO need to access the inner class PIDTask and override to call calculatesSetup then then calculate()
@@ -201,13 +201,16 @@ public class MotionControlHelper {
 
 		@Override
 		public void setPIDSourceType(PIDSourceType pidSource) {
-			System.out.println("ERROR MotionControlHelper.setPIDSourceType() CALL BEING IGNORED because this Motion control controls Rate");
+			m_source.setPIDSourceType(pidSource);
+//			System.out.println("ERROR MotionControlHelper.setPIDSourceType() CALL BEING IGNORED because this Motion control controls Rate");
 			
 		}
 
 		@Override
 		public PIDSourceType getPIDSourceType() {
-			return PIDSourceType.kRate;
+			return m_source.getPIDSourceType();
+			//return PIDSourceType.kRate;
+			//return m_pidSource;
 		}
 
     }
