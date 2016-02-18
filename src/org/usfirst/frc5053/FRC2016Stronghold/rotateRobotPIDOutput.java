@@ -8,13 +8,14 @@ public class rotateRobotPIDOutput implements PIDOutput {
 
 
 	public rotateRobotPIDOutput() {
-//	    SmartDashboard.putString("rotateRobotPIDOutput", "constructor called");
+	    SmartDashboard.putString("rotateRobotPIDOutput", "constructor called");
 	}
 
 	@Override
 	public void pidWrite(double output) {
-					RobotMap.driveTrainRobotDrive21.tankDrive(output,-output); 
-		 SmartDashboard.putNumber("Rotation Motor Output",output); 
+		RobotMap.driveTrainRobotDrive21.tankDrive(-output,output); 
+		System.out.println("rotateRobotPIDOutput Rotation Motor Output:"+output);
+		SmartDashboard.putNumber("rotateRobotPIDOutput Rotation Motor Output",output); 
 	}
 
 }

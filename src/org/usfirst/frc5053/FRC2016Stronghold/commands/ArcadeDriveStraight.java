@@ -41,7 +41,7 @@ public class ArcadeDriveStraight extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	targetDirectionAngle = RobotMap.navigationAnalogGyro.getAngle();
+    	targetDirectionAngle = RobotMap.gyroToUse.getAngle();
     	//RobotMap.navigationAnalogGyro.getAngle();
 
     }
@@ -51,15 +51,15 @@ public class ArcadeDriveStraight extends Command {
     	// This is just a simple P control, Proportional control of the line follow
     	// if we assume angle is in degrees and if we were off by 20 Degrees then we would want how much correction
     	// for example if Kp is 0.025 at 20 degrees we would have 0.5 or half the power toward rotating the robot 
-    	double Kp = 1d/180d;//0.025;
+    	double Kp = 1d/45d;//0.025;
     	double leftPower; 
     	double rightPower;
     	//1/90 works pretty good
     	//1/180 motor output per degree off so if it were 180 degrees off it would use full motor power to correct itself
-    	double angleOff =  RobotMap.navigationAnalogGyro.getAngle() - targetDirectionAngle; // get current heading
+    	double angleOff =  RobotMap.gyroToUse.getAngle() - targetDirectionAngle; // get current heading
     	double joystickPower = Robot.oi.getDriver().getY();
-    	//double reverseAngleIfGoingBackwards = joystickPower/Math.abs(joystickPower);
-    	double rotationPower = angleOff*Kp;/*(reverseAngleIfGoingBackwards);*/
+    	//int reverseAngleIfGoingBackwards = (int) (joystickPower/Math.abs(joystickPower));
+    	double rotationPower = -angleOff*Kp;//*(reverseAngleIfGoingBackwards);
     	//RobotMap.driveTrainRobotDrive21.arcadeDrive(/*moveValue*/ joystickPower, /*rotateValue*/ rotationPower); // drive towards heading 0
     	
     	leftPower = joystickPower-rotationPower;
@@ -74,7 +74,7 @@ public class ArcadeDriveStraight extends Command {
         SmartDashboard.putNumber("getAngleX()", RobotMap.IMU.getAngleX());
         SmartDashboard.putNumber("getAngleY()", RobotMap.IMU.getAngleY());
         SmartDashboard.putNumber("getAngleZ()", RobotMap.IMU.getAngleZ());
-        SmartDashboard.putNumber("GetAngle()", RobotMap.navigationAnalogGyro.getAngle());
+        SmartDashboard.putNumber("GetAngle()", RobotMap.gyroToUse.getAngle());
         SmartDashboard.putNumber("LeftPower", leftPower);
         SmartDashboard.putNumber("RightPower", rightPower);
                    }

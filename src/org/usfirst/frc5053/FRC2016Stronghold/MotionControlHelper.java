@@ -113,6 +113,7 @@ public class MotionControlHelper {
        else{
     	   targetSpeed = percentRampDown * targetSpeed;
        }
+       System.out.println("targetSpeed="+targetSpeed);
        SmartDashboard.putNumber("targetSpeed",targetSpeed);
        
        return targetSpeed;
@@ -133,57 +134,30 @@ public class MotionControlHelper {
      */
     protected void adjustTargetSpeed() throws Exception {
     	//using the current measurement get the desired rate (i.e. speed)
-    	double targetSpeed = getTargetSpeed(this.getMeasurment());
-    	this.getRegularPIDControl().setSetpoint(targetSpeed);
-    	SmartDashboard.putDouble("Gyro Target Rate", targetSpeed);
     	
-//    	ensureSourceProvidesRate();
-    	SmartDashboard.putDouble("Gyro Rate", m_source.pidGet());
+    	double targetSpeed = getTargetSpeed(this.getMeasurment());
+    	SmartDashboard.putDouble("MotionControlHelper.adjustTargetSpeed Measurement", this.getMeasurment());
+    	System.out.println("MotionControlHelper.adjustTargetSpeed targetSpeed"+targetSpeed);
+    	this.getRegularPIDControl().setSetpoint(targetSpeed);
+    	SmartDashboard.putDouble("MotionControlHelper.adjustTargetSpeed targetSpeed", targetSpeed);
+    	
+    	ensureSourceProvidesRate();
+    	SmartDashboard.putDouble("MotionControlHelper.adjustTargetSpeed Gyro Rate", m_source.pidGet());
     	// now that we have the speed set properly lets call the PID control and have it adjust the PIDInput (e.g. the motor power) to get closer to the desired speed.
     	//TODO need to access the inner class PIDTask and override to call calculatesSetup then then calculate()
        	//super.calculate();
     }
 
-	public double getMeasurment() throws Exception{
-		if (m_source instanceof GyroBase){
-			GyroBase gyro = (GyroBase) m_source;
-			return gyro.getAngle();
-		}
-		else if (m_source instanceof Encoder){
-			Encoder encoder = (Encoder) m_source;
-			return encoder.getDistance();
-		}
-		else{
-			//create a new object that hold a method and see if the mm_source happens to have a method call getRate
-			// Gyro and Encoder will have a method called getRate (otherwise we can just throw an exception because 
-			// the developer didn't provide the right kind of mm_source (mainly a Gyro or Encoder) for the 
-			// motionControlPIDController to work, so we should blow up 
-			try{
-				java.lang.reflect.Method methodGetMeas;
-				try {
-					methodGetMeas = m_source.getClass().getMethod("getMeasurement");
-				}
-				catch (SecurityException e) {
-			      throw new Exception("failure in trying got find getMeasurement() method on the PIDSource Object provided, maybe if exist is is private, but needs to be publice for MotionCotrollerPIDController requires", e);
-				} 
-				catch (NoSuchMethodException e) {
-					throw new Exception("failure in trying got find getMeasurement() method on the PIDSource Object provided, apparently one does not exist, as MotionCotrollerPIDController requires", e);
-				}
-				
-				try {
-					return (double) methodGetMeas.invoke(m_source);
-				} 
-				catch (IllegalArgumentException e) {
-					throw new Exception("failure in trying got run getMeasurement() method on the PIDSource Object provided", e);
-				} 
-				catch (IllegalAccessException e) {
-					throw new Exception("failure in trying got run getMeasurment() method on the PIDSource Object provided", e);
-				}
-			}
-			catch(Exception e){
-				throw new Exception("Source was not Encoder or Gyro or a PIDSource with a method getMeasurement()", e);
-			}
-		}
+	public double getMeasurment() {
+		// Store away the what the Source is to return
+		PIDSourceType tempType = m_source.getPIDSourceType();
+		// Switch to report on where were at, and get where we are at
+		m_source.setPIDSourceType(PIDSourceType.kDisplacement);
+		double returnValue =  m_source.pidGet();
+		// revert PIDSource back to what it was reporting before (either Rate or Displacement)
+		m_source.setPIDSourceType(tempType);
+		// Actually return the measurement (i.e. displacement or location)
+		return returnValue;
 	}	
 
     
@@ -196,19 +170,25 @@ public class MotionControlHelper {
             if (motionControlHelper == null) {
                 throw new NullPointerException("Given MotionControlPIDController was null");
             }
-            m_MCHelper = motionControlHelper;
+            else{
+                m_MCHelper = motionControlHelper;            	
+            }
+            
             if (source == null){
                 throw new NullPointerException("Given PIDSource was null");
             }
-            m_source = source;
+            else{
+                m_source = source;
+            }
         }
         
 		@Override
         public double pidGet(){
         	// have the controller set the target speed,
-        	//TODO redo the PIDController so the calculate() method is protected so we wouldn't have to do this hack 
+        	//TODO have WPI redo the PIDController so the calculate() method is protected so we wouldn't have to do this hack 
 			//  if it were protected then we could override calculate() method and allow the target speed to be set ahead of calculation the new PID output
 			try{
+				System.out.println("MotionControlHelper.pidGet()");
 				m_MCHelper.adjustTargetSpeed();
 			}
 			catch (Exception e){
@@ -221,14 +201,16 @@ public class MotionControlHelper {
 
 		@Override
 		public void setPIDSourceType(PIDSourceType pidSource) {
-			// TODO Auto-generated method stub
+			m_source.setPIDSourceType(pidSource);
+//			System.out.println("ERROR MotionControlHelper.setPIDSourceType() CALL BEING IGNORED because this Motion control controls Rate");
 			
 		}
 
 		@Override
 		public PIDSourceType getPIDSourceType() {
-			// TODO Auto-generated method stub
-			return null;
+			return m_source.getPIDSourceType();
+			//return PIDSourceType.kRate;
+			//return m_pidSource;
 		}
 
     }
