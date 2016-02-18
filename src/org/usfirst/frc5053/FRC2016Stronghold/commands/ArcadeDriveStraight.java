@@ -51,7 +51,7 @@ public class ArcadeDriveStraight extends Command {
     	// This is just a simple P control, Proportional control of the line follow
     	// if we assume angle is in degrees and if we were off by 20 Degrees then we would want how much correction
     	// for example if Kp is 0.025 at 20 degrees we would have 0.5 or half the power toward rotating the robot 
-    	double Kp = 1d/90d;//0.025;
+    	double Kp = 1d/45d;//0.025;
     	double leftPower; 
     	double rightPower;
     	//1/90 works pretty good
