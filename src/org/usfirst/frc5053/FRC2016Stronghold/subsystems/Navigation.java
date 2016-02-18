@@ -13,7 +13,7 @@ package org.usfirst.frc5053.FRC2016Stronghold.subsystems;
 
 import org.usfirst.frc5053.FRC2016Stronghold.RobotMap;
 import org.usfirst.frc5053.FRC2016Stronghold.commands.*;
-
+import java.util.Date;
 import edu.wpi.first.wpilibj.AnalogGyro;
 //import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -23,7 +23,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Navigation extends Subsystem {
-	
 	
 	public final static String areaOfField(double x, double y) {
 		if ((y>410.5) && (y<=458.5)){
@@ -41,11 +40,11 @@ public class Navigation extends Subsystem {
 			}
 				else if (x<=265.5){
 					return "Their D5";
-				}
+			}
 				else if (x<=319){
 					return "Their Secret Passage";
-				}
-	};
+			}
+	}
 				//Their Courtyard
 		if ((y>458.5) && (y<=650)){
 			if (x<=265.5){
@@ -53,16 +52,16 @@ public class Navigation extends Subsystem {
 				}
 				else if (x<=319){
 					return "Their Secret Passage";
+				}
 		}
-		};
-		//Their Neutral Zone
+			//Their Neutral Zone
 		if ((y>362.5) && (y<=410.5)){
 			if (x<=265.5){
 				return "Their Neutral";
-		}
-		else if (x<=319){
-			return "Their Secret Passage";
-		}
+			}
+			else if (x<=319){
+				return "Their Secret Passage";
+			}
 			//Neutral
 	if ((y>287.5) && (y<=362.5)){
 		return "Neutral";
@@ -77,7 +76,7 @@ public class Navigation extends Subsystem {
 			return "Our Neutral";
 		}
 		//Our Defenses
-	};
+	}
 		if ((y>191.5) && (y<=239.5)){
 			if (x<=53.1) {
 				return "Their D1";
@@ -97,7 +96,7 @@ public class Navigation extends Subsystem {
 				else if (x<=319){
 					return "Their Secret Passage";
 				}
-		};
+		}
 		if ((y>0) && (y<=191.5)){
 			if (x<=53.1){
 				return "Our Secret Passage";
@@ -105,7 +104,7 @@ public class Navigation extends Subsystem {
 			else if (x<=310){
 				return "Our Courtyard";
 			}
-		};
+		}
 		return "Error";
 			}
 
@@ -134,5 +133,9 @@ public class Navigation extends Subsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
     }
-}
 
+
+
+public static void main(String args[]) {
+}
+}

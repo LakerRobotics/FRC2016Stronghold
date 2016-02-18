@@ -789,6 +789,8 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: None}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+<<<<<<< HEAD
+=======
         default: []
         name: Parameter presets
         validators: null
@@ -807,6 +809,7 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: DriveTrain}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+>>>>>>> origin/master
         default: []
         name: Parameter presets
         validators: null
@@ -1009,3 +1012,4 @@ Properties:
     name: Autonomous Command, type: Command, validators: null, value: Autonomous Command}
 Base: Robot
 Name: FRC2016Stronghold
+
