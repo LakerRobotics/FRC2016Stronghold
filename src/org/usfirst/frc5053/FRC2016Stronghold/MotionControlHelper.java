@@ -136,11 +136,12 @@ public class MotionControlHelper {
     	//using the current measurement get the desired rate (i.e. speed)
     	
     	double targetSpeed = getTargetSpeed(this.getMeasurment());
+    	SmartDashboard.putDouble("MotionControlHelper.adjustTargetSpeed Measurement", this.getMeasurment());
     	System.out.println("MotionControlHelper.adjustTargetSpeed targetSpeed"+targetSpeed);
     	this.getRegularPIDControl().setSetpoint(targetSpeed);
     	SmartDashboard.putDouble("MotionControlHelper.adjustTargetSpeed targetSpeed", targetSpeed);
     	
-//    	ensureSourceProvidesRate();
+    	ensureSourceProvidesRate();
     	SmartDashboard.putDouble("MotionControlHelper.adjustTargetSpeed Gyro Rate", m_source.pidGet());
     	// now that we have the speed set properly lets call the PID control and have it adjust the PIDInput (e.g. the motor power) to get closer to the desired speed.
     	//TODO need to access the inner class PIDTask and override to call calculatesSetup then then calculate()
@@ -166,8 +167,7 @@ public class MotionControlHelper {
         private PIDSource m_source; 
 
         public wrapPIDInput(MotionControlHelper motionControlHelper, PIDSource source) {
-			System.out.println("MotionControlHelper constuctor called");
-        	if (motionControlHelper == null) {
+            if (motionControlHelper == null) {
                 throw new NullPointerException("Given MotionControlPIDController was null");
             }
             else{
@@ -184,11 +184,11 @@ public class MotionControlHelper {
         
 		@Override
         public double pidGet(){
-			System.out.println("MotionControlHelper.pidGet()");
         	// have the controller set the target speed,
         	//TODO have WPI redo the PIDController so the calculate() method is protected so we wouldn't have to do this hack 
 			//  if it were protected then we could override calculate() method and allow the target speed to be set ahead of calculation the new PID output
 			try{
+				System.out.println("MotionControlHelper.pidGet()");
 				m_MCHelper.adjustTargetSpeed();
 			}
 			catch (Exception e){
@@ -201,15 +201,16 @@ public class MotionControlHelper {
 
 		@Override
 		public void setPIDSourceType(PIDSourceType pidSource) {
-			System.out.println("ERROR MotionControlHelper.setPIDSourceType() CALLED BEING IGNORED");
-			
-			// TODO Auto-generated method stub
+			m_source.setPIDSourceType(pidSource);
+//			System.out.println("ERROR MotionControlHelper.setPIDSourceType() CALL BEING IGNORED because this Motion control controls Rate");
 			
 		}
 
 		@Override
 		public PIDSourceType getPIDSourceType() {
-			return PIDSourceType.kRate;
+			return m_source.getPIDSourceType();
+			//return PIDSourceType.kRate;
+			//return m_pidSource;
 		}
 
     }
