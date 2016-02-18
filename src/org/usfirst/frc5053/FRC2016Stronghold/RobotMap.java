@@ -61,9 +61,9 @@ public class RobotMap {
         LiveWindow.addSensor("DriveTrain", "LeftWheelEncoder", driveTrainLeftWheelEncoder);
         driveTrainLeftWheelEncoder.setDistancePerPulse(0.0347195455);
         driveTrainLeftWheelEncoder.setPIDSourceType(PIDSourceType.kRate);
-        driveTrainRightWheelEncoder = new Encoder(2, 3, false, EncodingType.k4X);
+        driveTrainRightWheelEncoder = new Encoder(2, 3, true, EncodingType.k4X);
         LiveWindow.addSensor("DriveTrain", "RightWheelEncoder", driveTrainRightWheelEncoder);
-        driveTrainRightWheelEncoder.setDistancePerPulse(1.0);
+        driveTrainRightWheelEncoder.setDistancePerPulse(0.0347195455);
         driveTrainRightWheelEncoder.setPIDSourceType(PIDSourceType.kRate);
         driveTrainMotorsLeft = new Talon(0);
         LiveWindow.addActuator("DriveTrain", "Motors Left", (Talon) driveTrainMotorsLeft);
@@ -77,8 +77,7 @@ public class RobotMap {
         driveTrainRobotDrive21.setExpiration(0.1);
         driveTrainRobotDrive21.setSensitivity(0.5);
         driveTrainRobotDrive21.setMaxOutput(1.0);
-        driveTrainRobotDrive21.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
-        driveTrainRobotDrive21.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
+
         scaleTowerSolenoidReach = new Solenoid(0, 0);
         LiveWindow.addActuator("ScaleTower", "SolenoidReach", scaleTowerSolenoidReach);
         

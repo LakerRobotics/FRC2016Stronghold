@@ -26,11 +26,11 @@ import org.usfirst.frc5053.FRC2016Stronghold.rotateRobotPIDOutput;
  */
 public class Turn90 extends Command {
 	double turn = -90;//default in degrees
-	double targetAngle = 0; // temp real value calculated below
+	double targetAngle = 90; // temp real value calculated below
 	double targetTolerance = 1 ; //degrees
 
-    double     ramp =  10; //degrees
-    double maxspeed = 5.0*(360/60) ; //60/360 converts the first numbers which is in RPM to degrees/second
+    double     ramp =  30; //degrees
+    double maxspeed = 10.0*(360/60) ; //60/360 converts the first numbers which is in RPM to degrees/second
     double    start =   0; //degrees
     MotionControlHelper rotationSpeedProfile; 
     
@@ -41,7 +41,7 @@ public class Turn90 extends Command {
     
     public Turn90(double a_turn) {
         SmartDashboard.putString("Turn90CodeLocation","entered Turn90(a_turn)");
-		   
+		   turn = a_turn;
 	       // Use requires() here to declare subsystem dependencies
 	       // eg. requires(chassis);
 
@@ -128,6 +128,6 @@ public class Turn90 extends Command {
     protected void interrupted() {
         SmartDashboard.putString("Turn90CodeLocation","entered interrupted()");
         System.out.println("Turn90CodeLocation "+"entered end()");
-        rotationSpeedPID.disable();
+        end();
     }
 }

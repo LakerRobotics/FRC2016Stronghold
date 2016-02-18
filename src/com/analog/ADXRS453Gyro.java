@@ -1,6 +1,7 @@
 package com.analog;
 
 import java.nio.ByteBuffer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import java.nio.ByteOrder;
 import java.util.BitSet;
 import java.util.TimerTask;
@@ -160,6 +161,13 @@ public class ADXRS453Gyro implements Gyro, PIDSource{
 	}
 	public double getAngle() {
 		return angle;
+
+		SmartDashboard.putDouble("Accumlator Average", spi.getAccumulatorAverage());
+		SmartDashboard.putDouble("Accumlator Count", spi.getAccumulatorCount());
+		SmartDashboard.putDouble("Accumlator LastValue", spi.getAccumulatorLastValue());
+		SmartDashboard.putDouble("Accumlator Value", spi.getAccumulatorValue());
+		
+		
 	}
 
 	public double getPos() {
