@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc5053.FRC2016Stronghold.DriveStraightPIDOutput;
 import org.usfirst.frc5053.FRC2016Stronghold.MotionControlHelper;
 import org.usfirst.frc5053.FRC2016Stronghold.MotionControlPIDController;
 import org.usfirst.frc5053.FRC2016Stronghold.Robot;
@@ -27,8 +28,8 @@ import org.usfirst.frc5053.FRC2016Stronghold.rotateRobotPIDOutput;
 public class ArcadeDriveStrightPID extends Command {
 	double targetAngle = 0; // temp real value calculated below
 
-    double     ramp =  30; //degrees
-    double maxspeed = 100.0*(360/60) ; //60/360 converts the first numbers which is in RPM to degrees/second
+    double     ramp =  90; //degrees
+    double maxspeed = 10.0*(360/60) ; //60/360 converts the first numbers which is in RPM to degrees/second
     double   rampUp =   180; //degrees, temp real one will be 180 degrees offset.
     MotionControlHelper rotationSpeedProfile; 
     
@@ -60,7 +61,7 @@ public class ArcadeDriveStrightPID extends Command {
         double start = RobotMap.gyroToUse.getAngle();
 		targetAngle = start;
 		rampUp = start +180;
-        rotationSpeedProfile = new MotionControlHelper(targetAngle, ramp, maxspeed, rampUp, (PIDSource) RobotMap.gyroToUse,new rotateRobotPIDOutput());
+        rotationSpeedProfile = new MotionControlHelper(targetAngle, ramp, maxspeed, rampUp, (PIDSource) RobotMap.gyroToUse,new DriveStraightPIDOutput());
         rotationSpeedPID = new MotionControlPIDController(Kp,Ki,Kd, rotationSpeedProfile );
     	    rotationSpeedPID.setOutputRange(-1.0, 1.0);
     	    rotationSpeedPID.enable();
@@ -84,10 +85,12 @@ public class ArcadeDriveStrightPID extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	rotationSpeedPID.disable();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }
