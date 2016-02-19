@@ -162,10 +162,10 @@ public class ADXRS453Gyro implements Gyro, PIDSource{
 	public double getAngle() {
 		return angle;
 
-		SmartDashboard.putDouble("Accumlator Average", spi.getAccumulatorAverage());
-		SmartDashboard.putDouble("Accumlator Count", spi.getAccumulatorCount());
-		SmartDashboard.putDouble("Accumlator LastValue", spi.getAccumulatorLastValue());
-		SmartDashboard.putDouble("Accumlator Value", spi.getAccumulatorValue());
+		//SmartDashboard.putDouble("Accumlator Average", spi.getAccumulatorAverage());
+		//SmartDashboard.putDouble("Accumlator Count", spi.getAccumulatorCount());
+		//SmartDashboard.putDouble("Accumlator LastValue", spi.getAccumulatorLastValue());
+		//SmartDashboard.putDouble("Accumlator Value", spi.getAccumulatorValue());
 		
 		
 	}
