@@ -84,11 +84,11 @@ public class OI {
         intakeReverseOff = new JoystickButton(operator, 2);
         intakeReverseOff.whenReleased(new SpinIntake(0));
         intakeReverse = new JoystickButton(operator, 2);
-        intakeReverse.whileHeld(new SpinIntake(-1));
+        intakeReverse.whileHeld(new SpinIntake(1));
         intakeSpinOff = new JoystickButton(operator, 1);
         intakeSpinOff.whenReleased(new SpinIntake(0));
         intakeSpin = new JoystickButton(operator, 1);
-        intakeSpin.whileHeld(new SpinIntake(1));
+        intakeSpin.whileHeld(new SpinIntake(-1));
         driver = new Joystick(0);
         
         shooterOff = new JoystickButton(driver, 2);
