@@ -19,7 +19,7 @@ import org.usfirst.frc5053.FRC2016Stronghold.Robot;
 import org.usfirst.frc5053.FRC2016Stronghold.RobotMap;
 import org.usfirst.frc5053.FRC2016Stronghold.MotionControlHelper;
 import org.usfirst.frc5053.FRC2016Stronghold.MotionControlPIDController;
-import org.usfirst.frc5053.FRC2016Stronghold.rotateRobotPIDOutput;
+import org.usfirst.frc5053.FRC2016Stronghold.RobotDriveSpinPIDOutput;
 
 /**
  *
@@ -80,7 +80,7 @@ public class Turn90 extends Command {
 //    	    mcPID.free();
         start = RobotMap.gyroToUse.getAngle();
 		targetAngle = turn + start;
-        rotationSpeedProfile = new MotionControlHelper(targetAngle, ramp, maxspeed, start, (PIDSource) RobotMap.gyroToUse,new rotateRobotPIDOutput());
+        rotationSpeedProfile = new MotionControlHelper(targetAngle, ramp, maxspeed, start, (PIDSource) RobotMap.gyroToUse,new RobotDriveSpinPIDOutput());
         rotationSpeedPID = new MotionControlPIDController(Kp,Ki,Kd, rotationSpeedProfile );
     	    rotationSpeedPID.setOutputRange(-1.0, 1.0);
     	    rotationSpeedPID.enable();
