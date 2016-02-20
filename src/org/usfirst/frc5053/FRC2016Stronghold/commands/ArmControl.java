@@ -12,6 +12,8 @@
 package org.usfirst.frc5053.FRC2016Stronghold.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc5053.FRC2016Stronghold.Robot;
 import org.usfirst.frc5053.FRC2016Stronghold.RobotMap;
 
@@ -43,7 +45,15 @@ public class ArmControl extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.armArmMotor.set(-Robot.oi.getOperator().getY());
+    	SmartDashboard.putDouble("Joystick Y", Robot.oi.getOperator().getY());
+    	System.out.println("Joystick Y"+Robot.oi.getOperator().getY());
+    	// Being Pulled up then needs more power
+    	if(Robot.oi.getOperator().getY()>0){
+    	    RobotMap.armArmMotor.set(-0.5*Robot.oi.getOperator().getY());
+    	}
+    	else{ //only need a little power to get the arm to go down
+    		RobotMap.armArmMotor.set(-0.1*Robot.oi.getOperator().getY());
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -29,14 +29,14 @@ public class SquareDrive extends CommandGroup {
         //      addSequential(new Command2());
         // these will run in order.
     	
-    	addSequential(new AutonForward(24));
-    	addSequential(new Turn90());
-    	addSequential(new AutonForward(24));
-    	addSequential(new Turn90());
-    	addSequential(new AutonForward(24));
-    	addSequential(new Turn90());
-    	addSequential(new AutonForward(24));
-    	addSequential(new Turn90());
+    	addSequential(new DriveForward(24));
+    	addSequential(new DriveSpin());
+    	addSequential(new DriveForward(24));
+    	addSequential(new DriveSpin());
+    	addSequential(new DriveForward(24));
+    	addSequential(new DriveSpin());
+    	addSequential(new DriveForward(24));
+    	addSequential(new DriveSpin());
     	
 
         // To run multiple commands at the same time,
