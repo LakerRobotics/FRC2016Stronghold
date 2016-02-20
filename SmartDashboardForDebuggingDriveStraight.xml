@@ -1,5 +1,41 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="DriveStraightPIDOutput Rotation Motor Output" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="372" y="695"/>
+	</widget>
+	<widget field="DriveStraightPIDOutput" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="197" y="152"/>
+	</widget>
+	<widget field="ArcadeDriveStraightPID Gryro Target Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="750" y="315"/>
+	</widget>
+	<widget field="ArcadeDriveStraightPID Gyro Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="251" y="784"/>
+	</widget>
+	<widget field="ArcadeDriveStraightPID targetAngle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="327" y="729"/>
+	</widget>
+	<widget field="ArcadeDriveStraightPID angle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="251" y="763"/>
+	</widget>
+	<widget field="ScalerChinUp" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="185" y="729"/>
+	</widget>
+	<widget field="ArcadeDriveStrightPID" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="185" y="695"/>
+	</widget>
+	<widget field="ScalerReachUp" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="185" y="637"/>
+	</widget>
+	<widget field="KickBall" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="185" y="603"/>
+	</widget>
+	<widget field="ShooterKicker" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="189" y="548"/>
+	</widget>
+	<widget field="LowBarAuton" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="185" y="467"/>
+	</widget>
 	<widget field="SolenoidShoot" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="185" y="399"/>
 	</widget>
