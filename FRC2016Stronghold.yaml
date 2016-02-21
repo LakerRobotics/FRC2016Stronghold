@@ -554,7 +554,7 @@ Children:
       Name: ArmMotor
     Properties:
       Limit Output: !!robotbuilder.data.properties.BooleanProperty {default: false,
-        name: Limit Output, validators: null, value: false}
+        name: Limit Output, validators: null, value: true}
       D: !!robotbuilder.data.properties.DoubleProperty {default: 0, name: D, validators: null,
         value: 0.0}
       Default command parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -580,9 +580,9 @@ Children:
       Limit Input: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Limit Input, validators: null, value: false}
       Minimum Output: !!robotbuilder.data.properties.DoubleProperty {default: -1,
-        name: Minimum Output, validators: null, value: -1.0}
+        name: Minimum Output, validators: null, value: -0.5}
       P: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: P, validators: null,
-        value: 1.0}
+        value: 10.0}
       Input: !!robotbuilder.data.properties.ChildSelectionProperty
         default: 0
         name: Input
@@ -590,7 +590,7 @@ Children:
         validators: *id011
         value: Arm ArmStringPot
       Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: Maximum Output,
-        validators: null, value: 1.0}
+        validators: null, value: 0.1}
       Output: !!robotbuilder.data.properties.ChildSelectionProperty
         default: 0
         name: Output
@@ -961,7 +961,7 @@ Children:
           validators: null
           value:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
-            type: double, value: '0'}
+            type: double, value: '0.178'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id018
           default: '1'
@@ -992,7 +992,7 @@ Children:
           validators: null
           value:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
-            type: double, value: '0'}
+            type: double, value: '0.282'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id018
           default: '1'
@@ -1023,7 +1023,7 @@ Children:
           validators: null
           value:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
-            type: double, value: '0'}
+            type: double, value: '0.294'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id018
           default: '1'
@@ -1054,7 +1054,7 @@ Children:
           validators: null
           value:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
-            type: double, value: '0'}
+            type: double, value: '0.178'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id018
           default: '1'
@@ -1111,19 +1111,19 @@ Children:
         - !!robotbuilder.data.properties.ParameterSet
           name: Neutral
           parameters:
-          - {name: setpoint, type: double, value: '0'}
+          - {name: setpoint, type: double, value: '0.178'}
         - !!robotbuilder.data.properties.ParameterSet
           name: GetBall
           parameters:
-          - {name: setpoint, type: double, value: '0'}
+          - {name: setpoint, type: double, value: '0.282'}
         - !!robotbuilder.data.properties.ParameterSet
           name: LiftPorticullis
           parameters:
-          - {name: setpoint, type: double, value: '0'}
+          - {name: setpoint, type: double, value: '0.294'}
         - !!robotbuilder.data.properties.ParameterSet
           name: Scale
           parameters:
-          - {name: setpoint, type: double, value: '0'}
+          - {name: setpoint, type: double, value: '0.178'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Setpoint Command

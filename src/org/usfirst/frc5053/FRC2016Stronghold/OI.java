@@ -79,13 +79,13 @@ public class OI {
         operator = new Joystick(1);
         
         armScale = new JoystickButton(operator, 9);
-        armScale.whenPressed(new ArmSetpoints(0));
+        armScale.whenPressed(new ArmSetpoints(0.178));
         armLiftPorticullis = new JoystickButton(operator, 8);
-        armLiftPorticullis.whenPressed(new ArmSetpoints(0));
+        armLiftPorticullis.whenPressed(new ArmSetpoints(0.294));
         armGetBall = new JoystickButton(operator, 7);
-        armGetBall.whenPressed(new ArmSetpoints(0));
+        armGetBall.whenPressed(new ArmSetpoints(0.282));
         armNeutral = new JoystickButton(operator, 6);
-        armNeutral.whenPressed(new ArmSetpoints(0));
+        armNeutral.whenPressed(new ArmSetpoints(0.178));
         kickShooter = new JoystickButton(operator, 5);
         kickShooter.whileHeld(new ShooterKicker());
         scalerPullUp = new JoystickButton(operator, 4);
@@ -113,10 +113,10 @@ public class OI {
 
 
         // SmartDashboard Buttons
-        SmartDashboard.putData("ArmSetpoints: Neutral", new ArmSetpoints(0));
-        SmartDashboard.putData("ArmSetpoints: GetBall", new ArmSetpoints(0));
-        SmartDashboard.putData("ArmSetpoints: LiftPorticullis", new ArmSetpoints(0));
-        SmartDashboard.putData("ArmSetpoints: Scale", new ArmSetpoints(0));
+        SmartDashboard.putData("ArmSetpoints: Neutral", new ArmSetpoints(0.178));
+        SmartDashboard.putData("ArmSetpoints: GetBall", new ArmSetpoints(0.282));
+        SmartDashboard.putData("ArmSetpoints: LiftPorticullis", new ArmSetpoints(0.294));
+        SmartDashboard.putData("ArmSetpoints: Scale", new ArmSetpoints(0.178));
         SmartDashboard.putData("ArcadeArmControl", new ArcadeArmControl());
         SmartDashboard.putData("Auton: LowBarLefGoal", new Auton(1, "Left", "Low"));
         SmartDashboard.putData("Auton: LowBarRightGoal", new Auton(1, "Right", "Low"));
