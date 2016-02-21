@@ -92,7 +92,7 @@ public class DriveSpin extends Command {
         System.out.println("Turn90CodeLocation "+"entered execute()");
     	// get current Angle to report on
     	double currentAngle = RobotMap.gyroToUse.getAngle();
-        SmartDashboard.putNumber("Turn angle",currentAngle);
+        SmartDashboard.putNumber("Current angle",currentAngle);
         SmartDashboard.putNumber("Turn Turn",turn);
         SmartDashboard.putNumber("Turn Gyro Rate",RobotMap.gyroToUse.getRate());
         SmartDashboard.putNumber("Turn Gryro Target Rate",rotationSpeedProfile.getTargetSpeed(currentAngle));

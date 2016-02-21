@@ -36,8 +36,8 @@ public class RobotDriveStraightPIDOutput implements PIDOutput {
 	    double rotationPower = -angleOff*Kp*(motorPower/Math.abs(motorPower));  // the last term in the () is to get the sign fixed when going backwards)
 	   	//double rotationPower = 0;
 	   	RobotMap.driveTrainRobotDrive21.arcadeDrive(/*moveValue*/ motorPower, /*rotateValue*/ rotationPower); 
-	    SmartDashboard.putNumber("RobotDriveStraitPIDOoutput Motor Output",motorPower);
-	    SmartDashboard.putNumber("RobotDriveStraitPIDOoutput RotationPower", rotationPower);
+	    SmartDashboard.putNumber("RobotDriveStraightPIDOoutput Motor Output",motorPower);
+	    SmartDashboard.putNumber("RobotDriveStraightPIDOoutput RotationPower", rotationPower);
 	}
 
 }
