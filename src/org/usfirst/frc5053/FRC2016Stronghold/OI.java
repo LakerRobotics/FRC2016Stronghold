@@ -99,7 +99,7 @@ public class OI {
         intakeSpinOff = new JoystickButton(operator, 1);
         intakeSpinOff.whenReleased(new SpinIntake(0));
         intakeSpin = new JoystickButton(operator, 1);
-        intakeSpin.whileHeld(new SpinIntake(-1));
+        intakeSpin.whileHeld(new SpinIntake(-0.5));
         driver = new Joystick(0);
         
         shooterOff = new JoystickButton(driver, 2);
@@ -117,6 +117,7 @@ public class OI {
         SmartDashboard.putData("ArmSetpoints: GetBall", new ArmSetpoints(0));
         SmartDashboard.putData("ArmSetpoints: LiftPorticullis", new ArmSetpoints(0));
         SmartDashboard.putData("ArmSetpoints: Scale", new ArmSetpoints(0));
+        SmartDashboard.putData("ArcadeArmControl", new ArcadeArmControl());
         SmartDashboard.putData("Auton: LowBarLefGoal", new Auton(1, "Left", "Low"));
         SmartDashboard.putData("Auton: LowBarRightGoal", new Auton(1, "Right", "Low"));
         SmartDashboard.putData("ArcadeDrive", new ArcadeDrive());
@@ -126,9 +127,8 @@ public class OI {
         SmartDashboard.putData("DriveSpin", new DriveSpin());
         SmartDashboard.putData("AllwaysTrackLocation", new AllwaysTrackLocation());
         SmartDashboard.putData("SpinIntake: Forward", new SpinIntake(1));
-        SmartDashboard.putData("SpinIntake: Reverse", new SpinIntake(-1));
+        SmartDashboard.putData("SpinIntake: Reverse", new SpinIntake(-0.5));
         SmartDashboard.putData("SpinIntake: Stop", new SpinIntake(0));
-        SmartDashboard.putData("ArcadeArmControl", new ArcadeArmControl());
         SmartDashboard.putData("SquareDrive", new SquareDrive());
         SmartDashboard.putData("ScalerReachUp", new ScalerReachUp());
         SmartDashboard.putData("ScalerChinUp", new ScalerChinUp());
