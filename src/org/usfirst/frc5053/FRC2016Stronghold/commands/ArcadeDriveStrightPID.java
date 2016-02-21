@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc5053.FRC2016Stronghold.RobotDriveStraightPIDOutput;
+import org.usfirst.frc5053.FRC2016Stronghold.RobotDriveArcadeStraightPIDOutput;
 import org.usfirst.frc5053.FRC2016Stronghold.MotionControlHelper;
 import org.usfirst.frc5053.FRC2016Stronghold.MotionControlPIDController;
 import org.usfirst.frc5053.FRC2016Stronghold.Robot;
@@ -61,7 +61,7 @@ public class ArcadeDriveStrightPID extends Command {
         double start = RobotMap.gyroToUse.getAngle();
 		targetAngle = start;
 		rampUp = start +180;
-        rotationSpeedProfile = new MotionControlHelper(targetAngle, ramp, maxspeed, rampUp, (PIDSource) RobotMap.gyroToUse,new RobotDriveStraightPIDOutput());
+        rotationSpeedProfile = new MotionControlHelper(targetAngle, ramp, maxspeed, rampUp, (PIDSource) RobotMap.gyroToUse,new RobotDriveArcadeStraightPIDOutput());
         rotationSpeedPID = new MotionControlPIDController(Kp,Ki,Kd, rotationSpeedProfile );
     	    rotationSpeedPID.setOutputRange(-1.0, 1.0);
     	    rotationSpeedPID.enable();
