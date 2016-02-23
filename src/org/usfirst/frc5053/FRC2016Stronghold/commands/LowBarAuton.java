@@ -28,6 +28,7 @@ public class LowBarAuton extends CommandGroup {
     	addSequential(new DriveForward(207.5));
     	addSequential(new DriveSpin(60));
     	addSequential(new DriveForward(76));
+    	addSequential(new ShooterSpin(1));
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());

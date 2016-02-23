@@ -15,7 +15,7 @@ Children:
           validators: &id002 [DigitalChannel]
           value: '0'
         Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
-          name: Distance Per Pulse, validators: null, value: 0.0347195455}
+          name: Distance Per Pulse, validators: null, value: 0.069439091}
         PID Source: !!robotbuilder.data.properties.ChoicesProperty
           choices: &id003 [kDisplacement, kRate]
           default: kRate
@@ -49,7 +49,7 @@ Children:
           validators: *id002
           value: '2'
         Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
-          name: Distance Per Pulse, validators: null, value: 0.0347195455}
+          name: Distance Per Pulse, validators: null, value: 0.069439091}
         PID Source: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id003
           default: kRate
@@ -580,9 +580,9 @@ Children:
       Limit Input: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Limit Input, validators: null, value: false}
       Minimum Output: !!robotbuilder.data.properties.DoubleProperty {default: -1,
-        name: Minimum Output, validators: null, value: -0.5}
+        name: Minimum Output, validators: null, value: -0.7}
       P: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: P, validators: null,
-        value: 10.0}
+        value: 65.0}
       Input: !!robotbuilder.data.properties.ChildSelectionProperty
         default: 0
         name: Input
@@ -590,7 +590,7 @@ Children:
         validators: *id011
         value: Arm ArmStringPot
       Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: Maximum Output,
-        validators: null, value: 0.1}
+        validators: null, value: 0.5}
       Output: !!robotbuilder.data.properties.ChildSelectionProperty
         default: 0
         name: Output
@@ -961,7 +961,7 @@ Children:
           validators: null
           value:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
-            type: double, value: '0.178'}
+            type: double, value: '0.163'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id018
           default: '1'
@@ -979,7 +979,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whenPressed
+          value: whileHeld
       Base: Joystick Button
       Name: ArmNeutral
     - Children: []
@@ -992,7 +992,7 @@ Children:
           validators: null
           value:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
-            type: double, value: '0.282'}
+            type: double, value: '0.272'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id018
           default: '1'
@@ -1010,7 +1010,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whenPressed
+          value: whileHeld
       Base: Joystick Button
       Name: ArmGetBall
     - Children: []
@@ -1023,7 +1023,7 @@ Children:
           validators: null
           value:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
-            type: double, value: '0.294'}
+            type: double, value: '0.289'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id018
           default: '1'
@@ -1041,7 +1041,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whenPressed
+          value: whileHeld
       Base: Joystick Button
       Name: ArmLiftPorticullis
     - Children: []
@@ -1054,7 +1054,7 @@ Children:
           validators: null
           value:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
-            type: double, value: '0.178'}
+            type: double, value: '0.163'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id018
           default: '1'
@@ -1072,7 +1072,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whenPressed
+          value: whileHeld
       Base: Joystick Button
       Name: ArmScale
     Properties:
@@ -1111,19 +1111,19 @@ Children:
         - !!robotbuilder.data.properties.ParameterSet
           name: Neutral
           parameters:
-          - {name: setpoint, type: double, value: '0.178'}
+          - {name: setpoint, type: double, value: '0.163'}
         - !!robotbuilder.data.properties.ParameterSet
           name: GetBall
           parameters:
-          - {name: setpoint, type: double, value: '0.282'}
+          - {name: setpoint, type: double, value: '0.272'}
         - !!robotbuilder.data.properties.ParameterSet
           name: LiftPorticullis
           parameters:
-          - {name: setpoint, type: double, value: '0.294'}
+          - {name: setpoint, type: double, value: '0.289'}
         - !!robotbuilder.data.properties.ParameterSet
           name: Scale
           parameters:
-          - {name: setpoint, type: double, value: '0.178'}
+          - {name: setpoint, type: double, value: '0.163'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Setpoint Command
@@ -1625,15 +1625,15 @@ Children:
         validators: null
         value: []
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id024 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id024
+        value: []
       Commands: !!robotbuilder.data.properties.ListProperty
-        default: &id025 []
+        default: []
         name: Commands
         validators: *id023
-        value: *id025
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command Group
