@@ -11,6 +11,7 @@
 
 package org.usfirst.frc5053.FRC2016Stronghold.commands;
 
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -57,6 +58,7 @@ public class AllwaysTrackLocation extends Command {
     	SmartDashboard.putDouble("SPI Gyro", RobotMap.SpiGyro.pidGet());
     	//table.putDouble("Right LIDAR", RobotMap.)
     	//table.putDouble("Left LIDAR", RobotMap.)
+    	getDataFromArduino();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -74,7 +76,13 @@ public class AllwaysTrackLocation extends Command {
     }
     
     private void getDataFromArduino(){
-/*
+    byte    LIDARLite_ADDRESS = 0x62;         // Default I2C Address of LIDAR-Lite.
+    byte   RegisterMeasure   = 0x00;          // Register to write to initiate ranging.
+    byte    MeasureValue      = 0x04;          // Value to initiate ranging.
+//    byte	RegisterHighLowB  = 0x8f;          // Register to get both High and Low bytes in 1 call.
+    byte    I2CMultiplexer    = 0x70;          // PCA9544A Multiplexer Address
+    
+    	/*
 #include <Wire.h>
 #include <I2C.h>
 #define    LIDARLite_ADDRESS     0x62          // Default I2C Address of LIDAR-Lite.
@@ -82,16 +90,28 @@ public class AllwaysTrackLocation extends Command {
 #define    MeasureValue          0x04          // Value to initiate ranging.
 #define    RegisterHighLowB      0x8f          // Register to get both High and Low bytes in 1 call.
 #define    I2CMultiplexer        0x70          // PCA9544A Multiplexer Address
+*/
+     I2C i2c = new I2C(I2C.Port.kOnboard, LIDARLite_ADDRESS+128);// port, address 
+     
+     /*Initialize the I2C connection on address 84. Because of differences between the implementation of the library for the cRIO and Arduino 
+      * (the lower bit of the address selects either read or write) the cRIO uses address 168. 168 is the address 84 shifted by 1 bit (the read/write bit). 
+      * from https://wpilib.screenstepslive.com/s/3120/m/7912/l/175524-sending-data-from-the-crio-to-an-arduino*/
 
-void setup() {
+     /*void setup() {
    Wire.begin();        // join i2c bus (address optional for master)
    Serial.begin(9600);  // start serial for output
    delay(100); // Waits to make sure everything is powered up before sending or receiving data  
    I2c.timeOut(50); // Sets a timeout to ensure no locking up of sketch if I2C communication fails
 }
+*/
 
+     
+/*
 void loop() {
    Wire.requestFrom(8, 2);    // request 6 bytes from slave device #8
+   */
+
+     /*
 
    while (Wire.available()) { // slave may send less than requested
      long c = Wire.read(); // receive a byte as character
@@ -107,6 +127,9 @@ void loop() {
 
    delay(10);
 }
+*/
+   
+   /*
 
 
 void selectMultiplexerChannel(byte channel){
@@ -118,7 +141,9 @@ void selectMultiplexerChannel(byte channel){
     delay(1); // Wait 1 ms to prevent overpolling
   }
 }
+*/
 
+/*
 int readDistance(){
   uint8_t nackack = 100; // Setup variable to hold ACK/NACK resopnses     
   while (nackack != 0){ // While NACK keep going (i.e. continue polling until sucess message (ACK) is received )
@@ -134,11 +159,87 @@ int readDistance(){
     nackack = I2c.read(LIDARLite_ADDRESS,RegisterHighLowB, 2, distanceArray); // Read 2 Bytes from LIDAR-Lite Address and store in array
     delay(1); // Wait 1 ms to prevent overpolling
   }
+  */
+ //i2c.transaction(byte[] dataToSend, int sendSize, byte[] dataReceived, int receiveSize)   
+   byte[] dataToSend = new byte[1];
+   dataToSend[0] = MeasureValue;
+   int sendSize = 1;
+   byte[] dataReceived  = new byte[2]; 
+   int recieveSize = 2;
+i2c.transaction(dataToSend, sendSize, dataReceived, recieveSize);
+
+System.out.println("dataReceived from I2C"+dataReceived+" size="+recieveSize);
+SmartDashboard.putString("dataReceived from I2C",dataReceived+" size="+recieveSize);
+/*
   int distance = (distanceArray[0] << 8) + distanceArray[1];  // Shift high byte [0] 8 to the left and add low byte [1] to create 16-bit int
   
   return distance;   // Print Sensor Name & Distance
  */  
 //}
+
+   
+// Example WPI I2C code
+////////////////////////////////////////////     
+/*
+     package org.usfirst.frc.team228.robot;
+
+
+     import java.nio.ByteBuffer;
+     import java.nio.ByteOrder;
+
+     import edu.wpi.first.wpilibj.I2C;
+     import edu.wpi.first.wpilibj.SampleRobot;
+     import edu.wpi.first.wpilibj.RobotDrive;
+     import edu.wpi.first.wpilibj.Joystick;
+     import edu.wpi.first.wpilibj.Timer;
+     import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+     public class Robot extends SampleRobot {
+        // RobotDrive Drive;
+        // Joystick stick;
+         I2C I2CBus;
+         
+         short cX = 0, cY = 0, cZ = 0;
+
+         byte[] dataBuffer = new byte[6];
+         ByteBuffer compBuffer = ByteBuffer.wrap(dataBuffer);
+         
+         
+      //   FieldCentricController FCC();
+         
+         
+         public Robot() {
+         	
+             I2CBus = new I2C(I2C.Port.kOnboard, 0x1E);
+            // Drive = new RobotDrive(0, 1);
+            // Drive.setExpiration(0.1);
+            // stick = new Joystick(0);
+            
+         }
+
+
+         //
+         // Runs the motors with arcade steering.
+         //
+         public void operatorControl() {
+           //  Drive.setSafetyEnabled(true);
+         		I2CBus.write(0x02, 0x00);
+         	
+             while (isOperatorControl() && isEnabled()) {
+             	I2CBus.read(0x03, 6, dataBuffer);
+             	compBuffer.order(ByteOrder.BIG_ENDIAN);
+             	cX = compBuffer.getShort();
+             	cY = compBuffer.getShort();
+             	cZ = compBuffer.getShort();
+             	SmartDashboard.putNumber("CompX", cX);
+             	SmartDashboard.putNumber("CompY", cY);
+             	SmartDashboard.putNumber("CompZ", cZ);
+           //    Drive.mecanumDrive_Cartesian(stick.getX(), stick.getY(), stick.getTwist(), 0.0);
+                Timer.delay(0.065);		// wait for a motor update time
+             }
+         }
+
+     }*/
 
     }
 }
