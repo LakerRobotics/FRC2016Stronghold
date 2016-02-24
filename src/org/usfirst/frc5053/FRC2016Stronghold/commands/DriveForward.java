@@ -91,12 +91,12 @@ double ramp = 0; //inches distance to go from start to maxspeed and maxspeed to 
         RobotMap.driveTrainLeftWheelEncoder.reset();
         RobotMap.driveTrainRightWheelEncoder.reset();
         double start = 0; //inches 
-        RobotMap.driveTrainLeftWheelEncoder.setPIDSourceType(PIDSourceType.kRate);
+        RobotMap.driveTrainRightWheelEncoder.setPIDSourceType(PIDSourceType.kRate);
 
         // Setup the motion control (i.e. how fast we are going as we move towards our destination and plus, rampUp/rampDown distances)
         // and use the driveStraight PIDOutput to pass along the speed we want to the PID Controller
         MotionControlHelper speedControl = new MotionControlHelper(distance, ramp, maxspeed, start,
-        		                                    RobotMap.driveTrainLeftWheelEncoder,
+        		                                    RobotMap.driveTrainRightWheelEncoder,
         		                                    new RobotDriveStraightPIDOutput(RobotMap.gyroToUse, targetAngle));
 
         // setup the Pid to control how we follow the Speed
