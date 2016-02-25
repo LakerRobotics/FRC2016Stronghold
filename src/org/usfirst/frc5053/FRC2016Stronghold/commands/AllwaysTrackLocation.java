@@ -12,6 +12,7 @@
 package org.usfirst.frc5053.FRC2016Stronghold.commands;
 
 import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -61,7 +62,9 @@ public class AllwaysTrackLocation extends Command {
     	//table.putDouble("Left LIDAR", RobotMap.)
     	getDataFromArduino();
     	
+    	RobotMap.driveTrainLeftWheelEncoder.setPIDSourceType(PIDSourceType.kRate);
     	double rightSpeed = RobotMap.driveTrainLeftWheelEncoder.get(); 
+    	RobotMap.driveTrainRightWheelEncoder.setPIDSourceType(PIDSourceType.kRate);
     	double leftSpeed  = RobotMap.driveTrainLeftWheelEncoder.get();
     	        
     	double robotSpeed = (leftSpeed+rightSpeed)/2;

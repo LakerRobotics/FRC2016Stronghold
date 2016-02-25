@@ -17,15 +17,66 @@ import java.util.Date;
 import edu.wpi.first.wpilibj.AnalogGyro;
 //import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
  *
  */
 public class Navigation extends Subsystem {
+
+	private double x,y, angle;
+	private double xSpeed, ySpeed, angleSpeed;
+
+	/**
+	 * 
+	 */
+	public Trajectory getTrajectory(){
+		return new Trajectory(x, y, angle, xSpeed, ySpeed, angleSpeed);
+		
+	};
+	
+	/**
+	 * 
+	 * @return angle or the robot, (e.g. Gyro Angle) Might be enhanced to be more accurate based on Dead Reconing
+	 */
+	public double getAngle(){
+		return RobotMap.gyroToUse.getAngle();
+	};
+	
+	public void autonomousInit(){
+		int startPosition = SmartDashboard.getInt("Start Position");
+		switch (startPosition){
+			case 1: 
+				x = 25; y= 400; //TODO get these number to be accurate
+				break;
+			case 2: 
+				x = 75; y= 400; //TODO get these number to be accurate
+				break;
+			case 3: 
+				x = 125; y= 400; //TODO get these number to be accurate
+				break;
+			case 4: 
+				x = 175; y= 400; //TODO get these number to be accurate
+				break;
+			case 5: 
+				x = 225; y= 400; //TODO get these number to be accurate
+				break;
+		}
+		
+	};
 	
 	public final static String areaOfField(double x, double y) {
-		if ((y>410.5) && (y<=458.5)){
+		//Their Courtyard
+		if (y>458.5){// 650 is the end of the field, but if past that we just extend the field to infinity to avoid having an undefined condition (i.e. an error)
+			if (x<=265.5){
+				return "Their Courtyard";
+				}
+			else if (x<=319){
+				return "Their Secret Passage";
+			}
+		}
+		if ( y > 410.5 ){ // and y<=287.5 because otherwise it would not have gotten here
 			if (x<=53.1) {
 				return "Their D1";
 			}
@@ -45,17 +96,8 @@ public class Navigation extends Subsystem {
 					return "Their Secret Passage";
 			}
 	}
-				//Their Courtyard
-		if ((y>458.5) && (y<=650)){
-			if (x<=265.5){
-				return "Their Courtyard";
-				}
-				else if (x<=319){
-					return "Their Secret Passage";
-				}
-		}
 			//Their Neutral Zone
-		if ((y>362.5) && (y<=410.5)){
+		if (y>362.5){
 			if (x<=265.5){
 				return "Their Neutral";
 			}
@@ -63,12 +105,12 @@ public class Navigation extends Subsystem {
 				return "Their Secret Passage";
 			}
 			//Neutral
-	if ((y>287.5) && (y<=362.5)){
+	if (y>287.5){ // and y<=287.5 because otherwise it would not have gotten here
 		return "Neutral";
 	}
 		};
 	//Our Neutral
-	if ((y>239.5) && (y<=287.5)){
+	if (y>239.5){ // and y<=287.5 because otherwise it would not have gotten here
 		if (x<=53.1){
 			return "Our Secret Passage";
 		}
@@ -77,27 +119,27 @@ public class Navigation extends Subsystem {
 		}
 		//Our Defenses
 	}
-		if ((y>191.5) && (y<=239.5)){
+		if (y>191.5){ // and y<=239.5 because otherwise it would not have gotten here
 			if (x<=53.1) {
-				return "Their D1";
+				return "Our D1";
 			}
 				else if (x<=106.2){
-					return "Their D2";
+					return "Our D2";
 			}
 				else if (x<=159.3){
-					return "Their D3";
+					return "Our D3";
 			}
 				else if (x<=212.4){
-					return "Their D4";
+					return "Our D4";
 			}
 				else if (x<=265.5){
-					return "Their D5";
+					return "Our D5";
 				}
 				else if (x<=319){
-					return "Their Secret Passage";
+					return "Our Secret Passage";
 				}
 		}
-		if ((y>0) && (y<=191.5)){
+		if (y>0){ // and y<=191.5 because otherwise it would not have gotten here
 			if (x<=53.1){
 				return "Our Secret Passage";
 			}
@@ -106,7 +148,7 @@ public class Navigation extends Subsystem {
 			}
 		}
 		return "Error";
-			}
+	}
 
 	
 	
