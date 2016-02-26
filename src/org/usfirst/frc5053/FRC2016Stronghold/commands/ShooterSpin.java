@@ -92,5 +92,11 @@ public class ShooterSpin extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	// Turn off PID control and shut down the motors
+    	Robot.rightShooter.disable();
+    	RobotMap.rightShooterRightShooterMotor.set(0);
+
+    	Robot.leftShooter.disable();
+    	RobotMap.leftShooterLeftShooterMotor.set(0);
     }
 }
