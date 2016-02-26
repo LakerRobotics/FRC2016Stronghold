@@ -186,7 +186,7 @@ Children:
           validators: *id002
           value: '4'
         Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
-          name: Distance Per Pulse, validators: null, value: 1.0}
+          name: Distance Per Pulse, validators: null, value: 1.5}
         PID Source: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id003
           default: kRate
@@ -200,7 +200,7 @@ Children:
           validators: null
           value: k4X
         Reverse Direction: !!robotbuilder.data.properties.BooleanProperty {default: false,
-          name: Reverse Direction, validators: null, value: false}
+          name: Reverse Direction, validators: null, value: true}
         Channel B Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id005
           default: '0'
@@ -247,7 +247,7 @@ Children:
         validators: null
         value: &id010 []
       I: !!robotbuilder.data.properties.DoubleProperty {default: 0, name: I, validators: null,
-        value: 0.0}
+        value: 5.0E-4}
       Minimum Input: !!robotbuilder.data.properties.DoubleProperty {default: 0, name: Minimum Input,
         validators: null, value: 0.0}
       Limit Input: !!robotbuilder.data.properties.BooleanProperty {default: false,
@@ -255,7 +255,7 @@ Children:
       Minimum Output: !!robotbuilder.data.properties.DoubleProperty {default: -1,
         name: Minimum Output, validators: null, value: -1.0}
       P: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: P, validators: null,
-        value: 1.0}
+        value: 0.001}
       Input: !!robotbuilder.data.properties.ChildSelectionProperty
         default: 0
         name: Input
@@ -286,7 +286,7 @@ Children:
           validators: *id002
           value: '6'
         Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
-          name: Distance Per Pulse, validators: null, value: 1.0}
+          name: Distance Per Pulse, validators: null, value: 1.5}
         PID Source: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id003
           default: kRate
@@ -347,7 +347,7 @@ Children:
         validators: null
         value: *id010
       I: !!robotbuilder.data.properties.DoubleProperty {default: 0, name: I, validators: null,
-        value: 0.0}
+        value: 5.0E-4}
       Minimum Input: !!robotbuilder.data.properties.DoubleProperty {default: 0, name: Minimum Input,
         validators: null, value: 0.0}
       Limit Input: !!robotbuilder.data.properties.BooleanProperty {default: false,
@@ -355,7 +355,7 @@ Children:
       Minimum Output: !!robotbuilder.data.properties.DoubleProperty {default: -1,
         name: Minimum Output, validators: null, value: -1.0}
       P: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: P, validators: null,
-        value: 1.0}
+        value: 0.001}
       Input: !!robotbuilder.data.properties.ChildSelectionProperty
         default: 0
         name: Input
@@ -1176,7 +1176,7 @@ Children:
           validators: null
           value:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
-            type: double, value: '-25'}
+            type: double, value: '-750'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id018
           default: '1'
@@ -1597,7 +1597,7 @@ Children:
         - !!robotbuilder.data.properties.ParameterSet
           name: Default
           parameters:
-          - {name: setpoint, type: double, value: '25'}
+          - {name: setpoint, type: double, value: '2000'}
         - !!robotbuilder.data.properties.ParameterSet
           name: 'Off'
           parameters:
@@ -1605,7 +1605,7 @@ Children:
         - !!robotbuilder.data.properties.ParameterSet
           name: Intake
           parameters:
-          - {name: setpoint, type: double, value: '-25'}
+          - {name: setpoint, type: double, value: '-750'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command

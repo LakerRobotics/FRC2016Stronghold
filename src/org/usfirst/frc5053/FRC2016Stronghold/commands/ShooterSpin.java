@@ -12,6 +12,8 @@
 package org.usfirst.frc5053.FRC2016Stronghold.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc5053.FRC2016Stronghold.Robot;
 import org.usfirst.frc5053.FRC2016Stronghold.RobotMap;
 
@@ -56,8 +58,13 @@ public class ShooterSpin extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.rightShooterRightShooterMotor.set(m_setpoint/5);
-    	RobotMap.leftShooterLeftShooterMotor.set(-m_setpoint/5);
+    	SmartDashboard.putDouble("ShooterSpin Left Encoder", RobotMap.leftShooterLeftShooterWheelEncoder.getRate());
+    	SmartDashboard.putDouble("ShooterSpin Left Motor", RobotMap.leftShooterLeftShooterMotor.get());
+
+    	SmartDashboard.putDouble("ShooterSpin Right Encoder", RobotMap.rightShooterRightShooterWheelEncoder.getRate());
+    	SmartDashboard.putDouble("ShooterSpin Right Motor", RobotMap.rightShooterRightShooterMotor.get());
+    	//RobotMap.rightShooterRightShooterMotor.set(m_setpoint/5);
+    	//RobotMap.leftShooterLeftShooterMotor.set(-m_setpoint/5);
     }
 
     // Make this return true when this Command no longer needs to run execute()

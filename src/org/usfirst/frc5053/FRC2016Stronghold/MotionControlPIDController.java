@@ -26,6 +26,10 @@ public class MotionControlPIDController extends PIDController {
 		System.out.println("MotionControlPIDController.getRate() return"+m_motionControlHelper.getM_source().pidGet());
 		return m_motionControlHelper.getM_source().pidGet();
 	}
+	
+	public MotionControlHelper getMotionControlHelper(){
+		return m_motionControlHelper;
+	}
 
 
 	public MotionControlPIDController(double Kp, double Ki, double Kd, 

@@ -85,16 +85,16 @@ public class RobotMap {
         navigationoldAnalogGyro = new AnalogGyro(0);
         LiveWindow.addSensor("Navigation", "oldAnalogGyro", navigationoldAnalogGyro);
         navigationoldAnalogGyro.setSensitivity(0.007);
-        leftShooterLeftShooterWheelEncoder = new Encoder(4, 5, false, EncodingType.k4X);
+        leftShooterLeftShooterWheelEncoder = new Encoder(4, 5, true, EncodingType.k4X);
         LiveWindow.addSensor("LeftShooter", "LeftShooterWheelEncoder", leftShooterLeftShooterWheelEncoder);
-        leftShooterLeftShooterWheelEncoder.setDistancePerPulse(1.0);
+        leftShooterLeftShooterWheelEncoder.setDistancePerPulse(1.5);
         leftShooterLeftShooterWheelEncoder.setPIDSourceType(PIDSourceType.kRate);
         leftShooterLeftShooterMotor = new Talon(2);
         LiveWindow.addActuator("LeftShooter", "LeftShooterMotor", (Talon) leftShooterLeftShooterMotor);
         
         rightShooterRightShooterWheelEncoder = new Encoder(6, 7, false, EncodingType.k4X);
         LiveWindow.addSensor("RightShooter", "RightShooterWheelEncoder", rightShooterRightShooterWheelEncoder);
-        rightShooterRightShooterWheelEncoder.setDistancePerPulse(1.0);
+        rightShooterRightShooterWheelEncoder.setDistancePerPulse(1.5);
         rightShooterRightShooterWheelEncoder.setPIDSourceType(PIDSourceType.kRate);
         rightShooterRightShooterMotor = new Talon(3);
         LiveWindow.addActuator("RightShooter", "RightShooterMotor", (Talon) rightShooterRightShooterMotor);

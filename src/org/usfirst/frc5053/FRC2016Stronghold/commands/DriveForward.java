@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc5053.FRC2016Stronghold.MotionControlHelper;
 import org.usfirst.frc5053.FRC2016Stronghold.MotionControlPIDController;
 import org.usfirst.frc5053.FRC2016Stronghold.Robot;
-import org.usfirst.frc5053.FRC2016Stronghold.RobotDriveStraightPIDOutput;
+import org.usfirst.frc5053.FRC2016Stronghold.RobotDriveStraightSpeedPIDOutput;
 import org.usfirst.frc5053.FRC2016Stronghold.RobotMap;
 
 /**
@@ -97,7 +97,7 @@ double ramp = 0; //inches distance to go from start to maxspeed and maxspeed to 
         // and use the driveStraight PIDOutput to pass along the speed we want to the PID Controller
         MotionControlHelper speedControl = new MotionControlHelper(distance, ramp, maxspeed, start,
         		                                    RobotMap.driveTrainRightWheelEncoder,
-        		                                    new RobotDriveStraightPIDOutput(RobotMap.gyroToUse, targetAngle));
+        		                                    new RobotDriveStraightSpeedPIDOutput(RobotMap.gyroToUse, targetAngle));
 
         // setup the Pid to control how we follow the Speed
         final double Kp = 0.005;

@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * and also adjust the speed going to the wheels to drive straight
  *
  */
-public class RobotDriveStraightPIDOutput implements PIDOutput {
+public class RobotDriveStraightSpeedPIDOutput implements PIDOutput {
 
 	// This is just a simple P control, Proportional control of the line follow
 	// if we assume angle is in degrees and if we were off by 20 Degrees then we would want how much correction
@@ -23,7 +23,7 @@ public class RobotDriveStraightPIDOutput implements PIDOutput {
 	double m_targetAngle = 0.0d;
 	
 
-	public RobotDriveStraightPIDOutput(Gyro theGyro, double targetAngle) {
+	public RobotDriveStraightSpeedPIDOutput(Gyro theGyro, double targetAngle) {
 //	    SmartDashboard.putString("RobotDriveSpinPIDOutput", "constructor called");
 		m_gyro = theGyro;
 		m_targetAngle = targetAngle;

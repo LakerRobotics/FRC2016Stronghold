@@ -86,7 +86,7 @@ public class OI {
         shooterIntakeOff = new JoystickButton(operator, 10);
         shooterIntakeOff.whenReleased(new ShooterSpin(0));
         shooterIntake = new JoystickButton(operator, 10);
-        shooterIntake.whileHeld(new ShooterSpin(-25));
+        shooterIntake.whileHeld(new ShooterSpin(-750));
         arcadeArm = new JoystickButton(operator, 1);
         arcadeArm.whileHeld(new ArcadeArmControl());
         armScale = new JoystickButton(operator, 9);
@@ -150,9 +150,9 @@ public class OI {
         SmartDashboard.putData("ScalerChinUp", new ScalerChinUp());
         SmartDashboard.putData("ShooterKicker", new ShooterKicker());
         SmartDashboard.putData("KickBall", new KickBall());
-        SmartDashboard.putData("ShooterSpin: Default", new ShooterSpin(25));
+        SmartDashboard.putData("ShooterSpin: Default", new ShooterSpin(2000));
         SmartDashboard.putData("ShooterSpin: Off", new ShooterSpin(0));
-        SmartDashboard.putData("ShooterSpin: Intake", new ShooterSpin(-25));
+        SmartDashboard.putData("ShooterSpin: Intake", new ShooterSpin(-750));
         SmartDashboard.putData("CrossRoughTerrain", new CrossRoughTerrain());
         SmartDashboard.putData("CrossRockWall", new CrossRockWall());
         SmartDashboard.putData("CrossRamparts", new CrossRamparts());
