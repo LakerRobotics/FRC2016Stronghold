@@ -72,9 +72,9 @@ public class DriveSpin extends Command {
     	   	
  //   	    rotationSpeedPID.setAbsoluteTolerance(targetTolerance);
 //    	    mcPID.free();
-		start = Robot.navigation.getAngle();
+		start = Robot.navigation.getGyro().getAngle();
 		targetAngle = turn + start;
-        rotationSpeedPID = Robot.navigation.createRotationPIDController(start, targetAngle);
+        rotationSpeedPID = Robot.navigation.createRotationPIDController(start, targetAngle, new RobotDriveSpinPIDOutput());
 
     }
 
