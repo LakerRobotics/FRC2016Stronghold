@@ -140,13 +140,19 @@ void loop() {
    */
 	   byte[] dataToSend = new byte[1];
 	   dataToSend[0] = MeasureValue;
-
      readFromI2C(dataToSend, i2cUno);
+     
 	   dataToSend[0] = controlRegister;
      readFromI2C(dataToSend, i2cMux);
+
+     dataToSend[0] = MeasureValue;
      readFromI2C(dataToSend, i2cLidar);
-     readFromI2C(dataToSend, i2cMux);
-     readFromI2C(dataToSend, i2cLidar);
+
+	   dataToSend[0] = controlRegister;
+	     readFromI2C(dataToSend, i2cMux);
+
+	     dataToSend[0] = MeasureValue;
+	     readFromI2C(dataToSend, i2cLidar);
 
      /*
 
