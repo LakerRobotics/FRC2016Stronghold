@@ -47,6 +47,7 @@ public class SpinIntake extends Command {
     protected void execute() {
     	System.out.print("Entered spinintake.execute");
     	RobotMap.intakeIntakeMotor.set(m_MotorSpeed);
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

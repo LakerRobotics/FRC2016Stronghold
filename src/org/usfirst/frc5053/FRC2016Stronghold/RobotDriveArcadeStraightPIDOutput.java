@@ -48,9 +48,9 @@ public class RobotDriveArcadeStraightPIDOutput extends RobotDriveSpinPIDOutput {
     	
     	// Reduce joystick power so can get full turning effect, and hopefully avoid a jerk in the rotation
     	// if quickly taken off full throttle.
-    	if (joystickPower + rotationPower > 1.0){
+    /*	if (joystickPower + rotationPower > 1.0){
     		joystickPower = 1 - rotationPower;
-    	}
+    	}*/
     	
     	leftPower = joystickPower-rotationPower;
     	rightPower = joystickPower+rotationPower;

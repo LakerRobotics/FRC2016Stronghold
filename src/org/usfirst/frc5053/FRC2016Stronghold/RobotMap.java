@@ -53,6 +53,7 @@ public class RobotMap {
     public static Solenoid scalingExtendSolenoidExtendUp;
     public static Solenoid scalingChinUpSolenoidChinUp;
     public static Relay shooterKickShooterSpike;
+    public static Solenoid shooterKickSolenoidKickShooter;
     public static AnalogPotentiometer armArmStringPot;
     public static SpeedController armArmMotor;
 
@@ -112,6 +113,9 @@ public class RobotMap {
         shooterKickShooterSpike = new Relay(0);
         LiveWindow.addActuator("ShooterKick", "ShooterSpike", shooterKickShooterSpike);
         
+        shooterKickSolenoidKickShooter = new Solenoid(0, 2);
+        LiveWindow.addActuator("ShooterKick", "SolenoidKickShooter", shooterKickSolenoidKickShooter);
+        
         armArmStringPot = new AnalogPotentiometer(1, 1.0, 0.0);
         LiveWindow.addSensor("Arm", "ArmStringPot", armArmStringPot);
         
@@ -123,5 +127,12 @@ public class RobotMap {
      //   gyroToUse = (Gyro) IMU;
         gyroToUse = navigationoldAnalogGyro;
       //  gyroToUse = SpiGyro;
+        //Wrap the real motor control with a current limiting implemenation that calls the real one after checking to make
+        // sure the Power  Distribution Panel, does not exceed the current limits
+        // arguments 1) SpeedController
+        //           2) Power Distribution Board slot to monitor current on
+        //           3) Current limit forward
+        //           4) Current Limit reverse
+  //      armArmMotor = new TalonCurrentLimited(armArmMotor,13,2,-2);
     }
 }

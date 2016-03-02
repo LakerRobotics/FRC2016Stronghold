@@ -1,109 +1,85 @@
 <xml version="1.0">
 <dashboard>
-	<widget field="RobotDriveStraightPIDOoutput RotationPower" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="771"/>
+	<widget field="DriveSpin" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="34" y="21"/>
 	</widget>
-	<widget field="RobotDriveStraightPIDOoutput Motor Output" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="750"/>
+	<widget field="Arm Current1" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="1088" y="373"/>
 	</widget>
-	<widget field="MotionControlHelper.adjustTargetSpeed Gyro Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="729"/>
+	<widget field="Arm Current" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="1081" y="412"/>
 	</widget>
-	<widget field="MotionControlHelper.adjustTargetSpeed targetSpeed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="603"/>
+	<widget field="PneumaticsShooterKick" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="350" y="427"/>
 	</widget>
-	<widget field="MotionControlHelper.adjustTargetSpeed Measurement" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+	<widget field="Target Setpoint" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="701" y="148"/>
+	</widget>
+	<widget field="Arm Potentiometer Reading" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
+		<location x="935" y="24"/>
+	</widget>
+	<widget field="Joystick Y" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="34" y="0"/>
+	</widget>
+	<widget field="ShooterKickerOff" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="0" y="582"/>
 	</widget>
-	<widget field="targetSpeed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="446"/>
+	<widget field="KickOff" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="231" y="95"/>
 	</widget>
-	<widget field="autonForward" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="353"/>
-	</widget>
-	<widget field="DriveForward Left Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+	<widget field="y" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="332"/>
 	</widget>
-	<widget field="DriveForward Right" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+	<widget field="x" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="311"/>
 	</widget>
-	<widget field="DriveForward Left" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="254"/>
+	<widget field="AllwaysTrackLocation distance=" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="241"/>
 	</widget>
-	<widget field="DriveForward angle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="105"/>
+	<widget field="dataReceived from I2C" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="220"/>
 	</widget>
-	<widget field="Timeinit" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+	<widget field="SPI Gyro" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="103"/>
+	</widget>
+	<widget field="Left Encoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="82"/>
+	</widget>
+	<widget field="Right Encoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="61"/>
 	</widget>
 	<widget field="ShooterKickerTemp" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="220"/>
-	</widget>
-	<widget field="DriveSpin" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="40"/>
-	</widget>
-	<widget field="ShooterSpin Left Encoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
-		<location x="752" y="49"/>
-	</widget>
-	<widget field="ShooterSpin Left Motor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
-		<location x="753" y="357"/>
-	</widget>
-	<widget field="ShooterSpin Right Motor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
-		<location x="1169" y="355"/>
-	</widget>
-	<widget field="ShooterSpin Right Encoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
-		<location x="1163" y="54"/>
+		<location x="171" y="61"/>
 	</widget>
 	<widget field="ShooterSpin: Intake" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="533" y="352"/>
 	</widget>
-	<widget field="y" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="240" y="387"/>
-	</widget>
-	<widget field="x" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="139" y="387"/>
-	</widget>
-	<widget field="dataReceived from I2C" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="397" y="621"/>
-	</widget>
 	<widget field="SpinIntake: ReverseFast" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="397" y="277"/>
 	</widget>
-	<widget field="Left Encoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="348" y="256"/>
-	</widget>
-	<widget field="Right Encoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="175" y="792"/>
-	</widget>
-	<widget field="SPI Gyro" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="84"/>
-	</widget>
-	<widget field="Arm Potentiometer Reading" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="251" y="501"/>
-	</widget>
 	<widget field="LowBarAuton" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="368" y="330"/>
+		<location x="374" y="731"/>
 	</widget>
 	<widget field="ArcadeArmControl" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="0" y="650"/>
 	</widget>
 	<widget field="ArmSetpoints: Scale" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="548"/>
+		<location x="380" y="8"/>
 	</widget>
 	<widget field="ArmSetpoints: LiftPorticullis" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="-17" y="186"/>
+		<location x="364" y="107"/>
 	</widget>
 	<widget field="ArmSetpoints: GetBall" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="160"/>
+		<location x="373" y="71"/>
 	</widget>
 	<widget field="ArmSetpoints: Neutral" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="126"/>
+		<location x="376" y="43"/>
 	</widget>
 	<widget field="CrossLowBar" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="664" y="703"/>
+		<location x="384" y="769"/>
 	</widget>
 	<widget field="DriveForward: default" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="23" y="277"/>
+		<location x="185" y="758"/>
 	</widget>
 	<widget field="CrossMoat" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="544" y="768"/>
@@ -133,22 +109,22 @@
 		<location x="532" y="732"/>
 	</widget>
 	<widget field="ScalerChinUp" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="339" y="638"/>
+		<location x="435" y="183"/>
 	</widget>
 	<widget field="ArcadeDriveStrightPID" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="185" y="695"/>
+		<location x="193" y="717"/>
 	</widget>
 	<widget field="ScalerReachUp" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="185" y="637"/>
+		<location x="415" y="143"/>
 	</widget>
 	<widget field="KickBall" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="195" y="128"/>
+		<location x="226" y="32"/>
 	</widget>
 	<widget field="SquareDrive" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="8" y="512"/>
 	</widget>
 	<widget field="ShooterSpin: Off" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="549" y="384"/>
+		<location x="186" y="0"/>
 	</widget>
 	<widget field="SpinIntake: Reverse" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="176" y="475"/>
@@ -171,14 +147,11 @@
 	<widget field="ArcadeDrive" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="0" y="378"/>
 	</widget>
-	<widget field="AllwaysTrackLocation distance=" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="1184" y="636"/>
-	</widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Image">
 		<location x="1359" y="685"/>
 	</static-widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.WebcamViewerExtension">
-		<location x="887" y="335"/>
+		<location x="475" y="344"/>
 		<width>543</width>
 		<height>300</height>
 	</static-widget>
