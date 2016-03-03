@@ -50,10 +50,10 @@ public class ArcadeArmControl extends Command {
         	SmartDashboard.putNumber("Arm Potentiometer Reading", RobotMap.armArmStringPot.get());
         	// Being Pulled up then needs more power
         	if(Robot.oi.getOperator().getY()>0){
-        	    RobotMap.armArmMotor.set(-0.5*Robot.oi.getOperator().getY());
+        	    RobotMap.armArmMotor.set(-0.7*Robot.oi.getOperator().getY());
         	}
         	else{ //only need a little power to get the arm to go down
-        		RobotMap.armArmMotor.set(-0.1*Robot.oi.getOperator().getY());
+        		RobotMap.armArmMotor.set(-0.4*Robot.oi.getOperator().getY());
         	}
         	
         	SmartDashboard.putNumber("Arm Potentiometer Reading", RobotMap.armArmStringPot.get());
