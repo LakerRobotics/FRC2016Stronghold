@@ -49,7 +49,7 @@ public class PneumaticsShooterKick extends CommandGroup {
     	addSequential(new ShooterSpin(-2000));
     	
     		addSequential(new ShooterKickerTemp());
-    	addSequential(new ShooterSpin(0));
+    	//addSequential(new ShooterSpin(0));
  
     } 
 }
