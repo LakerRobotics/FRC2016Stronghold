@@ -35,7 +35,7 @@ public class DriveForward extends Command {
 double targetAngle = 0;	
 double distance = 0; //Temp, will be set to an actual value below
 MotionControlPIDController speedFollowerPID;
-double targetTolerance = 1 ; //inch
+double targetTolerance = 1; //inch
 double maxspeed = 0; //first number is Ft/sec the *12 changes it to in/sec
 double ramp = 0; //inches distance to go from start to maxspeed and maxspeed to 0 at the end
 

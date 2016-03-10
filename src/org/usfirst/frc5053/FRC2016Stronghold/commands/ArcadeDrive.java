@@ -11,7 +11,9 @@
 
 package org.usfirst.frc5053.FRC2016Stronghold.commands;
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc5053.FRC2016Stronghold.Robot;
 import org.usfirst.frc5053.FRC2016Stronghold.RobotMap;
 
@@ -44,7 +46,14 @@ public class ArcadeDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 //        RobotMap.driveTrainRobotDrive.arcadeDrive(Robot.oi.getDriver());
-        RobotMap.driveTrainRobotDrive21.arcadeDrive(Robot.oi.getDriver());
+    	//Old drive control
+       // RobotMap.driveTrainRobotDrive21.arcadeDrive(Robot.oi.getDriver());
+    	
+    	//Custom arcade controls for Kurt
+    	//Pulls the Y axis value from the LStick for motor power
+    	//Pulls the X axis value from RStick for turn
+    	
+    	RobotMap.driveTrainRobotDrive21.arcadeDrive(Robot.oi.getDriver().getRawAxis(1), Robot.oi.getDriver().getRawAxis(4));
     }
 
     // Make this return true when this Command no longer needs to run execute()
