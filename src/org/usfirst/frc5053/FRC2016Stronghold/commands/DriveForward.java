@@ -90,7 +90,7 @@ double ramp = 0; //inches distance to go from start to maxspeed and maxspeed to 
     	targetAngle = RobotMap.gyroToUse.getAngle();	
         RobotMap.driveTrainLeftWheelEncoder.reset();
         RobotMap.driveTrainRightWheelEncoder.reset();
-        double start = 0; //inches 
+        double start = 5; //inches 
         RobotMap.driveTrainRightWheelEncoder.setPIDSourceType(PIDSourceType.kRate);
 
         // Setup the motion control (i.e. how fast we are going as we move towards our destination and plus, rampUp/rampDown distances)

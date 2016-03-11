@@ -16,18 +16,18 @@ import java.util.Comparator;
 import java.util.Vector;
 
 
-
 //import org.usfirst.frc.team5053.robot.Robot.ParticleReport;
 import org.usfirst.frc5053.FRC2016Stronghold.RobotMap;
 import org.usfirst.frc5053.FRC2016Stronghold.commands.*;
 
 import com.ni.vision.NIVision;
-import com.ni.vision.VisionException;
 import com.ni.vision.NIVision.*;
+import com.ni.vision.NIVision.Image;
+import com.ni.vision.NIVision.ImageType;
+import com.ni.vision.NIVision.StructuringElement;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.vision.*;
-import edu.wpi.first.wpilibj.networktables.NetworkTableKeyNotDefined;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
@@ -114,6 +114,7 @@ public class VisionHandler extends Subsystem {
 		//Binary Image used to store the HSV filtered Image
 		morphedFrame = NIVision.imaqCreateImage(ImageType.IMAGE_U8, 0);
 		
+		
 		//Initialize Particle Filter, in this case the only filtering characteristic is the area of the Convex Hull operation performed later
 		criteria[0] = new NIVision.ParticleFilterCriteria2(NIVision.MeasurementType.MT_CONVEX_HULL_AREA, 0, 600, 0,  0);
 		
@@ -138,29 +139,33 @@ public class VisionHandler extends Subsystem {
 		//Take a picture from the camera
 		updateFrame();
 		//We have now stored the most recent image into sourceFrame
-		NIVision.imaqWriteBMPFile(morphedFrame, "BaseImage.bmp", 8, NIVision.RGB_BLUE);
+		NIVision.imaqWriteBMPFile(sourceFrame, "BaseImage.bmp", 0, new NIVision.RGBValue(255,255,255,1));
 		//Apply a color threshold
 		//Hint: NIVision.something(a, b, c, d, etc.)
 		NIVision.imaqColorThreshold(morphedFrame, sourceFrame, 255, NIVision.ColorMode.HSV, hueFilter, satFilter, valFilter);
-		NIVision.imaqWriteBMPFile(morphedFrame, "Step1.bmp", 8, NIVision.RGB_BLUE);
+		NIVision.imaqWriteBMPFile(morphedFrame, "Step1.bmp", 0, NIVision.RGB_BLUE);
 		
 		//Apply a morphology or two
 		
 		//Applying imaqClose() to finish the particles
-        try{
-    		NIVision.imaqMorphology(morphedFrame, morphedFrame, NIVision.MorphologyMethod.CLOSE, new NIVision.StructuringElement(3,3,3));
-         }
-         catch(VisionException e){
-      	   System.out.println("In VisionHandler tried imaqMorphology, but got this exception:"+e);
-         }
-		NIVision.imaqWriteBMPFile(morphedFrame, "Step3.bmp", 8, NIVision.RGB_BLUE);
+		try{
+		StructuringElement temp = new NIVision.StructuringElement(3,3,1);
+//		NIVision.imaqMorphology(morphedFrame, morphedFrame, NIVision.MorphologyMethod.CLOSE, temp);
+		NIVision.imaqMorphology(morphedFrame, morphedFrame, NIVision.MorphologyMethod.CLOSE, null);
+		}
+		catch (Exception e){
+			System.out.println("VisionHandler.getGoalOffset e="+e);
+			e.printStackTrace();
+		}
+		NIVision.imaqWriteBMPFile(morphedFrame, "Step2.bmp", 0, NIVision.RGB_BLUE);
 		
 		//Applying the Convex Hull Operation to build full shapes
-		NIVision.imaqConvexHull(morphedFrame, morphedFrame, 0);
-		NIVision.imaqWriteBMPFile(morphedFrame, "Step4.bmp", 8, NIVision.RGB_BLUE);
+		NIVision.imaqConvexHull(morphedFrame, morphedFrame, 1);
+		NIVision.imaqWriteBMPFile(morphedFrame, "Step3.bmp", 0, NIVision.RGB_BLUE);
 		
 		//Filter the Particles using our criteria and options set earlier
 		NIVision.imaqParticleFilter4(morphedFrame, morphedFrame, criteria, filterOptions, null);
+		NIVision.imaqWriteBMPFile(morphedFrame, "Step4.bmp", 0, NIVision.RGB_BLUE);
 		
 		
 		int numParticles = NIVision.imaqCountParticles(morphedFrame, 1);
