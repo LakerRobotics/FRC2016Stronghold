@@ -80,6 +80,21 @@ public class VisionHandler extends Subsystem {
 	public static final int satHighRange = 255;
 	public static final int valLowRange = 0;
 	public static final int valHighRange = 255;
+	// at Rob Bently Place Hue, Sat & Int
+//	new Range(0,172), new Range(100,255), new Range(244,255)
+	public static final int RobBentlyPlacehueLowRange  = 0;
+	public static final int RobBentlyPlacehueHighRange = 172;
+	public static final int RobBentlyPlacesatLowRange  = 100;
+	public static final int RobBentlyPlacesatHighRange = 255;
+	public static final int RobBentlyPlaceintLowRange  = 244;
+	public static final int RobBentlyPlaceintHighRange = 255;
+	
+	public static final int RichTKitchenNightRedLowRange  = 0;
+	public static final int RichTKitchenNightRedHighRange = 172;
+	public static final int RichTKitchenNightGreenLowRange  = 100;
+	public static final int RichTKitchenNightGreenHighRange = 255;
+	public static final int RichTKitchenNightBlueLowRange  = 244;
+	public static final int RichTKitchenNightBlueHighRange = 255;
 	
 	//Image files, manipulated by vision processing
 	Image sourceFrame;
@@ -94,6 +109,10 @@ public class VisionHandler extends Subsystem {
 	NIVision.Range hueFilter;
 	NIVision.Range satFilter;
 	NIVision.Range valFilter;
+
+	NIVision.Range redFilter;
+	NIVision.Range greenFilter;
+	NIVision.Range blueFilter;
 	
 	//Camera View Angle for a Microsoft Lifecam
 	double VIEW_ANGLE = 52;
@@ -109,6 +128,10 @@ public class VisionHandler extends Subsystem {
 		satFilter = new NIVision.Range(satLowRange, satHighRange);
 		valFilter = new NIVision.Range(valLowRange, valHighRange);
 		//RGB Image taken from Camera
+		redFilter   = new NIVision.Range(RichTKitchenNightRedLowRange, RichTKitchenNightRedHighRange);
+		greenFilter = new NIVision.Range(RichTKitchenNightGreenLowRange, RichTKitchenNightGreenHighRange);
+		blueFilter  = new NIVision.Range(RichTKitchenNightGreenLowRange, RichTKitchenNightBlueHighRange);
+		
 		sourceFrame = NIVision.imaqCreateImage(ImageType.IMAGE_HSL, 0);
 		
 		//Binary Image used to store the HSV filtered Image
@@ -142,7 +165,12 @@ public class VisionHandler extends Subsystem {
 		NIVision.imaqWriteBMPFile(sourceFrame, "BaseImage.bmp", 0, new NIVision.RGBValue(255,255,255,1));
 		//Apply a color threshold
 		//Hint: NIVision.something(a, b, c, d, etc.)
-		NIVision.imaqColorThreshold(morphedFrame, sourceFrame, 255, NIVision.ColorMode.HSV, hueFilter, satFilter, valFilter);
+//		new NIVision.
+//orig		NIVision.imaqColorThreshold(morphedFrame, sourceFrame, 255, NIVision.ColorMode.HSL, hueFilter, satFilter, valFilter);
+//		NIVision.imaqColorThreshold(morphedFrame, sourceFrame, 255, NIVision.ColorMode.HSL, )
+//RobBently		NIVision.imaqColorThreshold(morphedFrame, sourceFrame, 255, NIVision.ColorMode.HSL, new Range(0,172), new Range(100,255), new Range(244,255));
+//		NIVision.imaqColorThreshold(dest, source, replaceValue, mode, plane1Range, plane2Range, plane3Range);
+		NIVision.imaqColorThreshold(morphedFrame, sourceFrame, 255, NIVision.ColorMode.RGB, redFilter, greenFilter, blueFilter);
 		NIVision.imaqWriteBMPFile(morphedFrame, "Step1.bmp", 0, NIVision.RGB_BLUE);
 		
 		//Apply a morphology or two
@@ -150,8 +178,8 @@ public class VisionHandler extends Subsystem {
 		//Applying imaqClose() to finish the particles
 		try{
 		StructuringElement temp = new NIVision.StructuringElement(3,3,1);
-//		NIVision.imaqMorphology(morphedFrame, morphedFrame, NIVision.MorphologyMethod.CLOSE, temp);
-		NIVision.imaqMorphology(morphedFrame, morphedFrame, NIVision.MorphologyMethod.CLOSE, null);
+		NIVision.imaqMorphology(morphedFrame, morphedFrame, NIVision.MorphologyMethod.CLOSE, temp);
+//		NIVision.imaqMorphology(morphedFrame, morphedFrame, NIVision.MorphologyMethod.CLOSE, null);
 		}
 		catch (Exception e){
 			System.out.println("VisionHandler.getGoalOffset e="+e);
@@ -171,6 +199,9 @@ public class VisionHandler extends Subsystem {
 		int numParticles = NIVision.imaqCountParticles(morphedFrame, 1);
 		
 		//Run a particle analysis report on all remaining particles and sort them
+		NIVision.imaqWriteBMPFile(morphedFrame, "Step4.bmp", 0, NIVision.RGB_BLUE);
+		
+		SmartDashboard.putDouble("numParticles", numParticles);
 		if (numParticles > 0)
 			
 		{
@@ -190,6 +221,8 @@ public class VisionHandler extends Subsystem {
 			
 			//The particle at the top of the vector is our goal
 			offset = particles.elementAt(0).CenterOfMassX;
+//			Smartfashbaof
+			SmartDashboard.putDouble("CenterOfMassOfGoal", offset);
 		}
 		
 		//Get the Center_Of_Mass_X of the mass with the highest Y
