@@ -16,7 +16,9 @@ import org.usfirst.frc5053.FRC2016Stronghold.MotionControlPIDController;
 import org.usfirst.frc5053.FRC2016Stronghold.RobotDriveSpinPIDOutput;
 import org.usfirst.frc5053.FRC2016Stronghold.RobotMap;
 import org.usfirst.frc5053.FRC2016Stronghold.commands.*;
+
 import java.util.Date;
+
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
@@ -46,8 +48,10 @@ public class Navigation extends Subsystem {
 	public static double sensorSpacingRightSide = sensorSpacingLeftSide;
 	public static double sensorSpacingRear = robotWidth -2*robotBumperThickness -1 -1;
 	public static double sensorSpacingFront = robotWidth -2*robotBumperThickness -1 -1;
-	public static double distanceAutoLineToEdgeofDefense = 72;
-	public static double apronOfDefense = 12;
+	public static double distanceAutoLineToEdgeofDefense = 72; // manual says 7ft 2inches
+	public static double defenseApron = 12;
+	public static double defenseSwapSection = 24;
+	public static double autonMoveToDefense = distanceAutoLineToEdgeofDefense-(robotLength-robotBumperThickness);
 	
 	
 	

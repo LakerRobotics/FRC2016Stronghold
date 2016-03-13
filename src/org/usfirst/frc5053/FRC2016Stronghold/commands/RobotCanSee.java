@@ -49,7 +49,7 @@ public class RobotCanSee extends Command {
     protected void execute() {
     	// only run vision system image processing every so many calls, example every once every 10 calls
     	if(currentCountToTakePicture == countToTakePicture){
-    		Robot.visionHandler.getGoalOffset();
+//    		Robot.visionHandler.getGoalOffset();
     	}
     	else if(currentCountToTakePicture <= countToTakePicture){
     		currentCountToTakePicture++;
@@ -58,7 +58,7 @@ public class RobotCanSee extends Command {
     	}
 
     		
-    	SmartDashboard.putNumber("Vision Goal Offset", Robot.visionHandler.getGoalOffset());
+ //   	SmartDashboard.putNumber("Vision Goal Offset", Robot.visionHandler.getGoalOffset());
         String temp2 = "";
         try{
      	   temp2 = SmartDashboard.getString("Robot Name");

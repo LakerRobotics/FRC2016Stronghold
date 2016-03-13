@@ -116,8 +116,6 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousInit() {
-        // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
        // navigation.autonomousInit();
     	int startPosition = SmartDashboard.getInt("Start Position");
     	
@@ -161,7 +159,7 @@ public class Robot extends IterativeRobot {
     	if(("Center").equals(goalPosition))goalSide=AutonSelection.CENTER_GOAL;
     	if(("Left"  ).equals(goalPosition))goalSide=AutonSelection.LEFT_GOAL;//Note defaults to Left (orginally assignment) if no valid value provided
     	
-    	System.out.println("GoalPosition = '"+goalPosition);
+    	System.out.println("GoalPosition = '"+goalPosition+"   foalSide='"+goalSide+"'   ");
 
     	// Are we going for High or Low goal?
     	//-----------------------------------------------------------------------
@@ -178,6 +176,9 @@ public class Robot extends IterativeRobot {
     		AutonSelection autonSelection =(AutonSelection) autonomousCommand;
     		autonSelection.setAuton(startPosition, defense, goalSide, goalHeight);
     	}
+    	System.out.println("GoalHeightString = '"+goalHeightString+"  goalHeight='"+goalHeight+"'    ");
+        // schedule the autonomous command (example)
+        if (autonomousCommand != null) autonomousCommand.start();
     }
 
     /**
