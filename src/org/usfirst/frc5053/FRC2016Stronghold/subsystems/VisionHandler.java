@@ -74,9 +74,9 @@ public class VisionHandler extends Subsystem {
 	//HSV Ranges for Filtering
 	//(Hue/Saturation/Value)
 	//Seemed to work better than color filtering because of green appearing the same as white
-	public static final int hueLowRange = 2;
-	public static final int hueHighRange = 255;
-	public static final int satLowRange = 138;
+	public static final int hueLowRange = 123;
+	public static final int hueHighRange = 127;
+	public static final int satLowRange = 255;
 	public static final int satHighRange = 255;
 	public static final int valLowRange = 0;
 	public static final int valHighRange = 255;
@@ -95,6 +95,13 @@ public class VisionHandler extends Subsystem {
 	public static final int RichTKitchenNightGreenHighRange = 255;
 	public static final int RichTKitchenNightBlueLowRange  = 244;
 	public static final int RichTKitchenNightBlueHighRange = 255;
+	
+	public static final int RobotRoomLightsOutRedLowRange = 254;
+	public static final int RobotRoomLightsOutRedHighRange = 255;
+	public static final int RobotRoomLightsOutBlueLowRange = 254;
+	public static final int RobotRoomLightsOutBlueHighRange = 255;
+	public static final int RobotRoomLightsOutGreenLowRange = 254;
+	public static final int RobotRoomLightsOutGreenHighRange = 255;
 	
 	//Image files, manipulated by vision processing
 	Image sourceFrame;
@@ -119,7 +126,7 @@ public class VisionHandler extends Subsystem {
 	
 	//Particle Filter Criterias, which specify what properties to filter excess particles by
 	NIVision.ParticleFilterCriteria2 criteria[] = new NIVision.ParticleFilterCriteria2[1];
-	NIVision.ParticleFilterOptions2 filterOptions = new NIVision.ParticleFilterOptions2(0,0,1,1);
+	NIVision.ParticleFilterOptions2 filterOptions = new NIVision.ParticleFilterOptions2(1,0,1,1);
 	
 	public VisionHandler ()
 	{
@@ -128,18 +135,18 @@ public class VisionHandler extends Subsystem {
 		satFilter = new NIVision.Range(satLowRange, satHighRange);
 		valFilter = new NIVision.Range(valLowRange, valHighRange);
 		//RGB Image taken from Camera
-		redFilter   = new NIVision.Range(RichTKitchenNightRedLowRange, RichTKitchenNightRedHighRange);
-		greenFilter = new NIVision.Range(RichTKitchenNightGreenLowRange, RichTKitchenNightGreenHighRange);
-		blueFilter  = new NIVision.Range(RichTKitchenNightGreenLowRange, RichTKitchenNightBlueHighRange);
+		redFilter   = new NIVision.Range(RobotRoomLightsOutRedLowRange, RobotRoomLightsOutRedHighRange);
+		greenFilter = new NIVision.Range(RobotRoomLightsOutGreenLowRange, RobotRoomLightsOutGreenHighRange);
+		blueFilter  = new NIVision.Range(RobotRoomLightsOutBlueLowRange, RobotRoomLightsOutBlueHighRange);
 		
-		sourceFrame = NIVision.imaqCreateImage(ImageType.IMAGE_HSL, 0);
+//		sourceFrame = NIVision.imaqCreateImage(ImageType.IMAGE_HSL, 0);
 		
 		//Binary Image used to store the HSV filtered Image
-		morphedFrame = NIVision.imaqCreateImage(ImageType.IMAGE_U8, 0);
+//		morphedFrame = NIVision.imaqCreateImage(ImageType.IMAGE_U8, 0);
 		
 		
 		//Initialize Particle Filter, in this case the only filtering characteristic is the area of the Convex Hull operation performed later
-		criteria[0] = new NIVision.ParticleFilterCriteria2(NIVision.MeasurementType.MT_CONVEX_HULL_AREA, 0, 600, 0,  0);
+//		criteria[0] = new NIVision.ParticleFilterCriteria2(NIVision.MeasurementType.MT_CONVEX_HULL_AREA, 0, 600, 0,  0);
 		
 		
 		
@@ -159,27 +166,36 @@ public class VisionHandler extends Subsystem {
 	{
 		double offset = 0;
 		
+		sourceFrame = NIVision.imaqCreateImage(ImageType.IMAGE_HSL, 0);
+		
+		//Binary Image used to store the HSV filtered Image
+		morphedFrame = NIVision.imaqCreateImage(ImageType.IMAGE_U8, 0);
+		
+		
+		//Initialize Particle Filter, in this case the only filtering characteristic is the area of the Convex Hull operation performed later
+		criteria[0] = new NIVision.ParticleFilterCriteria2(NIVision.MeasurementType.MT_CONVEX_HULL_AREA, 0, 600, 0,  0);
+
+		
 		//Take a picture from the camera
-		updateFrame();
+		updateFrame();	
 		//We have now stored the most recent image into sourceFrame
 		NIVision.imaqWriteBMPFile(sourceFrame, "BaseImage.bmp", 0, new NIVision.RGBValue(255,255,255,1));
 		//Apply a color threshold
 		//Hint: NIVision.something(a, b, c, d, etc.)
-//		new NIVision.
-//orig		NIVision.imaqColorThreshold(morphedFrame, sourceFrame, 255, NIVision.ColorMode.HSL, hueFilter, satFilter, valFilter);
-//		NIVision.imaqColorThreshold(morphedFrame, sourceFrame, 255, NIVision.ColorMode.HSL, )
-//RobBently		NIVision.imaqColorThreshold(morphedFrame, sourceFrame, 255, NIVision.ColorMode.HSL, new Range(0,172), new Range(100,255), new Range(244,255));
-//		NIVision.imaqColorThreshold(dest, source, replaceValue, mode, plane1Range, plane2Range, plane3Range);
-		NIVision.imaqColorThreshold(morphedFrame, sourceFrame, 255, NIVision.ColorMode.RGB, redFilter, greenFilter, blueFilter);
+		//		new NIVision.
+		NIVision.imaqColorThreshold(morphedFrame, sourceFrame, 255, NIVision.ColorMode.HSV, hueFilter, satFilter, valFilter);
+		//		NIVision.imaqColorThreshold(morphedFrame, sourceFrame, 255, NIVision.ColorMode.HSL, )
+		//RobBently		NIVision.imaqColorThreshold(morphedFrame, sourceFrame, 255, NIVision.ColorMode.HSL, new Range(0,172), new Range(100,255), new Range(244,255));
+		//		NIVision.imaqColorThreshold(dest, source, replaceValue, mode, plane1Range, plane2Range, plane3Range);
+		//NIVision.imaqColorThreshold(morphedFrame, sourceFrame, 255, NIVision.ColorMode.RGB, redFilter, greenFilter, blueFilter);
 		NIVision.imaqWriteBMPFile(morphedFrame, "Step1.bmp", 0, NIVision.RGB_BLUE);
 		
 		//Apply a morphology or two
 		
 		//Applying imaqClose() to finish the particles
 		try{
-		StructuringElement temp = new NIVision.StructuringElement(3,3,1);
-		NIVision.imaqMorphology(morphedFrame, morphedFrame, NIVision.MorphologyMethod.CLOSE, temp);
-//		NIVision.imaqMorphology(morphedFrame, morphedFrame, NIVision.MorphologyMethod.CLOSE, null);
+		StructuringElement structuringElment = new NIVision.StructuringElement(3,3,1);
+		NIVision.imaqMorphology(morphedFrame, morphedFrame, NIVision.MorphologyMethod.CLOSE, structuringElment);
 		}
 		catch (Exception e){
 			System.out.println("VisionHandler.getGoalOffset e="+e);
@@ -224,7 +240,11 @@ public class VisionHandler extends Subsystem {
 //			Smartfashbaof
 			SmartDashboard.putDouble("CenterOfMassOfGoal", offset);
 		}
-		
+
+		sourceFrame  = null;// removed references to the declared object so it will be out of scope, be Garbage collected, and avoid CPU Issues
+		morphedFrame = null;// removed reference to the declared object so it will be out of scope, be Garbage collected, and avoid CPU Issues
+		criteria[0]  = null;// removed reference to the declared object so it will be out of scope, be Garbage collected, and avoid CPU Issues
+
 		//Get the Center_Of_Mass_X of the mass with the highest Y
 		
 		//Distance Calculation!
@@ -235,7 +255,12 @@ public class VisionHandler extends Subsystem {
 		//Converts pixel center X value of the particle to a normalized % of image value, with -1 being far left and 1 being far right
 		//The field of view of the camera is known, (in this case the lifecam is 52 degrees, so half that is 26 degrees)
 		//This offset * half_view_angle = degrees_off_from_target (At least I'm pretty sure)
-		return ((offset - 160)/160) * (VIEW_ANGLE/2);
+		//size = NIVision.imaqGetImageSize(image);
+		double imageWidth = 320;//= size.width
+		double halfWidth = imageWidth/2;
+		return ((offset - halfWidth)/halfWidth) * (VIEW_ANGLE/2);
+		
+
 	}
 	public void updateFrame()
 	{
@@ -251,7 +276,7 @@ public class VisionHandler extends Subsystem {
     public void initDefaultCommand() {
         // BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=DEFAULT_COMMAND
 
-        setDefaultCommand(new RobotCanSee());
+        setDefaultCommand(new VisionOff());
 
     // END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=DEFAULT_COMMAND
 

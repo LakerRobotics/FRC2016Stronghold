@@ -11,7 +11,7 @@ Children:
         validators: null
         value: []
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: RobotCanSee}
+        name: Default Command, type: Command, validators: null, value: VisionOff}
       Constants: !!robotbuilder.data.properties.ConstantsProperty
         default: []
         name: Constants
@@ -751,7 +751,7 @@ Children:
           name: Command
           type: Command
           validators: *id014
-          value: DriveStraighToTarget
+          value: VisionAlignToTopGoal
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id015
           default: whileHeld
@@ -759,7 +759,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: DriveStraightAtTargetButton
+      Name: AlignToTopGoal
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: &id016 ['0', '1', '2', '3', '4', '5']
@@ -1218,6 +1218,27 @@ Children:
         name: Parameters
         validators: null
         value: []
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: []
+        name: Commands
+        validators: &id018 [List]
+        value: []
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command Group
+    Name: VisionAlignToTopGoal
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: VisionHandler}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
@@ -1244,7 +1265,7 @@ Children:
       Commands: !!robotbuilder.data.properties.ListProperty
         default: []
         name: Commands
-        validators: &id018 [List]
+        validators: *id018
         value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
@@ -1851,7 +1872,7 @@ Children:
         validators: null
         value: []
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: DriveTrain}
+        name: Requires, type: Subsystem, validators: null, value: VisionHandler}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
         default: []
         name: Parameter presets
@@ -1860,12 +1881,12 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
-    Name: DriveStraighToTarget
+    Name: VisionOff
   Properties: {}
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Paul\workspace',
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\richard.topolewski\workspace',
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: 'C:\dev\robot'}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
@@ -1884,9 +1905,9 @@ Properties:
     name: Export Subsystems, validators: null, value: true}
   Simulation World File: !!robotbuilder.data.properties.StringProperty {default: /usr/share/frcsim/worlds/GearsBotDemo.world,
     name: Simulation World File, validators: null, value: 'c:\dev\robotsim\'}
-  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Paul\',
+  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\richard.topolewski\',
     extension: null, folder: true, name: Wiring file location, validators: null, value: 'C:\dev\robot\FRC2016Stronghold'}
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-    name: Autonomous Command, type: Command, validators: null, value: DriveSpin}
+    name: Autonomous Command, type: Command, validators: null, value: AutonSelection}
 Base: Robot
 Name: FRC2016Stronghold

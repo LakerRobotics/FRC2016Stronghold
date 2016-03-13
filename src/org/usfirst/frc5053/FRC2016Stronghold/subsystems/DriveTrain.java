@@ -13,10 +13,13 @@ package org.usfirst.frc5053.FRC2016Stronghold.subsystems;
 
 import org.usfirst.frc5053.FRC2016Stronghold.RobotMap;
 import org.usfirst.frc5053.FRC2016Stronghold.commands.*;
-
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Talon;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
