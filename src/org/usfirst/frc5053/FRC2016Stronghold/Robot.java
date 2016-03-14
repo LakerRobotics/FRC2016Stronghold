@@ -128,16 +128,19 @@ public class Robot extends IterativeRobot {
 	    	defenseType =defenseNames[startPosition]; 
     	}catch (Exception e){e.printStackTrace();};
 //	    String DefenseNameString = SmartDashboard.
-	    System.out.println("Defence Name String = '"+defenseType+"'");
 	    
+    	try{
 // Should work with newest code running on front dashboard	    
-//    	switch(startPosition){
-//    		case 2: DefenseType = SmartDashboard.getString("Defense 2"); break;
-//    		case 3: DefenseType = SmartDashboard.getString("Defense 3"); break;
-//    		case 4: DefenseType = SmartDashboard.getString("Defense 4"); break;
-//    		case 5: DefenseType = SmartDashboard.getString("Defense 5"); break;
-//    	}
-    	int defense = AutonSelection.LOW_BAR;
+    	switch(startPosition){
+    		case 2: defenseType = SmartDashboard.getString("Defense 2"); break;
+    		case 3: defenseType = SmartDashboard.getString("Defense 3"); break;
+    		case 4: defenseType = SmartDashboard.getString("Defense 4"); break;
+    		case 5: defenseType = SmartDashboard.getString("Defense 5"); break;
+    	}
+    	}catch (Exception e){e.printStackTrace();};
+	    System.out.println("Defence Name String = '"+defenseType+"'");
+
+	    int defense = AutonSelection.LOW_BAR;
     	if(defenseType.equals("Rock Wall"    )) {defense = AutonSelection.ROCK_WALL;}
     	if(defenseType.equals("Rough Terrain")) {defense = AutonSelection.ROUGH_TERRAIN;}
     	if(defenseType.equals("Chilli Fries" )) {defense = AutonSelection.CHEVAL_DE_FRISE;}
