@@ -21,22 +21,22 @@ import org.usfirst.frc5053.FRC2016Stronghold.subsystems.*;
  */
 public class AutonSelection extends CommandGroup {
 
-	public static int LOW_BAR         = 0;
-	public static int ROCK_WALL       = 1;
-	public static int ROUGH_TERRAIN   = 2;
-	public static int CHEVAL_DE_FRISE = 3; 
-	public static int PORTICULLIS     = 4;
-	public static int MOAT            = 5;
-	public static int RAMPARTS        = 6;
-	public static int SALLY_PORT      = 7;
-	public static int DRAWBRIDGE      = 8;
+	public static final int LOW_BAR         = 0;
+	public static final int ROCK_WALL       = 1;
+	public static final int ROUGH_TERRAIN   = 2;
+	public static final int CHEVAL_DE_FRISE = 3; 
+	public static final int PORTICULLIS     = 4;
+	public static final int MOAT            = 5;
+	public static final int RAMPARTS        = 6;
+	public static final int SALLY_PORT      = 7;
+	public static final int DRAWBRIDGE      = 8;
 	
-	public static int LEFT_GOAL   = -1;
-    public static int CENTER_GOAL =  0;
-	public static int RIGHT_GOAL  =  1;
+	public static final int LEFT_GOAL   = -1;
+    public static final int CENTER_GOAL =  0;
+	public static final int RIGHT_GOAL  =  1;
 	
-	public static int LOW_GOAL = -1;
-	public static int HIGH_GOAL = 1;
+	public static final int LOW_GOAL = -1;
+	public static final int HIGH_GOAL = 1;
 	
 	int m_StartPosition = 1;
 	int m_Defense      = LOW_BAR;

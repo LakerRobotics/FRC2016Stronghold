@@ -12,7 +12,9 @@
 package org.usfirst.frc5053.FRC2016Stronghold.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc5053.FRC2016Stronghold.Robot;
+import org.usfirst.frc5053.FRC2016Stronghold.RobotMap;
 
 /**
  *
@@ -44,6 +46,8 @@ public class SpinIntake extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	System.out.print("Entered spinintake.execute");
+    	RobotMap.intakeIntakeMotor.set(m_MotorSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -79,13 +79,13 @@ public class AutonArmSetpoints extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-       	Robot.arm.disable();
+       	//Robot.arm.disable();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
     	// Turn off PID control Don't touch motor, so it will hold it the last position
-    	Robot.arm.disable();
+    	//Robot.arm.disable();
     }
 }

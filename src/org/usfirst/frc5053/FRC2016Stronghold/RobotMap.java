@@ -62,11 +62,11 @@ public class RobotMap {
         driveTrainLeftWheelEncoder = new Encoder(0, 1, true, EncodingType.k4X);
         LiveWindow.addSensor("DriveTrain", "LeftWheelEncoder", driveTrainLeftWheelEncoder);
         driveTrainLeftWheelEncoder.setDistancePerPulse(0.069439091);
-        driveTrainLeftWheelEncoder.setPIDSourceType(PIDSourceType.kRate);
+        driveTrainLeftWheelEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
         driveTrainRightWheelEncoder = new Encoder(2, 3, false, EncodingType.k4X);
         LiveWindow.addSensor("DriveTrain", "RightWheelEncoder", driveTrainRightWheelEncoder);
         driveTrainRightWheelEncoder.setDistancePerPulse(0.069439091);
-        driveTrainRightWheelEncoder.setPIDSourceType(PIDSourceType.kRate);
+        driveTrainRightWheelEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
         driveTrainMotorsLeft = new Talon(0);
         LiveWindow.addActuator("DriveTrain", "Motors Left", (Talon) driveTrainMotorsLeft);
         

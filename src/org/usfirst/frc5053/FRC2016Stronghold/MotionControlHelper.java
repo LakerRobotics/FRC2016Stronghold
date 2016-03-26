@@ -57,6 +57,10 @@ public class MotionControlHelper {
 	protected void setRegularPIDControl(PIDController regularPIDControl) {
 		this.regularPIDControl = regularPIDControl;
 	}
+	
+	public void setTargetDistance(double new_targetDistance){
+		m_targetDistance = new_targetDistance;
+	}
 
 
     public PIDOutput getM_output() {

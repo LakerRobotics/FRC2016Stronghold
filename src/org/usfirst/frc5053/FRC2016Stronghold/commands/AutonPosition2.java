@@ -12,14 +12,14 @@ public class AutonPosition2 extends CommandGroup {
     			-(Navigation.robotLength+Navigation.robotBumperThickness), 6, 28)); //Distance, speed (ft/sec), ramp/rampdown
     	//So at this point our bumper is at the edge of the defense
     	switch(defense) {
-    	case 1/*AutonSelection.ROCK_WALL*/      : addSequential(new CrossRockWall())     ;break;
-    	case 2/*AutonSelection.ROUGH_TERRAIN  */: addSequential(new CrossRoughTerrain()) ;break;
-		case 3/*AutonSelection.CHEVAL_DE_FRISE*/: addSequential(new CrossChevalDeFrise());break;
-		case 4/*AutonSelection.PORTICULLIS    */: addSequential(new CrossPorticullis())  ;break;
-		case 5/*AutonSelection.MOAT           */: addSequential(new CrossMoat()       )  ;break;
-		case 6/*AutonSelection.RAMPARTS       */: addSequential(new CrossRamparts()   )  ;break;
-		case 7/*AutonSelection.SALLY_PORT     */: addSequential(new CrossSallyPort()  )  ;break;
-		case 8/*AutonSelection.DRAWBRIDGE     */: addSequential(new CrossDrawbridge() )  ;break;
+    	case AutonSelection.ROCK_WALL      : addSequential(new CrossRockWall(CrossLowBar.FORWARD)     );break;
+    	case AutonSelection.ROUGH_TERRAIN  : addSequential(new CrossRoughTerrain(CrossLowBar.FORWARD) );break;
+		case AutonSelection.CHEVAL_DE_FRISE: addSequential(new CrossChevalDeFrise(CrossLowBar.FORWARD));break;
+		case AutonSelection.PORTICULLIS    : addSequential(new CrossPorticullis(CrossLowBar.FORWARD)  );break;
+		case AutonSelection.MOAT           : addSequential(new CrossMoat(CrossLowBar.FORWARD)         );break;
+		case AutonSelection.RAMPARTS       : addSequential(new CrossRamparts(CrossLowBar.FORWARD)     );break;
+		case AutonSelection.SALLY_PORT     : addSequential(new CrossSallyPort(CrossLowBar.FORWARD)    );break;
+		case AutonSelection.DRAWBRIDGE     : addSequential(new CrossDrawbridge(CrossLowBar.FORWARD)   );break;
         }
 
 //	addSequential(new ArmSetpoints(ArmSetpoints.NEUTRAL));
