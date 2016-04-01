@@ -30,7 +30,7 @@ public class ArcadeDriveStrightPID extends Command {
 
     double     ramp =  90; //degrees
     double maxspeed = 10.0*(360/60) ; //60/360 converts the first numbers which is in RPM to degrees/second
-    double   rampUp =   180; //degrees, temp real one will be 180 degrees offset.
+    double   startPosition =   180; //degrees, temp real one will be 180 degrees offset.
     MotionControlHelper rotationSpeedProfile; 
     
     final double Kp = 1d/200; // so at denominator off in the spin-Rate the power will reach the max
@@ -68,8 +68,8 @@ public class ArcadeDriveStrightPID extends Command {
     protected void initialize() {
         double start = RobotMap.gyroToUse.getAngle();
 		targetAngle = start;
-		rampUp = start +180;
-        rotationSpeedProfile = new MotionControlHelper(targetAngle, ramp, maxspeed, rampUp, (PIDSource) RobotMap.gyroToUse,new RobotDriveArcadeStraightPIDOutput());
+		startPosition = start +180;
+        rotationSpeedProfile = new MotionControlHelper(targetAngle, ramp, maxspeed, startPosition, (PIDSource) RobotMap.gyroToUse,new RobotDriveArcadeStraightPIDOutput());
         rotationSpeedPID = new MotionControlPIDController(Kp,Ki,Kd, rotationSpeedProfile );
     	    rotationSpeedPID.setOutputRange(-1.0, 1.0);
     	    rotationSpeedPID.enable();

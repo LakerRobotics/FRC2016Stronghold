@@ -136,6 +136,10 @@ public class OI {
 
 
         // SmartDashboard Buttons
+        SmartDashboard.putData("ArcadeShooterAimControl", new ArcadeShooterAimControl());
+        SmartDashboard.putData("ShooterAimSetpoints: LowGoal", new ShooterAimSetpoints(0));
+        SmartDashboard.putData("ShooterAimSetpoints: FarLowGoal", new ShooterAimSetpoints(0));
+        SmartDashboard.putData("ShooterAimSetpoints: SetHighGoal", new ShooterAimSetpoints(0));
         SmartDashboard.putData("RobotCanSee", new RobotCanSee());
         SmartDashboard.putData("AutonSelection", new AutonSelection());
         SmartDashboard.putData("ArmSetpoints: Neutral", new ArmSetpoints(0.209));

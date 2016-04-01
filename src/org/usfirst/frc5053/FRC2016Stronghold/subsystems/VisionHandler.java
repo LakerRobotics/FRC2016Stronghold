@@ -28,6 +28,7 @@ import com.ni.vision.VisionException;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.image.*;
+import edu.wpi.first.wpilibj.networktables.NetworkTableKeyNotDefined;
 import edu.wpi.first.wpilibj.vision.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -66,7 +67,7 @@ public class VisionHandler extends Subsystem {
 		{
 			return (int)(r1.Area - r2.Area);
 		}
-	};
+	}
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -74,18 +75,18 @@ public class VisionHandler extends Subsystem {
 	//HSV Ranges for Filtering
 	//(Hue/Saturation/Value)
 	//Seemed to work better than color filtering because of green appearing the same as white
-	public static final int hueLowRange = 2;
-	public static final int hueHighRange = 255;
-	public static final int satLowRange = 138;
-	public static final int satHighRange = 255;
-	public static final int valLowRange = 0;
-	public static final int valHighRange = 255;
+	//public static final int hueLowRange = 2;
+	//public static final int hueHighRange = 255;
+	//public static final int satLowRange = 138;
+	//public static final int satHighRange = 255;
+	//public static final int valLowRange = 0;
+	//public static final int valHighRange = 255;
 	
 	//Image files, manipulated by vision processing
-    ColorImage sourceFrame;
-	BinaryImage morphedFrame;
+    //Image sourceFrame;
+	//BinaryImage morphedFrame;
 	
-	CameraServer camera;
+	//CameraServer camera;
 //	USBCamera robotEyes;
 	
 	//Session ID for camera acquisition
@@ -100,8 +101,8 @@ public class VisionHandler extends Subsystem {
 	double VIEW_ANGLE = 52;
 	
 	//Particle Filter Criterias, which specify what properties to filter excess particles by
-	NIVision.ParticleFilterCriteria2 criteria[] = new NIVision.ParticleFilterCriteria2[1];
-	NIVision.ParticleFilterOptions2 filterOptions = new NIVision.ParticleFilterOptions2(0,0,1,1);
+	//NIVision.ParticleFilterCriteria2 criteria[] = new NIVision.ParticleFilterCriteria2[1];
+	//NIVision.ParticleFilterOptions2 filterOptions = new NIVision.ParticleFilterOptions2(0,0,1,1);
 	
 	public VisionHandler ()
 	{
@@ -116,9 +117,9 @@ public class VisionHandler extends Subsystem {
 		//Binary Image used to store the HSV filtered Image
 		//morphedFrame = NIVision.imaqCreateImage(ImageType.IMAGE_U8, 0);
 		
-//		robotEyes = new USBCamera("cam0");
+		//robotEyes = new USBCamera("cam0");
 		//Initialize Particle Filter, in this case the only filtering characteristic is the area of the Convex Hull operation performed later
-//		criteria[0] = new NIVision.ParticleFilterCriteria2(NIVision.MeasurementType.MT_CONVEX_HULL_AREA, 0, 600, 0,  0);
+		//criteria[0] = new NIVision.ParticleFilterCriteria2(NIVision.MeasurementType.MT_CONVEX_HULL_AREA, 0, 600, 0,  0);
 		
 		
 	}
@@ -133,17 +134,21 @@ public class VisionHandler extends Subsystem {
 	
 	public double getGoalOffset()
 	{
-		double percentOfHalfTheScreen = SmartDashboard.getNumber("Object Center 1");
+		double percentOfHalfTheScreen = 0;
+		try{
+			percentOfHalfTheScreen = SmartDashboard.getNumber("Object Center 1");
+    	}
+		catch (NetworkTableKeyNotDefined e){e.printStackTrace();};
 		return percentOfHalfTheScreen * (VIEW_ANGLE/2);
 	}
 	public void updateFrame()
 	{
-		/*session = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
-		NIVision.IMAQdxStartAcquisition(session);
-		NIVision.IMAQdxGrab(session, sourceFrame, 1);
-		CameraServer.getInstance().setImage(sourceFrame);
-		NIVision.IMAQdxStopAcquisition(session);
-		NIVision.IMAQdxCloseCamera(session);*/
+		//RGTemp session = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
+		//RGTemp NIVision.IMAQdxStartAcquisition(session);
+		//RGTemp NIVision.IMAQdxGrab(session, sourceFrame, 1);
+		//RGTemp CameraServer.getInstance().setImage(sourceFrame);
+		//RGTemp NIVision.IMAQdxStopAcquisition(session);
+		//RGTemp NIVision.IMAQdxCloseCamera(session);
 		try{
 //		robotEyes.openCamera();
 //		robotEyes.startCapture();
@@ -166,24 +171,21 @@ public class VisionHandler extends Subsystem {
 
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
-    	try{
+    /*	try{
     	    sourceFrame = new RGBImage();
     	}
     	catch(NIVisionException e){
     		e.printStackTrace();
-    	}
+    	}*/
 
     }
     
-    //This was taken from the FRC Vision example, the targetWidth hasn't been modified yet
-    double computeDistance (Image image, ParticleReport report) {
-		double normalizedWidth, targetWidth;
-		NIVision.GetImageSizeResult size;
-
-		size = NIVision.imaqGetImageSize(image);
-		normalizedWidth = 2*(report.BoundingRectRight - report.BoundingRectLeft)/size.width;
-		targetWidth = 7;
-
-		return  targetWidth/(normalizedWidth*12*Math.tan(VIEW_ANGLE*Math.PI/(180*2)));
+    public double getDistance () {
+    	double distance = 8;
+    	try {
+    		distance = SmartDashboard.getNumber("Object Distance");
+    	}
+    	catch (NetworkTableKeyNotDefined e){e.printStackTrace();};
+    	return distance;
 	}
 }
