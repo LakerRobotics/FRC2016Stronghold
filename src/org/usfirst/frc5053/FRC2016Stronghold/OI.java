@@ -104,7 +104,7 @@ public class OI {
         intakeReverseFastOff = new JoystickButton(operator, 3);
         intakeReverseFastOff.whenReleased(new SpinIntake(0));
         intakeReverseFast = new JoystickButton(operator, 3);
-        intakeReverseFast.whileHeld(new SpinIntake(-1));
+        intakeReverseFast.whileHeld(new ShooterSpinIntakeFast());
         intakeReverseOff = new JoystickButton(operator, 2);
         intakeReverseOff.whenReleased(new SpinIntake(0));
         intakeReverse = new JoystickButton(operator, 2);
@@ -132,10 +132,14 @@ public class OI {
         driveStrightPID = new JoystickButton(driver, 3);
         driveStrightPID.whileHeld(new ArcadeDriveStrightPID());
         shooterSlow = new JoystickButton(driver, 1);
-        shooterSlow.whileHeld(new ShooterSpin(-500));
+        shooterSlow.whileHeld(new ShooterSpin(-1500));
 
 
         // SmartDashboard Buttons
+        SmartDashboard.putData("ArcadeShooterAimControl", new ArcadeShooterAimControl());
+        SmartDashboard.putData("ShooterAimSetpoints: LowGoal", new ShooterAimSetpoints(0));
+        SmartDashboard.putData("ShooterAimSetpoints: FarLowGoal", new ShooterAimSetpoints(0));
+        SmartDashboard.putData("ShooterAimSetpoints: SetHighGoal", new ShooterAimSetpoints(0));
         SmartDashboard.putData("RobotCanSee", new RobotCanSee());
         SmartDashboard.putData("AutonSelection", new AutonSelection());
         SmartDashboard.putData("ArmSetpoints: Neutral", new ArmSetpoints(0.209));

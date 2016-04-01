@@ -33,9 +33,12 @@ public class RobotDriveStraightSpeedPIDOutput implements PIDOutput {
 	public void pidWrite(double motorPower) {
 	   	double angle = m_gyro.getAngle(); // get current heading
 	   	double angleOff = angle - m_targetAngle; 
-	    double rotationPower = -angleOff*Kp*(motorPower/Math.abs(motorPower));  // the last term in the () is to get the sign fixed when going backwards)
+	    double rotationPower = -angleOff*Kp;//*(motorPower/Math.abs(motorPower));  // the last term in the () is to get the sign fixed when going backwards)
 	   	//double rotationPower = 0;
-	   	RobotMap.driveTrainRobotDrive21.arcadeDrive(/*moveValue*/ motorPower, /*rotateValue*/ rotationPower); 
+    	double leftPower = motorPower-rotationPower;
+    	double rightPower = motorPower+rotationPower;
+    	RobotMap.driveTrainRobotDrive21.tankDrive(leftPower, rightPower);
+//	   	RobotMap.driveTrainRobotDrive21.arcadeDrive(/*moveValue*/ motorPower, /*rotateValue*/ rotationPower); 
 	    SmartDashboard.putNumber("RobotDriveStraightPIDOoutput Motor Output",motorPower);
 	    SmartDashboard.putNumber("RobotDriveStraightPIDOoutput RotationPower", rotationPower);
 	}
