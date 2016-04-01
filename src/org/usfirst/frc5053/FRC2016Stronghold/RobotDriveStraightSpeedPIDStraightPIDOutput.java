@@ -32,7 +32,7 @@ public class RobotDriveStraightSpeedPIDStraightPIDOutput implements PIDOutput {
 		double slowRotation = m_targetAngle + 90;
 		WrapRotationPIDOutput wrappedRotationPIDOutput =  new WrapRotationPIDOutput(this);
 		
-		MotionControlPIDController rotationPID = Robot.createRotationPIDController(m_targetAngle, slowRotation, wrappedRotationPIDOutput);
+//		MotionControlPIDController rotationPID = Robot.navigation.createRotationPIDController(m_targetAngle, slowRotation, wrappedRotationPIDOutput);
 		
 		//WrapRotationPIDInput  wrapRotationPIDInput = new WrapRotationPIDOutput(rotationPID, (PIDSource) m_gyro);
 	}

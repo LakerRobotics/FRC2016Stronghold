@@ -124,7 +124,7 @@ public class OI {
         joystickButton1 = new JoystickButton(driver, 4);
         joystickButton1.whenReleased(new ShooterSpin(0));
         spinKickShooter = new JoystickButton(driver, 4);
-        spinKickShooter.whileHeld(new PneumaticsShooterKick());
+//        spinKickShooter.whileHeld(new PneumaticsShooterKick());
         shooterOff = new JoystickButton(driver, 2);
         shooterOff.whenReleased(new ShooterSpin(0));
         shooter = new JoystickButton(driver, 2);
@@ -176,7 +176,7 @@ public class OI {
         SmartDashboard.putData("CrossChevalDeFrise: forward", new CrossChevalDeFrise(1));
         SmartDashboard.putData("LowBarAuton", new LowBarAuton());
         SmartDashboard.putData("KickOff", new KickOff());
-        SmartDashboard.putData("PneumaticsShooterKick", new PneumaticsShooterKick());
+//        SmartDashboard.putData("PneumaticsShooterKick", new PneumaticsShooterKick());
         SmartDashboard.putData("ShooterSpinIntake", new ShooterSpinIntake());
         SmartDashboard.putData("TestDrive10Ft", new TestDrive10Ft());
         SmartDashboard.putData("DriveStraighToTarget", new DriveStraighToTarget());

@@ -32,6 +32,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class Navigation extends Subsystem {
+	
+	boolean debug = false;
 
 	private double x, y, angle;
 	private double xSpeed, ySpeed, angleSpeed;
