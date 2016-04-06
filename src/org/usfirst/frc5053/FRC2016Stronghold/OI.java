@@ -113,6 +113,7 @@ public class OI {
         intakeSpinOff.whenReleased(new SpinIntake(0));
         intakeSpin = new JoystickButton(operator, 4);
         intakeSpin.whileHeld(new SpinIntake(1));
+        
         driver = new Joystick(0);
         
         fieldOrientToPOVButtons = new JoystickButton(driver, 8);
