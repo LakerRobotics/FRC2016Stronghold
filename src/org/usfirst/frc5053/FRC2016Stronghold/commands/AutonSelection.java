@@ -101,6 +101,10 @@ public class AutonSelection extends CommandGroup {
 			System.out.println("setting to AutonPosition2");
 			addSequential(new AutonPosition2(defense));
 			break;
+		case 3: 
+			System.out.println("setting to AutonPosition3");
+			addSequential(new AutonPosition3(defense));
+			break;
 		}
 		m_setup=true;
 	 }

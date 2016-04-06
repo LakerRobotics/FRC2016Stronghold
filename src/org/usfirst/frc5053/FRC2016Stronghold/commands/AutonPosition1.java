@@ -17,7 +17,7 @@ public class AutonPosition1 extends CommandGroup {
                                               + Navigation.defenseSwapSection
                                               + Navigation.defenseApron
                                               + Navigation.robotLength;
-    	double distanceToTravelIntoCourtYard=12.5*12;
+    	double distanceToTravelIntoCourtYard=12.5*12 -3*12; // anothe foot on after first match on Saturday
     	double extraDistanceIntoNeutralZoneOnReturn = 10;
 
     	// Bring Arm down and drive forward
@@ -31,14 +31,14 @@ public class AutonPosition1 extends CommandGroup {
     			 distanceToTravelIntoCourtYard, 8, 24)); //Distance, speed (ft/sec), ramp/rampdown | FROM 6 ft/sec TO  8 ft/sec
    // addSequential(new AutonArmSetpoints(AutonArmSetpoints.NEUTRAL, 0.01));// Start Arms Traveling up
     addSequential(new DriveSpin(38));// Should be facing the low goal | original 10 then 15 now 20 RPM FASTER
-//    addSequential(new Wait(0.6));
-//    addSequential(new DriveSpin(Robot.visionHandler.getGoalOffset()));
+    addSequential(new Wait(0.5));
+    addSequential(new DriveSpin(Robot.visionHandler.getGoalOffset()));
     
     // Drive at Low goal and shoot
 	addSequential(new DriveForward(76+6,driveSpeed,12));
 	addSequential(new AutonShooterSpin(-1200,0.5));// RPM, Max time in seconds for it to come up to speed
-	addSequential(new AutonScalerReachUp(0.2));//Time to push the kicker 
-	addSequential(new DriveForward(6, 3, 1)); //Drive up to the tower to push failed shots in | ADDED
+	addSequential(new AutonScalerReachUp(0.5));//Time to push the kicker 
+	addSequential(new DriveForward(18, 3, 1)); //Drive up to the tower to push failed shots in | ADDED
 	addSequential(new AutonScalerReachUp(1.0));//Time to push the kicker 
 	addSequential(new AutonShooterSpin(0,0.01));// Turn Off the spinners
 //    addSequential(new AutonArmSetpoints(AutonArmSetpoints.FULL_DOWN, 0.01));// Start Arms Traveling Down

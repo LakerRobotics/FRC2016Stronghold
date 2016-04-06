@@ -12,7 +12,10 @@
 package org.usfirst.frc5053.FRC2016Stronghold.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc5053.FRC2016Stronghold.Robot;
+import org.usfirst.frc5053.FRC2016Stronghold.RobotMap;
 
 /**
  *
@@ -42,6 +45,11 @@ public class ArcadeShooterAimControl extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	RobotMap.shooterAimShooterAimMotor.set(Robot.oi.getDebugJoystick().getX());
+    	SmartDashboard.putDouble("IMU DebugJoystick Input ", Robot.oi.getDebugJoystick().getX());
+    	SmartDashboard.putDouble("IMU AngleX", RobotMap.IMU.getAngleX());
+//    	SmartDashboard.putDouble("IMU AngleY", RobotMap.IMU.getAngleY());
+//    	SmartDashboard.putDouble("IMU AngleZ", RobotMap.IMU.getAngleZ());
     }
 
     // Make this return true when this Command no longer needs to run execute()

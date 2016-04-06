@@ -29,7 +29,7 @@ public class DriveSpin extends Command {
 	double targetAngle = 90; // temp real value calculated below
 	double targetTolerance = 1 ; //degrees
 
-    double     ramp =  30; //degrees
+    double     ramp =  15; //degrees, changed to 15 from 30 Saturday after 2nd match
     double maxspeed = 20.0*(360/60) ; //360/60 converts the first numbers which is in RPM to degrees/second 4/1/2016 RGT increase from 15 to 20
     double    start =   0; //degrees
     MotionControlHelper rotationSpeedProfile; 
@@ -40,6 +40,7 @@ public class DriveSpin extends Command {
     MotionControlPIDController rotationSpeedPID;
     
     public DriveSpin(double a_turn) {
+    	System.out.println("DriveSpin turn "+a_turn+".");
         SmartDashboard.putString("DriveSpinCodeLocation","entered DriveSpin(a_turn)");
 		   turn = a_turn;
 	       // Use requires() here to declare subsystem dependencies

@@ -12,7 +12,10 @@
 package org.usfirst.frc5053.FRC2016Stronghold.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc5053.FRC2016Stronghold.Robot;
+import org.usfirst.frc5053.FRC2016Stronghold.RobotMap;
 
 /**
  *
@@ -44,6 +47,13 @@ public class ShooterAimSetpoints extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double minAngle = 10;
+    	double maxAngle = 45;
+    	double targetAngle = minAngle + Math.abs(Robot.oi.getDebugJoystick().getZ())*(maxAngle -minAngle);
+    	Robot.shooterAim.setSetpoint(targetAngle);
+    	SmartDashboard.putDouble("targetAngle", targetAngle);
+    	SmartDashboard.putDouble("IMU Angle", RobotMap.IMU.getAngleX());    	
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -60,3 +70,4 @@ public class ShooterAimSetpoints extends Command {
     protected void interrupted() {
     }
 }
+																
