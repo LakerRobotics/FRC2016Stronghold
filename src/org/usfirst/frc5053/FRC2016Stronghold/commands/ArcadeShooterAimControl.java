@@ -45,8 +45,8 @@ public class ArcadeShooterAimControl extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.shooterAimShooterAimMotor.set(Robot.oi.getDebugJoystick().getX());
-    	SmartDashboard.putDouble("IMU DebugJoystick Input ", Robot.oi.getDebugJoystick().getX());
+    	RobotMap.shooterAimShooterAimMotor.set(.4*Robot.oi.getDebugJoystick().getY());
+    	SmartDashboard.putDouble("IMU DebugJoystick Input ", Robot.oi.getDebugJoystick().getY());
     	SmartDashboard.putDouble("IMU AngleX", RobotMap.IMU.getAngleX());
 //    	SmartDashboard.putDouble("IMU AngleY", RobotMap.IMU.getAngleY());
 //    	SmartDashboard.putDouble("IMU AngleZ", RobotMap.IMU.getAngleZ());

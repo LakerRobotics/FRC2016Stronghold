@@ -15,9 +15,10 @@ public class ImuTilt implements PIDSource {
 	public double pidGet() {
 		if(m_pidSourceType == PIDSourceType.kRate){
 			return RobotMap.IMU.getRateX();
-			//TODO make sure this returns anglulare Rate (not rat of acceloration in the X direction
+			//TODO make sure this returns angular Rate (not rate of acceleration in the X direction
 		}else{
-			return RobotMap.IMU.getAngleX();	
+//			return RobotMap.IMU.getAngleX();	
+			return RobotMap.IMU.getRoll();
 		}
 	}
 
