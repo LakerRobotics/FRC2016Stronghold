@@ -47,7 +47,10 @@ public class ArcadeShooterAimControl extends Command {
     protected void execute() {
     	RobotMap.shooterAimShooterAimMotor.set(.4*Robot.oi.getDebugJoystick().getY());
     	SmartDashboard.putDouble("IMU DebugJoystick Input ", Robot.oi.getDebugJoystick().getY());
-    	SmartDashboard.putDouble("IMU AngleX", RobotMap.IMU.getAngleX());
+    	//SmartDashboard.putDouble("IMU Yaw", RobotMap.IMU.getYaw());
+    	//SmartDashboard.putDouble("IMU Roll", RobotMap.IMU.getRoll());
+    	SmartDashboard.putDouble("IMU Pitch", RobotMap.IMU.getPitch());
+    	SmartDashboard.putDouble("IMU X Rate", RobotMap.IMU.getRateX());
 //    	SmartDashboard.putDouble("IMU AngleY", RobotMap.IMU.getAngleY());
 //    	SmartDashboard.putDouble("IMU AngleZ", RobotMap.IMU.getAngleZ());
     }
@@ -64,5 +67,6 @@ public class ArcadeShooterAimControl extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	RobotMap.shooterAimShooterAimMotor.set(0);
     }
 }

@@ -178,10 +178,10 @@ public class Robot extends IterativeRobot {
     	try{
 // Should work with newest code running on front dashboard	    
     	switch(startPosition){
-    		case 2: defenseType = SmartDashboard.getString("Defense 2"); break;
-    		case 3: defenseType = SmartDashboard.getString("Defense 3"); break;
-    		case 4: defenseType = SmartDashboard.getString("Defense 4"); break;
-    		case 5: defenseType = SmartDashboard.getString("Defense 5"); break;
+    		case 2: defenseType = SmartDashboard.getString("Defence 2"); break;
+    		case 3: defenseType = SmartDashboard.getString("Defence 3"); break;
+    		case 4: defenseType = SmartDashboard.getString("Defence 4"); break;
+    		case 5: defenseType = SmartDashboard.getString("Defence 5"); break;
     	}
     	}catch (Exception e){e.printStackTrace();};
 	    System.out.println("Defence Name String = '"+defenseType+"'");

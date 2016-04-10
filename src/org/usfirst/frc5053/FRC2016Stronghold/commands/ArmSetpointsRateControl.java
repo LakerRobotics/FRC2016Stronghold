@@ -123,7 +123,7 @@ public class ArmSetpointsRateControl extends ArmSetpoints {
         protected void interrupted() {
             SmartDashboard.putString("ArmSetpointRateControlCodeLocation","entered interrupted()");
             System.out.println("ArmSetpointRateControlCodeLocation "+"entered interrupted()");
-            RobotMap.shooterAimMotor.set(0);//
+//            RobotMap.armArmMotor.set(0);//
            	armSpeedPID.disable();
            	end();
         }
