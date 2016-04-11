@@ -199,8 +199,8 @@ public class Navigation extends Subsystem {
 		return m_gyroToField;
 	}
 	
-	public double fieldAngleToGyroAngle(double fieldAngle){
-		double realGyroAngle = m_gyroToField.getAngle();
+	public static double fieldAngleToGyroAngle(double fieldAngle){
+		double realGyroAngle = RobotMap.gyroToUse.getAngle();
 		int rotations = (int)(realGyroAngle/360);
 		return rotations*360+fieldAngle;
 	};

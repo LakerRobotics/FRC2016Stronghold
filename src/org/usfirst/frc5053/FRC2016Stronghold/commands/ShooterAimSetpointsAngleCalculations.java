@@ -4,7 +4,7 @@ import org.usfirst.frc5053.FRC2016Stronghold.Robot;
 
 public class ShooterAimSetpointsAngleCalculations extends ShooterAimSetpoints {
 
-	public ShooterAimSetpointsAngleCalculations(double setpoint) {
+	public ShooterAimSetpointsAngleCalculations() {
 		super(getShooterAngle(Robot.visionHandler.getDistance()));
 		// TODO Auto-generated constructor stub
 	}
