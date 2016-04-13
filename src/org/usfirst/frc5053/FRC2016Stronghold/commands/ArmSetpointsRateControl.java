@@ -40,34 +40,38 @@ public class ArmSetpointsRateControl extends ArmSetpoints {
     MotionControlHelper rotationSpeedProfile; 
     
     final double Kp = maxspeed/10; // so at 1/denominator ie 10% offset from the maxspeed the power will reach the max
-    final double Ki = 0.0005;
+    final double Ki = 0.0000;
     final double Kd = 0.0;
     MotionControlPIDController armSpeedPID;
  
     private double mm_targetSetpoint;
-    
+
+
     public ArmSetpointsRateControl(double setpoint) {
     	super(setpoint);
     	mm_targetSetpoint = setpoint;
+        start = RobotMap.armArmStringPot.pidGet();
+        rotationSpeedProfile = new MotionControlHelper(mm_targetSetpoint, ramp, maxspeed, start, 
+    		(PIDSource) RobotMap.armArmStringPot,
+    		RobotMap.armArmMotor);
+        armSpeedPID = new MotionControlPIDController(Kp,Ki,Kd, rotationSpeedProfile );
+
+        
+    	
+    	armSpeedPID.setOutputRange(-0.10, 0.10);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        //Robot.arm.enable();
+        Robot.arm.disable();
         //Robot.arm.setSetpoint(m_setpoint);
 
         SmartDashboard.putString("ArmSetpointRateControlCodeLocation","entered initialize()");
 	   	
 //	    mcPID.free();
     //set so the PIDSource will return the current position (i.e. displacement)
-        RobotMap.armArmStringPot.setPIDSourceType(PIDSourceType.kDisplacement);
-        start = RobotMap.armArmStringPot.pidGet();
-        rotationSpeedProfile = new MotionControlHelper(mm_targetSetpoint, ramp, maxspeed, start, 
-    		(PIDSource) RobotMap.armArmStringPot,
-    		RobotMap.armArmMotor);
-        armSpeedPID = new MotionControlPIDController(Kp,Ki,Kd, rotationSpeedProfile );
-        armSpeedPID.setOutputRange(-0.10, 0.10);
         armSpeedPID.enable();
+        RobotMap.armArmStringPot.setPIDSourceType(PIDSourceType.kDisplacement);
     }
 
     // Called repeatedly when this Command is scheduled to run

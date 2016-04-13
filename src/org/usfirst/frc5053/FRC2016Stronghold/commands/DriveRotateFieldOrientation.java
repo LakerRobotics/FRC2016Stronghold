@@ -38,8 +38,10 @@ public class DriveRotateFieldOrientation extends DriveSpin {
     }
 
     // Called just before this Command runs the first time
-//USE PARENT    protected void initialize() {
-//USE PARENT    }
+    protected void initialize() {
+		rotationSpeedProfile.setTargetDistance(Robot.oi.getDriver().getPOV());
+    	rotationSpeedPID.enable();
+    }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
