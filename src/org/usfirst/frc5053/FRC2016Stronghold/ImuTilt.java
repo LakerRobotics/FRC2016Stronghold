@@ -17,8 +17,8 @@ public class ImuTilt implements PIDSource {
 			return RobotMap.IMU.getRateX();
 			//TODO make sure this returns angular Rate (not rate of acceleration in the X direction
 		}else{
-//			return RobotMap.IMU.getAngleX();	
-			return RobotMap.IMU.getPitch();
+			return RobotMap.IMU.getAngleX();	
+//			return RobotMap.IMU.getPitch();
 		}
 	}
 

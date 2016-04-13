@@ -110,11 +110,14 @@ public class MotionControlHelper {
        if (Math.abs(percentRampDown)>1)  percentRampDown = 1; // limit percent to 100%
 
       //Apply any speed reductions based on rampUp or rampDown.
-       System.out.println("fromStart="+gapStart+"("+percentRampUp+")   fromEnd="+gapEnd+"("+percentRampDown+")");
-       if(Math.abs(gapStart)<Math.abs(gapEnd)){
-    	   targetSpeed = percentRampUp * targetSpeed;
-       }
-       else{
+//       System.out.println("fromStart="+gapStart+"("+percentRampUp+")   fromEnd="+gapEnd+"("+percentRampDown+")");
+// Removed this 4/12/2016 seemed to cause problem, if close the end, the start dead overide would kick in and make it overshoot the target       
+//       if(Math.abs(gapStart)<Math.abs(gapEnd)){
+//    	   targetSpeed = percentRampUp * targetSpeed;
+//       }
+//       else{
+       // If we are near the end, then ramp down
+       if(Math.abs(gapEnd) < m_rampUpRampDownDistance){
     	   targetSpeed = percentRampDown * targetSpeed;
        }
        System.out.println("targetSpeed="+targetSpeed);
@@ -139,9 +142,12 @@ public class MotionControlHelper {
     protected void adjustTargetSpeed() throws Exception {
     	//using the current measurement get the desired rate (i.e. speed)
     	
+    	ensureSourceProvidesRate();
+    	double currentSpeed = m_source.pidGet();
+    	
     	double targetSpeed = getTargetSpeed(this.getMeasurment());
     	SmartDashboard.putDouble("MotionControlHelper.adjustTargetSpeed Measurement", this.getMeasurment());
-    	System.out.println("MotionControlHelper.adjustTargetSpeed targetSpeed"+targetSpeed);
+    	System.out.println("MotionControlHelper.adjustTargetSpeed targetSpeed="+targetSpeed + "  ActualSpeed="+currentSpeed  + "targetPosition="+ this.m_targetDistance+"    Current Postion="+this.getMeasurment());
     	this.getRegularPIDControl().setSetpoint(targetSpeed);
     	SmartDashboard.putDouble("MotionControlHelper.adjustTargetSpeed targetSpeed", targetSpeed);
     	
