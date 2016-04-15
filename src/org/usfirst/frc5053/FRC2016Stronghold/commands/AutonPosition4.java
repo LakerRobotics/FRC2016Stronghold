@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AutonPosition4 extends CommandGroup {
-    public AutonPosition4(int defense) {
+    public AutonPosition4(int defense, int goalHeight) {
        	double driveSpeed = 4; 
     	double distanceToDefense =   Navigation.distanceAutoLineToEdgeofDefense
     			                   -(Navigation.robotLength+Navigation.robotBumperThickness);
@@ -36,14 +36,12 @@ public class AutonPosition4 extends CommandGroup {
 		case AutonSelection.DRAWBRIDGE     : addSequential(new CrossDrawbridge(CrossLowBar.FORWARD)   );break;
         }
 
-//	addSequential(new ArmSetpoints(ArmSetpoints.NEUTRAL));
-//	addSequential(new DriveForward(87.5-(2*12),6*12,14));
-//	addSequential(new DriveSpin(60));
-//	addSequential(new DriveForward(76,6*12,14));
-//	addSequential(new ShooterSpin(1));
-    	addSequential(new DriveForward(
-   			 distanceToTravelIntoCourtYard, 8, 24)); //Distance, speed (ft/sec), ramp/rampdown | FROM 6 ft/sec TO  8 ft/sec
-  // addSequential(new AutonArmSetpoints(AutonArmSetpoints.NEUTRAL, 0.01));// Start Arms Traveling up
+    	if(goalHeight == AutonSelection.LOW_GOAL){
+    		addSequential(new DriveSpin(90));
+    		addSequential(new DriveForward(1*Navigation.fieldDefenseWidth,10,24));
+    		addSequential(new DriveSpin(-90));
+    		addSequential(new AutonRightGoal(goalHeight));
+    	}
 
     }
 }

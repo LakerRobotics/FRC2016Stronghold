@@ -37,6 +37,7 @@ public class AutonSelection extends CommandGroup {
 	
 	public static final int LOW_GOAL = -1;
 	public static final int HIGH_GOAL = 1;
+	public static final int NO_GOAL = 0;
 	
 	int m_StartPosition = 1;
 	int m_Defense      = LOW_BAR;
@@ -96,23 +97,23 @@ public class AutonSelection extends CommandGroup {
 		switch (m_StartPosition) {
 		case 1: 
 			System.out.println("setting to AutonPosition1");
-			addSequential(new AutonPosition1()); 
+			addSequential(new AutonPosition1(goalHeight)); 
 			break;
 		case 2: 
 			System.out.println("setting to AutonPosition2");
-			addSequential(new AutonPosition2(defense));
+			addSequential(new AutonPosition2(defense,goalHeight));
 			break;
 		case 3: 
 			System.out.println("setting to AutonPosition3");
-			addSequential(new AutonPosition3(defense));
+			addSequential(new AutonPosition3(defense,goalHeight));
 			break;
 		case 4: 
 			System.out.println("setting to AutonPosition4");
-			addSequential(new AutonPosition4(defense));
+			addSequential(new AutonPosition4(defense,goalHeight));
 			break;
 		case 5: 
 			System.out.println("setting to AutonPosition5");
-			addSequential(new AutonPosition5(defense));
+			addSequential(new AutonPosition5(defense,goalHeight));
 			break;
 		}
 		m_setup=true;

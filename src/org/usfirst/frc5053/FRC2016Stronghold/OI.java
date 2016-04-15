@@ -38,6 +38,16 @@ public class OI {
 	//Operator
 	private static final int trigger = 1;
 	private static final int thumbButton = 2;
+	private static final int opBtnR3 = 3;
+	private static final int opBtnR4 = 4;
+	private static final int opBtnR5 = 5;
+	private static final int opBtnR6 = 6;
+	private static final int opBtnL7 = 7;
+	private static final int opBtnL8 = 8;
+	private static final int opBtnL9 = 9;
+	private static final int opBtnL10 = 10;
+	private static final int opBtnL11 = 11;
+	private static final int opBtnL12 = 12;
 	
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -80,17 +90,17 @@ public class OI {
     public JoystickButton fieldOrientToPOVButtons;
     public Joystick driver;
 
-    public JoystickButton secondshooterSlow;
-    public JoystickButton seconddriveStrightPID;
-    public JoystickButton secondshooter;
-    public JoystickButton secondshooterOff;
-    public JoystickButton secondshooterOffSlow;
-    public JoystickButton secondspinKickShooter;
-    public JoystickButton secondjoystickButton1;
-    public JoystickButton secondkickerDriver;
+    public JoystickButton secondShooterSlow;
+    public JoystickButton secondDriveStrightPID;
+    public JoystickButton secondShooter;
+    public JoystickButton secondShooterOff;
+    public JoystickButton secondShooterOffSlow;
+    public JoystickButton secondSpinKickShooter;
+    public JoystickButton secondJoystickButton1;
+    public JoystickButton secondKickerDriver;
     public JoystickButton secondAlignToLowGoalAndShoot;
     public JoystickButton secondAlignToHighGoalAndShoot;
-    public JoystickButton secondfieldOrientToPOVButtons;
+    public JoystickButton secondFieldOrientToPOVButtons;
 
     
     public JoystickButton intakeSpin;
@@ -109,20 +119,20 @@ public class OI {
     public JoystickButton shooterIntakeOff;
     public Joystick operator;
  
-    public JoystickButton secondintakeSpin;
-    public JoystickButton secondintakeSpinOff;
-    public JoystickButton secondintakeReverse;
-    public JoystickButton secondintakeReverseOff;
-    public JoystickButton secondintakeReverseFast;
-    public JoystickButton secondintakeReverseFastOff;
-    public JoystickButton secondscalerReach;
-    public JoystickButton secondarmNeutral;
-    public JoystickButton secondarmGetBall;
-    public JoystickButton secondarmLiftPorticullis;
-    public JoystickButton secondarmScale;
-    public JoystickButton secondarcadeArm;
-    public JoystickButton secondshooterIntake;
-    public JoystickButton secondshooterIntakeOff;
+    public JoystickButton secondIntakeSpin;
+    public JoystickButton secondIntakeSpinOff;
+    public JoystickButton secondIntakeReverse;
+    public JoystickButton secondIntakeReverseOff;
+    public JoystickButton secondIntakeReverseFast;
+    public JoystickButton secondIntakeReverseFastOff;
+    public JoystickButton secondScalerReach;
+    public JoystickButton secondArmNeutral;
+    public JoystickButton secondArmGetBall;
+    public JoystickButton secondArmLiftPorticullis;
+    public JoystickButton secondArmScale;
+    public JoystickButton secondArcadeArm;
+    public JoystickButton secondShooterIntake;
+    public JoystickButton secondShooterIntakeOff;
  
     public JoystickButton debugForShooterAim;
     public JoystickButton debugForShooterAimPID;
@@ -142,135 +152,146 @@ public class OI {
     	driverSecondLayout = new Joystick(3);
         operatorSecondLayout = new Joystick(4);
 
-        secondarcadeArm = new JoystickButton(operatorSecondLayout, 1);
-        secondarcadeArm.whileHeld(new ArcadeArmControl());
-        secondintakeReverseOff = new JoystickButton(operatorSecondLayout, 2);
-        secondintakeReverseOff.whenReleased(new SpinIntake(0));
-        secondintakeReverse = new JoystickButton(operatorSecondLayout, 2);
-        secondintakeReverse.whileHeld(new ShooterSpinIntake());
-        secondintakeReverseFastOff = new JoystickButton(operatorSecondLayout, 3);
-        secondintakeReverseFastOff.whenReleased(new SpinIntake(0));
-        secondintakeReverseFast = new JoystickButton(operatorSecondLayout, 3);
-        secondintakeReverseFast.whileHeld(new ShooterSpinIntakeFast());
-        secondintakeSpinOff = new JoystickButton(operatorSecondLayout, 4);
-        secondintakeSpinOff.whenReleased(new SpinIntake(0));
-        secondintakeSpin = new JoystickButton(operatorSecondLayout, 4);
-        secondintakeSpin.whileHeld(new SpinIntake(1));
-        secondscalerReach = new JoystickButton(operatorSecondLayout, 5);
-        secondscalerReach.whileHeld(new ScalerReachUp());
-        secondarmNeutral = new JoystickButton(operatorSecondLayout, 6);
-        secondarmNeutral.whileHeld(new ArmSetpointsRateControl(0.209));
-        secondarmGetBall = new JoystickButton(operatorSecondLayout, 7);
-        secondarmGetBall.whileHeld(new ArmSetpointsRateControl(0.334));
-        secondarmLiftPorticullis = new JoystickButton(operatorSecondLayout, 8);
-        secondarmLiftPorticullis.whileHeld(new ArmSetpointsRateControl(0.348));
-        secondarmScale = new JoystickButton(operatorSecondLayout, 9);
-        secondarmScale.whileHeld(new ArmSetpointsRateControl(0.209));
-        secondshooterIntakeOff = new JoystickButton(operatorSecondLayout, 10);
-        secondshooterIntakeOff.whenReleased(new ShooterSpin(0));
-        secondshooterIntake = new JoystickButton(operatorSecondLayout, 10);
-        secondshooterIntake.whileHeld(new ShooterSpin(-1000));
+        secondArcadeArm = new JoystickButton(operatorSecondLayout, trigger);
+        secondArcadeArm.whileHeld(new ArcadeArmControl());
+        secondIntakeReverseOff = new JoystickButton(operatorSecondLayout, thumbButton);
+        secondIntakeReverseOff.whenReleased(new SpinIntake(0));
+        secondIntakeReverse = new JoystickButton(operatorSecondLayout, thumbButton);
+        secondIntakeReverse.whileHeld(new ShooterSpinIntake());
+        secondIntakeReverseFastOff = new JoystickButton(operatorSecondLayout, opBtnR3);
+        secondIntakeReverseFastOff.whenReleased(new SpinIntake(0));
+        secondIntakeReverseFast = new JoystickButton(operatorSecondLayout, opBtnR3);
+        secondIntakeReverseFast.whileHeld(new ShooterSpinIntakeFast());
+        secondIntakeSpinOff = new JoystickButton(operatorSecondLayout, opBtnR4);
+        secondIntakeSpinOff.whenReleased(new SpinIntake(0));
+        secondIntakeSpin = new JoystickButton(operatorSecondLayout, opBtnR4);
+        secondIntakeSpin.whileHeld(new SpinIntake(1));
+        secondScalerReach = new JoystickButton(operatorSecondLayout, opBtnR5);
+        secondScalerReach.whileHeld(new ScalerReachUp());
+        secondArmNeutral = new JoystickButton(operatorSecondLayout, opBtnR6);
+        secondArmNeutral.whileHeld(new ArmSetpointsRateControl(0.209));
+        secondArmGetBall = new JoystickButton(operatorSecondLayout, opBtnL7);
+        secondArmGetBall.whileHeld(new ArmSetpointsRateControl(0.334));
+        secondArmLiftPorticullis = new JoystickButton(operatorSecondLayout, opBtnL8);
+        secondArmLiftPorticullis.whileHeld(new ArmSetpointsRateControl(0.348));
+        secondArmScale = new JoystickButton(operatorSecondLayout, opBtnL9);
+        secondArmScale.whileHeld(new ArmSetpointsRateControl(0.209));
+        secondShooterIntakeOff = new JoystickButton(operatorSecondLayout, opBtnL10);
+        secondShooterIntakeOff.whenReleased(new ShooterSpin(0));
+        secondShooterIntake = new JoystickButton(operatorSecondLayout, opBtnL10);
+        secondShooterIntake.whileHeld(new ShooterSpin(-1000));
         
         
-        secondfieldOrientToPOVButtons = new JoystickButton(driverSecondLayout, rightBlackButton);
+        /*secondfieldOrientToPOVButtons = new JoystickButton(driverSecondLayout, rightBlackButton);
         secondfieldOrientToPOVButtons.whileHeld(new DriveRotateFieldOrientation());
-        secondAlignToLowGoalAndShoot = new JoystickButton(driverSecondLayout, rightShoulder);
+        secondAlignToLowGoalAndShoot = new JoystickButton(driverSecondLayout, leftShoulder);
         secondAlignToLowGoalAndShoot.whileHeld(new AlignToLowGoalAndShoot());
-        secondAlignToHighGoalAndShoot = new JoystickButton(driverSecondLayout, leftShoulder);
+        secondAlignToHighGoalAndShoot = new JoystickButton(driverSecondLayout, rightShoulder);
         secondAlignToHighGoalAndShoot.whileHeld(new AlignToHighGoalAndShoot());
-//    	private static final int A = 1;
-//    	private static final int B = 2;
-//    	private static final int X = 3;
-//    	private static final int Y = 4;
-
-        secondkickerDriver = new JoystickButton(driverSecondLayout, B);
+        secondkickerDriver = new JoystickButton(driverSecondLayout, X);
         secondkickerDriver.whileHeld(new ShooterSpinThenKick(-2000));
-        secondshooterOff = new JoystickButton(driverSecondLayout, B);
+        secondshooterOff = new JoystickButton(driverSecondLayout, X);
         secondshooterOff.whenReleased(new ShooterSpin(0));
-
-//What exactly does this do?        
         secondspinKickShooter = new JoystickButton(driverSecondLayout, Y);
         secondspinKickShooter.whileHeld(new PneumaticsShooterKick());
         secondjoystickButton1 = new JoystickButton(driverSecondLayout, Y);
         secondjoystickButton1.whenReleased(new ShooterSpin(0));
-
-
-        seconddriveStrightPID = new JoystickButton(driverSecondLayout, X);
+        seconddriveStrightPID = new JoystickButton(driverSecondLayout, B);
         seconddriveStrightPID.whileHeld(new ArcadeDriveStrightPID());
-
         secondshooterSlow = new JoystickButton(driverSecondLayout, A);
         secondshooterSlow.whileHeld(new ShooterSpinThenKick(-1500));
         secondshooterOffSlow = new JoystickButton(driverSecondLayout, A);
-        secondshooterOffSlow.whenReleased(new ShooterSpin(0));
-    	
+        secondshooterOffSlow.whenReleased(new ShooterSpin(0));*/
     	
         
-
+        
+    	secondFieldOrientToPOVButtons = new JoystickButton(driverSecondLayout, rightBlackButton);
+        secondFieldOrientToPOVButtons.whileHeld(new DriveRotateFieldOrientation());
+        secondAlignToLowGoalAndShoot = new JoystickButton(driverSecondLayout, leftShoulder);
+        secondAlignToLowGoalAndShoot.whileHeld(new AlignToLowGoalAndShoot());
+        secondAlignToHighGoalAndShoot = new JoystickButton(driverSecondLayout, rightShoulder);
+        secondAlignToHighGoalAndShoot.whileHeld(new AlignToHighGoalAndShoot());
+        secondKickerDriver = new JoystickButton(driverSecondLayout, X);
+        secondKickerDriver.whileHeld(new ScalerReachUp());
+        secondJoystickButton1 = new JoystickButton(driverSecondLayout, Y);
+        secondJoystickButton1.whenReleased(new ShooterSpin(0));
+        //secondspinKickShooter = new JoystickButton(driverThirdLayout, Y);
+        //secondspinKickShooter.whileHeld(new PneumaticsShooterKick());
+        secondShooterOff = new JoystickButton(driverSecondLayout, A);
+        secondShooterOff.whenReleased(new ShooterSpin(0));
+        secondShooter = new JoystickButton(driverSecondLayout, Y);
+        secondShooter.whileHeld(new ShooterSpin(2000));
+        secondDriveStrightPID = new JoystickButton(driverSecondLayout, B);
+        secondDriveStrightPID.whileHeld(new ArcadeDriveStrightPID());
+        secondShooterSlow = new JoystickButton(driverSecondLayout, A);
+        secondShooterSlow.whileHeld(new ShooterSpin(-1500));
     	
+        
+        
     	debugForShooterAim = new JoystickButton(debugJoystick, trigger);
         debugForShooterAim.whileHeld(new ArcadeShooterAimControl());
     	debugForShooterAimPID = new JoystickButton(debugJoystick, thumbButton);
         debugForShooterAimPID.whileHeld(new ShooterAimDebugJoystick());
     	
         
-        arcadeArm = new JoystickButton(operator, 1);
+        arcadeArm = new JoystickButton(operator, trigger);
         arcadeArm.whileHeld(new ArcadeArmControl());
-        intakeReverseOff = new JoystickButton(operator, 2);
+        intakeReverseOff = new JoystickButton(operator, thumbButton);
         intakeReverseOff.whenReleased(new SpinIntake(0));
-        intakeReverse = new JoystickButton(operator, 2);
+        intakeReverse = new JoystickButton(operator, thumbButton);
         intakeReverse.whileHeld(new ShooterSpinIntake());
-        intakeReverseFastOff = new JoystickButton(operator, 3);
+        intakeReverseFastOff = new JoystickButton(operator, opBtnR3);
         intakeReverseFastOff.whenReleased(new SpinIntake(0));
-        intakeReverseFast = new JoystickButton(operator, 3);
+        intakeReverseFast = new JoystickButton(operator, opBtnR3);
         intakeReverseFast.whileHeld(new ShooterSpinIntakeFast());
-        intakeSpinOff = new JoystickButton(operator, 4);
+        intakeSpinOff = new JoystickButton(operator, opBtnR4);
         intakeSpinOff.whenReleased(new SpinIntake(0));
-        intakeSpin = new JoystickButton(operator, 4);
+        intakeSpin = new JoystickButton(operator, opBtnR4);
         intakeSpin.whileHeld(new SpinIntake(1));
-        scalerReach = new JoystickButton(operator, 5);
+        scalerReach = new JoystickButton(operator, opBtnR5);
         scalerReach.whileHeld(new ScalerReachUp());
-        armNeutral = new JoystickButton(operator, 6);
+        armNeutral = new JoystickButton(operator, opBtnR6);
         armNeutral.whileHeld(new ArmSetpoints(0.209));
-        armGetBall = new JoystickButton(operator, 7);
+        armGetBall = new JoystickButton(operator, opBtnL7);
         armGetBall.whileHeld(new ArmSetpoints(0.334));
-        armLiftPorticullis = new JoystickButton(operator, 8);
+        armLiftPorticullis = new JoystickButton(operator, opBtnL8);
         armLiftPorticullis.whileHeld(new ArmSetpoints(0.348));
-        armScale = new JoystickButton(operator, 9);
+        armScale = new JoystickButton(operator, opBtnL9);
         armScale.whileHeld(new ArmSetpoints(0.209));
-        shooterIntakeOff = new JoystickButton(operator, 10);
+        shooterIntakeOff = new JoystickButton(operator, opBtnL10);
         shooterIntakeOff.whenReleased(new ShooterSpin(0));
-        shooterIntake = new JoystickButton(operator, 10);
+        shooterIntake = new JoystickButton(operator, opBtnL10);
         shooterIntake.whileHeld(new ShooterSpin(-750));
         
         
         
 //
         
-        fieldOrientToPOVButtons = new JoystickButton(driver, 8);
+        fieldOrientToPOVButtons = new JoystickButton(driver, rightBlackButton);
         fieldOrientToPOVButtons.whileHeld(new DriveRotateFieldOrientation());
-        AlignToLowGoalAndShoot = new JoystickButton(driver, 5);
+        AlignToLowGoalAndShoot = new JoystickButton(driver, leftShoulder);
         AlignToLowGoalAndShoot.whileHeld(new AlignToLowGoalAndShoot());
-        kickerDriver = new JoystickButton(driver, 6);
+        kickerDriver = new JoystickButton(driver, rightShoulder);
         kickerDriver.whileHeld(new ScalerReachUp());
         
         // For reference    	private static final int Y = 4;
-        joystickButton1 = new JoystickButton(driver, 4);
+        joystickButton1 = new JoystickButton(driver, Y);
         joystickButton1.whenReleased(new ShooterSpin(0));
-        spinKickShooter = new JoystickButton(driver, 4);
+        spinKickShooter = new JoystickButton(driver, Y);
         spinKickShooter.whileHeld(new PneumaticsShooterKick());
 
         // For reference    	private static final int B = 2;
-        shooterOff = new JoystickButton(driver, 2);
+        shooterOff = new JoystickButton(driver, B);
         shooterOff.whenReleased(new ShooterSpin(0));
-        shooter = new JoystickButton(driver, 2);
+        shooter = new JoystickButton(driver, B);
         shooter.whileHeld(new ShooterSpin(2000));
 
         // For reference    	private static final int X = 3;
-        driveStrightPID = new JoystickButton(driver, 3);
+        driveStrightPID = new JoystickButton(driver, X);
         driveStrightPID.whileHeld(new ArcadeDriveStrightPID());
 
         // For reference    	private static final int A = 1;
-        shooterSlow = new JoystickButton(driver, 1);
+        shooterSlow = new JoystickButton(driver, A);
         shooterSlow.whileHeld(new ShooterSpin(-1500));
         
         // SmartDashboard Buttons
@@ -304,14 +325,14 @@ public class OI {
         SmartDashboard.putData("ShooterSpin: Off", new ShooterSpin(0));
         SmartDashboard.putData("ShooterSpin: Intake", new ShooterSpin(-750));
         SmartDashboard.putData("ShooterSpin: SlowShoot", new ShooterSpin(-500));
- //       SmartDashboard.putData("CrossRoughTerrain: forward", new CrossRoughTerrain(1));
- //       SmartDashboard.putData("CrossRockWall: forward", new CrossRockWall(1));
- //       SmartDashboard.putData("CrossRamparts: forward", new CrossRamparts(1));
- //       SmartDashboard.putData("CrossMoat: forward", new CrossMoat(1));
- //       SmartDashboard.putData("CrossLowBar: forward", new CrossLowBar(1));
- //       SmartDashboard.putData("CrossDrawbridge: forward", new CrossDrawbridge(1));
- //       SmartDashboard.putData("CrossPorticullis: forward", new CrossPorticullis(1));
- //       SmartDashboard.putData("CrossChevalDeFrise: forward", new CrossChevalDeFrise(1));
+        SmartDashboard.putData("CrossRoughTerrain: forward", new CrossRoughTerrain(1));
+        SmartDashboard.putData("CrossRockWall: forward", new CrossRockWall(1));
+        SmartDashboard.putData("CrossRamparts: forward", new CrossRamparts(1));
+        SmartDashboard.putData("CrossMoat: forward", new CrossMoat(1));
+        SmartDashboard.putData("CrossLowBar: forward", new CrossLowBar(1));
+        SmartDashboard.putData("CrossDrawbridge: forward", new CrossDrawbridge(1));
+        SmartDashboard.putData("CrossPorticullis: forward", new CrossPorticullis(1));
+        SmartDashboard.putData("CrossChevalDeFrise: forward", new CrossChevalDeFrise(1));
  //       SmartDashboard.putData("LowBarAuton", new LowBarAuton());
  //       SmartDashboard.putData("KickOff", new KickOff());
  //       SmartDashboard.putData("PneumaticsShooterKick", new PneumaticsShooterKick());
@@ -339,6 +360,13 @@ public class OI {
     	return debugJoystick;
     }
 
+    public Joystick getDriverSecondLayout() {
+    	return driverSecondLayout;
+    }
+    
+    public Joystick getOperatorThirdLayout() {
+    	return operatorSecondLayout;
+    }
 
     // END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=FUNCTIONS
 }

@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AutonPosition2 extends CommandGroup {
-    public AutonPosition2(int defense) {
+    public AutonPosition2(int defense, int goalHeight) {
        	double driveSpeed = 4; 
     	double distanceToDefense =   Navigation.distanceAutoLineToEdgeofDefense
     			                   -(Navigation.robotLength+Navigation.robotBumperThickness);
@@ -16,7 +16,7 @@ public class AutonPosition2 extends CommandGroup {
                                               + Navigation.defenseSwapSection
                                               + Navigation.defenseApron
                                               + Navigation.robotLength;
-    	double distanceToTravelIntoCourtYard=12.5*12 -3*12+ 2*12; //  the 2 feet is to go further into the Court Yard because we are 4 ft closer to the tower 
+    	double distanceToTravelIntoCourtYard=12.5*12 -3*12+ 2*12-3*12; //  the 2 feet is to go further into the Court Yard because we are 4 ft closer to the tower 
     	double extraDistanceIntoNeutralZoneOnReturn = 10;
 
     	addSequential(new DriveForward(
@@ -41,20 +41,20 @@ public class AutonPosition2 extends CommandGroup {
 //	addSequential(new DriveSpin(60));
 //	addSequential(new DriveForward(76,6*12,14));
 //	addSequential(new ShooterSpin(1));
-    	addSequential(new DriveForward(
-   			 distanceToTravelIntoCourtYard, 8, 24)); //Distance, speed (ft/sec), ramp/rampdown | FROM 6 ft/sec TO  8 ft/sec
+//Temp    	addSequential(new DriveForward(
+    	//Temp    	   			 distanceToTravelIntoCourtYard, 8, 24)); //Distance, speed (ft/sec), ramp/rampdown | FROM 6 ft/sec TO  8 ft/sec
   // addSequential(new AutonArmSetpoints(AutonArmSetpoints.NEUTRAL, 0.01));// Start Arms Traveling up
-   addSequential(new DriveSpin(38));// Should be facing the low goal | original 10 then 15 now 20 RPM FASTER
-   addSequential(new Wait(0.5));
-   addSequential(new DriveSpin(Robot.visionHandler.getGoalOffset()));
+    	//Temp   addSequential(new DriveSpin(38));// Should be facing the low goal | original 10 then 15 now 20 RPM FASTER
+    	//Temp   addSequential(new Wait(0.5));
+    	//Temp   addSequential(new DriveSpin(Robot.visionHandler.getGoalOffset()));
    
    // Drive at Low goal and shoot
-	addSequential(new DriveForward(76+6-36,driveSpeed,12)); // Took 36in off of the distance because we are in 2nd position.
-	addSequential(new AutonShooterSpin(-1200,0.5));// RPM, Max time in seconds for it to come up to speed
-	addSequential(new AutonScalerReachUp(0.5));//Time to push the kicker 
-	addSequential(new DriveForward(18, 3, 1)); //Drive up to the tower to push failed shots in | ADDED
-	addSequential(new AutonScalerReachUp(1.0));//Time to push the kicker 
-	addSequential(new AutonShooterSpin(0,0.01));// Turn Off the spinners
+    	//Temp	addSequential(new DriveForward(76+6-36,driveSpeed,12)); // Took 36in off of the distance because we are in 2nd position.
+    	//Temp	addSequential(new AutonShooterSpin(-1200,0.5));// RPM, Max time in seconds for it to come up to speed
+    	//Temp	addSequential(new AutonScalerReachUp(0.5));//Time to push the kicker 
+    	//Temp	addSequential(new DriveForward(18, 3, 1)); //Drive up to the tower to push failed shots in | ADDED
+    	//Temp	addSequential(new AutonScalerReachUp(1.0));//Time to push the kicker 
+    	//Temp	addSequential(new AutonShooterSpin(0,0.01));// Turn Off the spinners
 
     }
 }

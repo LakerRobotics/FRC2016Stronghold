@@ -17,14 +17,14 @@ import java.nio.ByteOrder;
  * @author Richard Topolewski
  *
  */
-public class EncoderAMS_AS5048B implements PIDSource {
+public class LidarDistanceSensor implements PIDSource {
     I2C I2CBus;
     int m_I2CAddress = 0;
     byte[] dataBuffer = new byte[6];
     ByteBuffer dataBufferWrapped = ByteBuffer.wrap(dataBuffer);
 
     
-	public  EncoderAMS_AS5048B(int I2CAddress){
+	public  LidarDistanceSensor(int I2CAddress){
 		m_I2CAddress = I2CAddress;
 
 	}

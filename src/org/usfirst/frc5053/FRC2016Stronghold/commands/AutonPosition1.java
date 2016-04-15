@@ -7,7 +7,7 @@ import org.usfirst.frc5053.FRC2016Stronghold.subsystems.Navigation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class AutonPosition1 extends CommandGroup {
-    public AutonPosition1() {
+    public AutonPosition1(int goalHeight) {
     	//Setup
     	double driveSpeed = 4; 
     	double distanceToDefense =   Navigation.distanceAutoLineToEdgeofDefense
@@ -32,7 +32,7 @@ public class AutonPosition1 extends CommandGroup {
    // addSequential(new AutonArmSetpoints(AutonArmSetpoints.NEUTRAL, 0.01));// Start Arms Traveling up
     addSequential(new DriveSpin(38));// Should be facing the low goal | original 10 then 15 now 20 RPM FASTER
     addSequential(new Wait(0.5));
-    addSequential(new DriveSpin(Robot.visionHandler.getGoalOffset()));
+//    addSequential(new DriveSpin(Robot.visionHandler.getGoalOffset()));
     
     // Drive at Low goal and shoot
 	addSequential(new DriveForward(76+6,driveSpeed,12));
