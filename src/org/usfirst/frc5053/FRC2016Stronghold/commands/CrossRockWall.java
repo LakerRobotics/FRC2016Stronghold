@@ -31,7 +31,7 @@ public class CrossRockWall extends CommandGroup {
     	
     	addSequential(new AutonArmSetpoints(ArmSetpoints.AUTON_POSITION,0.01));
 //    	SmartDashboard.putNumber("AutonPotValue", RobotMap.armArmStringPot.get());
-    	addParallel(new DriveForward(168.5, 6, 28)); //Distance, speed (ft/sec), ramp/rampdown
+    	addParallel(new DriveForward(168.5 - (1.5*12), 6, 28)); //Distance, speed (ft/sec), ramp/rampdown
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());

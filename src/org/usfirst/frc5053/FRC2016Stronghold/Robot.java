@@ -189,8 +189,8 @@ public class Robot extends IterativeRobot {
 	    int defense = AutonSelection.LOW_BAR;
     	if(defenseType.equals("Rock Wall"    )) {defense = AutonSelection.ROCK_WALL;}
     	if(defenseType.equals("Rough Terrain")) {defense = AutonSelection.ROUGH_TERRAIN;}
-    	if(defenseType.equals("Chilli Fries" )) {defense = AutonSelection.CHEVAL_DE_FRISE;}
-    	if(defenseType.equals("Porticullis"  )) {defense = AutonSelection.PORTICULLIS;}
+    	if(defenseType.equals("Chili Fries" )) {defense = AutonSelection.CHEVAL_DE_FRISE;}
+    	if(defenseType.equals("Portcullis"  )) {defense = AutonSelection.PORTICULLIS;}
     	if(defenseType.equals("Moat"         )) {defense = AutonSelection.MOAT;}
     	if(defenseType.equals("Ramparts"     )) {defense = AutonSelection.RAMPARTS;}
     	if(defenseType.equals("Sally Port"   )) {defense = AutonSelection.SALLY_PORT;}
@@ -213,7 +213,7 @@ public class Robot extends IterativeRobot {
 
     	// Are we going for High or Low goal?
     	//-----------------------------------------------------------------------
-    	int goalHeight = AutonSelection.LOW_GOAL; //"Goal High Low" //TEMP
+    	int goalHeight = AutonSelection.NO_GOAL; //"Goal High Low" //TEMP
 	    String goalHeightString = "";
     	try {
     		goalHeightString = SmartDashboard.getString("Goal High Low");
@@ -221,7 +221,7 @@ public class Robot extends IterativeRobot {
     	catch (Exception e){e.printStackTrace();};
     	System.out.println("GoalHeight = '"+goalHeightString);
     	if(("Low"  ).equals(goalHeightString))goalHeight=AutonSelection.LOW_GOAL;
-    	if(("Right").equals(goalHeightString))goalHeight=AutonSelection.HIGH_GOAL;
+    	if(("High").equals(goalHeightString))goalHeight=AutonSelection.HIGH_GOAL;
     	
     	if(autonomousCommand instanceof AutonSelection  ){
     		AutonSelection autonSelection =(AutonSelection) autonomousCommand;

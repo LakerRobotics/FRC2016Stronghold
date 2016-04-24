@@ -86,7 +86,12 @@ public class MotionControlHelper {
        
        // get the motors going in the right direction
        double gapEnd = m_targetDistance-currentMeasuredDistance;
+       if(gapEnd == 0) {
+    	   targetSpeed = 0;
+       }
+       else {
        targetSpeed = (gapEnd/Math.abs(gapEnd)) * m_runningSpeed; // This just applied +1 or -1 to get the sign right
+       }
        
        // Calculate the reduction to the speed if at the start
        double percentRampUp;

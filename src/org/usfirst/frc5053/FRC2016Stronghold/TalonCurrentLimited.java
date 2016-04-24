@@ -10,7 +10,7 @@ public class TalonCurrentLimited implements SpeedController {
 	double m_currentLimitReverse = 0;
 	int m_powerDistributionBordSlot = 0;
 	SpeedController m_speedController = null;
-	PowerDistributionPanel pdp = new PowerDistributionPanel();
+	public static PowerDistributionPanel pdp = new PowerDistributionPanel();
 	
 	public TalonCurrentLimited(SpeedController a_speedController, int powerDistributionBordSlot,
 			double currentLimitForward, double currentLimitReverse ){

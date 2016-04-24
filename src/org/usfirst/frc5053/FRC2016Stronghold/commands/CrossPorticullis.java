@@ -30,11 +30,11 @@ public class CrossPorticullis extends CommandGroup {
     	
     	addSequential(new AutonArmSetpoints(AutonArmSetpoints.FULL_DOWN, 3));
     	addSequential(new DriveForward(12+11-7+3, 2, 2)); //Distance (input inches), speed (ft/sec), ramp/rampdown
- //   	addSequential(new AutonArmSetpoints(AutonArmSetpoints.AUTON_POSITION, 0.2));
+    	addSequential(new AutonArmSetpoints(AutonArmSetpoints.AUTON_POSITION, .2));
     	SmartDashboard.putNumber("AutonPotValue", RobotMap.armArmStringPot.get());
-    	addSequential(new DriveForward(72, 4, 28)); //Distance (input inches), speed (ft/sec), ramp/rampdown
+    	addSequential(new DriveForward(86, 4, 28)); //Distance (input inches), speed (ft/sec), ramp/rampdown
     	
-        // Add Commands here:
+    	// Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.

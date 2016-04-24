@@ -33,10 +33,11 @@ public class CrossChevalDeFrise extends CommandGroup {
     			Navigation.distanceAutoLineToEdgeofDefense
     			-(Navigation.robotLength + Navigation.robotBumperThickness), 6, 28)); //Distance, speed (ft/sec), ramp/rampdown
     			*/
-    	addSequential(new DriveForward(8, 4, 1)); //Distance (inches), speed (ft/sec), ramp/rampdown
+    	addSequential(new DriveForward(8 + 16, 2, 4)); //Distance (inches), speed (ft/sec), ramp/rampdown
     	addSequential(new AutonArmSetpoints(AutonArmSetpoints.FULL_DOWN, 3));//(Setpoint, Delay)
+    	addParallel(new AutonArmSetpoints(AutonArmSetpoints.FULL_DOWN, 3));//(Setpoint, Delay)
     	SmartDashboard.putNumber("AutonPotValue", RobotMap.armArmStringPot.get());
-    	addSequential(new DriveForward(72, 4, 28)); //Distance (input inches), speed (ft/sec), ramp/rampdown
+    	addParallel(new DriveForward(86, 4, 28)); //Distance (input inches), speed (ft/sec), ramp/rampdown
     	
     	
     	

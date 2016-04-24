@@ -1,75 +1,149 @@
 <xml version="1.0">
 <dashboard>
-	<widget field="IMU X Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
-		<location x="1207" y="236"/>
-		<height>176</height>
+	<widget field="DriveForward Left Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="570" y="779"/>
+	</widget>
+	<widget field="autonForward" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="220" y="712"/>
+	</widget>
+	<widget field="DriveSpin Current angle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="566" y="758"/>
+	</widget>
+	<widget field="Timeinit" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="0"/>
+	</widget>
+	<widget field="DriveSpin Gyro Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="566" y="42"/>
+	</widget>
+	<widget field="DriveSpin Gryro Target Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="347" y="779"/>
+	</widget>
+	<widget field="DriveForward Right" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="347" y="758"/>
+	</widget>
+	<widget field="RobotDriveStraightPIDOoutput RotationPower" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="347" y="737"/>
+	</widget>
+	<widget field="DriveForward angle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="354" y="571"/>
+	</widget>
+	<widget field="RobotDriveSpinPIDOutput Rotation Motor Output" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="347" y="550"/>
+	</widget>
+	<widget field="DriveSpin Time" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="383" y="529"/>
+	</widget>
+	<widget field="DriveForward" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="383" y="508"/>
+	</widget>
+	<widget field="RobotDriveStraightPIDOoutput Motor Output" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="413" y="21"/>
+	</widget>
+	<widget field="DriveSpin Turn" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="409" y="46"/>
+	</widget>
+	<widget field="DriveForward Left" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="347" y="0"/>
+	</widget>
+	<widget field="Arm_String_Pot_Reading" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
+		<location x="360" y="69"/>
+	</widget>
+	<widget field="ArmSetpointRateControl Arm_String_Pot_Reading" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
+		<location x="1071" y="-26"/>
+	</widget>
+	<widget field="Arm Potentiometer Reading" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
+		<location x="750" y="248"/>
+	</widget>
+	<widget field="HallEffect Rotation Sensor angle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
+		<location x="742" y="574"/>
+		<height>139</height>
+	</widget>
+	<widget field="HallEffect Rotation Sensor angleRaw" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
+		<location x="1151" y="596"/>
+		<height>139</height>
+	</widget>
+	<widget field="HallEffect Rotation Sensor diagonosticCodes" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
+		<location x="1176" y="445"/>
+		<height>151</height>
+	</widget>
+	<widget field="HallEffect Rotation Sensor Field Strength" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
+		<location x="1174" y="243"/>
+		<height>193</height>
+	</widget>
+	<widget field="ShooterAimSetPoints TiltRotation Actual Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="388" y="716"/>
+	</widget>
+	<widget field="ShooterAimSetPoints TiltRotation Target Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="386" y="690"/>
+	</widget>
+	<widget field="IMU X Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="501" y="664"/>
+	</widget>
+	<widget field="Debug Joystick Z Value" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="449" y="643"/>
+	</widget>
+	<widget field="IMU Pitch" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="515" y="620"/>
+	</widget>
+	<widget field="ShooterAimSetPoints Current angle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="395" y="597"/>
+	</widget>
+	<widget field="ShooterAimSetPoints TargetTiltAngle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="577" y="412"/>
+	</widget>
+	<widget field="RoughTerrainPotValue" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="347" y="487"/>
+	</widget>
+	<widget field="ShooterSpin Right Motor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="738" y="317"/>
+	</widget>
+	<widget field="AlignToHighGoalAndShoot" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="873" y="248"/>
+	</widget>
+	<widget field="ShooterSpin Left Encoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="762" y="217"/>
+	</widget>
+	<widget field="ShooterAimSetPoints mm_targetAngle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="977" y="14"/>
+	</widget>
+	<widget field="ShooterSpin Left Motor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="149" y="0"/>
+	</widget>
+	<widget field="ShooterSpin Right Encoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="198" y="178"/>
+	</widget>
+	<widget field="ArmSetpointRateControlCodeLocation" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="745" y="89"/>
+	</widget>
+	<widget field="VisionAlignForHighGoalShot" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="813" y="55"/>
+	</widget>
+	<widget field="ArmSetpointRateControlTarget Setpoint" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="671" y="0"/>
+	</widget>
+	<widget field="VisionAlignForLowGoalShot" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="413" y="171"/>
 	</widget>
 	<widget field="IMU DebugJoystick Input " type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="625" y="384"/>
 	</widget>
-	<widget field="ShooterAimSetPoints Current angle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
-		<location x="393" y="606"/>
-		<width>406</width>
-		<height>174</height>
-	</widget>
-	<widget field="VisionLowGoalShot" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="1197" y="41"/>
-	</widget>
-	<widget field="Debug Joystick Z Value" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
-		<location x="1212" y="112"/>
-		<height>123</height>
-	</widget>
-	<widget field="IMU Pitch" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
-		<location x="801" y="609"/>
-		<height>172</height>
-	</widget>
-	<widget field="IMU AngleX" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="664" y="363"/>
-	</widget>
 	<widget field="AlignToLowGoalAndShoot" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="1370" y="41"/>
-	</widget>
-	<widget field="ShooterAimSetPoints TargetTiltAngle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
-		<location x="550" y="421"/>
-		<height>178</height>
+		<location x="-7" y="595"/>
 	</widget>
 	<widget field="Joystick Y" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="1031" y="64"/>
 	</widget>
-	<widget field="ShooterAimSetPoints TiltRotation Actual Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
-		<location x="1189" y="605"/>
-		<height>184</height>
-	</widget>
-	<widget field="ShooterAimSetPoints TiltRotation Target Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
-		<location x="1190" y="423"/>
-		<height>179</height>
-	</widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
-		<location x="132" y="555"/>
+		<location x="13" y="54"/>
 	</static-widget>
-	<widget field="RobotDriveArcadeStraightPIDOutput" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="1092" y="0"/>
-	</widget>
 	<widget field="RobotDriveSpinPIDOutput" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="201" y="25"/>
 	</widget>
 	<widget field="ShooterAimSetPoints Time" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="417" y="364"/>
 	</widget>
-	<widget field="IMU_X_Axis" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="671" y="296"/>
-	</widget>
-	<widget field="RobotDriveArcadeStraightPIDOutput Rotation Motor Output" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="437" y="28"/>
-	</widget>
 	<widget field="Arm Current1" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="671" y="275"/>
-	</widget>
-	<widget field="Arm Potentiometer Reading" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="361" y="343"/>
-	</widget>
-	<widget field="DriveForward Left Rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="671" y="254"/>
 	</widget>
 	<widget field="Object Distance" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="710" y="165"/>
@@ -83,9 +157,6 @@
 	<widget field="DriveForward: default" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="577" y="220"/>
 	</widget>
-	<widget field="autonForward" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="583" y="150"/>
-	</widget>
 	<widget field="CrossPorticullis: forward" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="343" y="419"/>
 	</widget>
@@ -95,29 +166,22 @@
 	<widget field="ShooterSpin: Default" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="181" y="61"/>
 	</widget>
-	<widget field="PneumaticsShooterKick" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="577" y="110"/>
-	</widget>
 	<widget field="DriveSpinCodeLocation" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="212" y="48"/>
 	</widget>
 	<widget field="ShooterSpinIntake" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="577" y="76"/>
 	</widget>
-	<widget field="ShooterAimSetpoints: SetHighGoal" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="361" y="309"/>
-	</widget>
 	<widget field="ArcadeArmControl" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="397" y="275"/>
-	</widget>
-	<widget field="KickBall" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="397" y="241"/>
 	</widget>
 	<widget field="AutonSelection" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="391" y="207"/>
 	</widget>
 	<widget field="ShooterAimSetPointsCodeLocation" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="911" y="34"/>
+		<location x="968" y="37"/>
+		<width>349</width>
+		<height>20</height>
 	</widget>
 	<widget field="AutonPotValue" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="3" y="241"/>
@@ -131,11 +195,8 @@
 	<widget field="SpinIntake: Stop" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="378" y="97"/>
 	</widget>
-	<widget field="Timeinit" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="378" y="76"/>
-	</widget>
 	<widget field="Goal Position" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="213" y="788"/>
+		<location x="7" y="501"/>
 	</widget>
 	<widget field="CrossMoat: forward" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="5" y="296"/>
@@ -145,19 +206,16 @@
 		<height>20</height>
 	</widget>
 	<widget field="Rectangle 4" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="242" y="733"/>
+		<location x="211" y="637"/>
 	</widget>
 	<widget field="Rectangle 3" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="242" y="712"/>
-	</widget>
-	<widget field="KickOff" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="213" y="754"/>
+		<location x="211" y="614"/>
 	</widget>
 	<widget field="Auton: LowBarLefGoal" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="194" y="678"/>
 	</widget>
 	<widget field="CrossLowBar: forward" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="194" y="644"/>
+		<location x="194" y="654"/>
 	</widget>
 	<widget field="Rectangle 2" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="210" y="592"/>
@@ -167,9 +225,6 @@
 	</widget>
 	<widget field="CrossRoughTerrain: forward" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="4" y="245"/>
-	</widget>
-	<widget field="DriveForward Right" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="210" y="550"/>
 	</widget>
 	<widget field="ArcadeDriveStrightPID" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="196" y="516"/>
@@ -189,12 +244,6 @@
 	<widget field="ArmSetpoints: Scale" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="194" y="385"/>
 	</widget>
-	<widget field="Arm_String_Pot_Reading" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="210" y="364"/>
-	</widget>
-	<widget field="RobotDriveStraightPIDOoutput RotationPower" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="361" y="0"/>
-	</widget>
 	<widget field="Defence 5" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="210" y="343"/>
 	</widget>
@@ -203,9 +252,6 @@
 	</widget>
 	<widget field="SpinIntake: Reverse" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="220" y="254"/>
-	</widget>
-	<widget field="DriveForward angle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="210" y="233"/>
 	</widget>
 	<widget field="ArcadeDriveStraight" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="198" y="199"/>
@@ -216,26 +262,17 @@
 	<widget field="SquareDrive" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="226" y="110"/>
 	</widget>
-	<widget field="DriveForward" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="226" y="89"/>
-	</widget>
 	<widget field="ArmSetpoints: GetBall" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="0" y="91"/>
 	</widget>
 	<widget field="Start Position" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="1033" y="227"/>
 	</widget>
-	<widget field="RobotCanSee" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="4" y="0"/>
-	</widget>
 	<widget field="DriveRotateFieldOrientation" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="0" y="775"/>
 	</widget>
 	<widget field="Target Setpoint" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="754"/>
-	</widget>
-	<widget field="ShooterAimSetpoints: FarLowGoal" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="1333" y="72"/>
+		<location x="7" y="753"/>
 	</widget>
 	<widget field="ScalerReachUp" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="0" y="686"/>
@@ -246,20 +283,14 @@
 	<widget field="Object Center 1" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="644"/>
 	</widget>
-	<widget field="RobotDriveStraightPIDOoutput Motor Output" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="623"/>
-	</widget>
 	<widget field="ArmSetpoints: AutonPos" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="589"/>
+		<location x="1" y="564"/>
 	</widget>
 	<widget field="DriveSpin" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="555"/>
-	</widget>
-	<widget field="DriveForward Left" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="534"/>
+		<location x="7" y="540"/>
 	</widget>
 	<widget field="Auton: LowBarRightGoal" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="500"/>
+		<location x="0" y="517"/>
 	</widget>
 	<widget field="Goal High Low" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="479"/>
@@ -299,12 +330,6 @@
 	</widget>
 	<widget field="ShooterSpin: Intake" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="0" y="123"/>
-	</widget>
-	<widget field="ShooterAimSetpoints: LowGoal" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="1338" y="13"/>
-	</widget>
-	<widget field="LowBarAuton" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="55"/>
 	</widget>
 	<widget field="ShooterSpin: SlowShoot" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="0" y="21"/>

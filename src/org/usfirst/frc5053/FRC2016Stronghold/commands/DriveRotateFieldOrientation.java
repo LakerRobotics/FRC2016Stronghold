@@ -12,6 +12,8 @@
 package org.usfirst.frc5053.FRC2016Stronghold.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc5053.FRC2016Stronghold.Robot;
 
 /**
@@ -40,6 +42,7 @@ public class DriveRotateFieldOrientation extends DriveSpin {
     // Called just before this Command runs the first time
     protected void initialize() {
 		rotationSpeedProfile.setTargetDistance(Robot.oi.getDriver().getPOV());
+		SmartDashboard.putInt("POV Driver Value", Robot.oi.getDriver().getPOV());
     	rotationSpeedPID.enable();
     }
 

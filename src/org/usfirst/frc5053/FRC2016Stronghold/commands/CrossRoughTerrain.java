@@ -32,7 +32,7 @@ public class CrossRoughTerrain extends CommandGroup {
     	addSequential(new AutonArmSetpoints(ArmSetpoints.AUTON_POSITION/*0.349*/,0.01));
     	SmartDashboard.putNumber("RoughTerrainPotValue", RobotMap.armArmStringPot.get());
     	//if(RobotMap.armArmStringPot.get() >= .340) {
-    	addSequential(new DriveForward(144.5, 6, 28)); //Distance, speed (6ft/sec), ramp/rampdown
+    	addSequential(new DriveForward(144.5 -1.5*12, 6, 28)); //Distance, speed (6ft/sec), ramp/rampdown
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());

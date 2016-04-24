@@ -34,7 +34,7 @@ public class DriveSpin extends Command {
     double    start =   0; //degrees
     MotionControlHelper rotationSpeedProfile; 
     
-    final double Kp = 1d/(60*(360/6)); // so at denominator off in the spin-Rate the power will reach the max
+    final double Kp = 1d/(60*(360/60)); // so at denominator off in the spin-Rate the power will reach the max
     final double Ki = 0.0005;
     final double Kd = 0.0;
     MotionControlPIDController rotationSpeedPID;

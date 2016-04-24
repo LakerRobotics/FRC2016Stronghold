@@ -117,6 +117,10 @@ public class OI {
     public JoystickButton arcadeArm;
     public JoystickButton shooterIntake;
     public JoystickButton shooterIntakeOff;
+    public JoystickButton shooterArticulate;
+    public JoystickButton shooterArticulateOverride;
+    public JoystickButton shooterArticulateSpin;
+    public JoystickButton shooterArticulateSpinOff;
     public Joystick operator;
  
     public JoystickButton secondIntakeSpin;
@@ -256,21 +260,32 @@ public class OI {
         armGetBall.whileHeld(new ArmSetpoints(0.334));
         armLiftPorticullis = new JoystickButton(operator, opBtnL8);
         armLiftPorticullis.whileHeld(new ArmSetpoints(0.348));
-        armScale = new JoystickButton(operator, opBtnL9);
-        armScale.whileHeld(new ArmSetpoints(0.209));
-        shooterIntakeOff = new JoystickButton(operator, opBtnL10);
-        shooterIntakeOff.whenReleased(new ShooterSpin(0));
-        shooterIntake = new JoystickButton(operator, opBtnL10);
-        shooterIntake.whileHeld(new ShooterSpin(-750));
+//        armScale = new JoystickButton(operator, opBtnL9);
+//        armScale.whileHeld(new ArmSetpoints(0.209));
+//        shooterIntakeOff = new JoystickButton(operator, opBtnL10);
+//        shooterIntakeOff.whenReleased(new ShooterSpin(0));
+//        shooterIntake = new JoystickButton(operator, opBtnL10);
+//        shooterIntake.whileHeld(new ShooterSpin(-750));
+        shooterArticulateSpin = new JoystickButton(operator, opBtnL9);
+        shooterArticulateSpin.whileHeld(new ShooterSpin(-2750));
+        shooterArticulateSpinOff = new JoystickButton(operator, opBtnL9);
+        shooterArticulateSpinOff.whenReleased(new ShooterSpin(0));
+        shooterArticulateOverride = new JoystickButton(operator, opBtnL10);
+        shooterArticulateOverride.whileHeld(new ArcadeArmControl());
+        shooterArticulate = new JoystickButton(operator, opBtnL11);
+        shooterArticulate.whileHeld(new ShooterAimLimitSwitch(true));
+        shooterArticulate = new JoystickButton(operator, opBtnL12);
+        shooterArticulate.whileHeld(new ShooterAimLimitSwitch(false));
+        
         
         
         
 //
         
-        fieldOrientToPOVButtons = new JoystickButton(driver, rightBlackButton);
-        fieldOrientToPOVButtons.whileHeld(new DriveRotateFieldOrientation());
-        AlignToLowGoalAndShoot = new JoystickButton(driver, leftShoulder);
-        AlignToLowGoalAndShoot.whileHeld(new AlignToLowGoalAndShoot());
+     //   fieldOrientToPOVButtons = new JoystickButton(driver, rightBlackButton);
+       // fieldOrientToPOVButtons.whileHeld(new DriveRotateFieldOrientation());
+        //AlignToLowGoalAndShoot = new JoystickButton(driver, leftShoulder);
+        //AlignToLowGoalAndShoot.whileHeld(new AlignToLowGoalAndShoot());
         kickerDriver = new JoystickButton(driver, rightShoulder);
         kickerDriver.whileHeld(new ScalerReachUp());
         

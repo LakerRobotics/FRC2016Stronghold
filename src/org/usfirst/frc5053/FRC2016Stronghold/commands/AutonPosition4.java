@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AutonPosition4 extends CommandGroup {
-    public AutonPosition4(int defense, int goalHeight) {
+    public AutonPosition4(int defense, int goalHeight, int goalSide) {
        	double driveSpeed = 4; 
     	double distanceToDefense =   Navigation.distanceAutoLineToEdgeofDefense
     			                   -(Navigation.robotLength+Navigation.robotBumperThickness);
@@ -36,12 +36,23 @@ public class AutonPosition4 extends CommandGroup {
 		case AutonSelection.DRAWBRIDGE     : addSequential(new CrossDrawbridge(CrossLowBar.FORWARD)   );break;
         }
 
-    	if(goalHeight == AutonSelection.LOW_GOAL){
+    	if(goalSide == AutonSelection.RIGHT_GOAL){
     		addSequential(new DriveSpin(90));
     		addSequential(new DriveForward(1*Navigation.fieldDefenseWidth,10,24));
     		addSequential(new DriveSpin(-90));
     		addSequential(new AutonRightGoal(goalHeight));
     	}
-
+    	else if(goalSide == AutonSelection.LEFT_GOAL){
+    		addSequential(new DriveSpin(-90));
+    		addSequential(new DriveForward(2*Navigation.fieldDefenseWidth,10,24));
+    		addSequential(new DriveSpin(90));
+    		addSequential(new AutonLeftGoal(goalHeight));
+    	}
+    	else if(goalSide == AutonSelection.CENTER_GOAL){
+    		addSequential(new DriveSpin(-90));
+    		addSequential(new DriveForward(0.5*Navigation.fieldDefenseWidth,10,24));
+    		addSequential(new DriveSpin(90));
+    		addSequential(new AutonCenterGoal(goalHeight));
+    	}
     }
 }

@@ -53,10 +53,9 @@ public class ArcadeDrive extends Command {
     	//Pulls the Y axis value from the LStick for motor power
     	//Pulls the X axis value from RStick for turn
     	
-//    	RobotMap.driveTrainRobotDrive21.arcadeDrive(Robot.oi.getDriver().getRawAxis(1), Robot.oi.getDriver().getRawAxis(4));
-//    	RobotMap.driveTrainRobotDrive21.arcadeDrive(Robot.oi.getDriverSecondLayout().getRawAxis(1), Robot.oi.getDriverSecondLayout().getRawAxis(4));
+    	RobotMap.driveTrainRobotDrive21.arcadeDrive(Robot.oi.getDriver().getRawAxis(1), Robot.oi.getDriver().getRawAxis(4));
+    	RobotMap.driveTrainRobotDrive21.arcadeDrive(Robot.oi.getDriverSecondLayout().getRawAxis(1) + Robot.oi.getDriver().getRawAxis(1), Robot.oi.getDriverSecondLayout().getRawAxis(4) + Robot.oi.getDriver().getRawAxis(4));
 
-    	double angle = RobotMap.leftWheelHallEffectSensor.pidGet();
     }
 
     // Make this return true when this Command no longer needs to run execute()

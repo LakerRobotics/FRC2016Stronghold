@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AutonPosition2 extends CommandGroup {
-    public AutonPosition2(int defense, int goalHeight) {
+    public AutonPosition2(int defense, int goalHeight, int goalSide) {
        	double driveSpeed = 4; 
     	double distanceToDefense =   Navigation.distanceAutoLineToEdgeofDefense
     			                   -(Navigation.robotLength+Navigation.robotBumperThickness);
@@ -55,6 +55,20 @@ public class AutonPosition2 extends CommandGroup {
     	//Temp	addSequential(new DriveForward(18, 3, 1)); //Drive up to the tower to push failed shots in | ADDED
     	//Temp	addSequential(new AutonScalerReachUp(1.0));//Time to push the kicker 
     	//Temp	addSequential(new AutonShooterSpin(0,0.01));// Turn Off the spinners
-
+    	if(goalSide == AutonSelection.LEFT_GOAL) {
+    		addSequential(new AutonLeftGoal(goalHeight));
+    	}
+    	else if(goalSide == AutonSelection.RIGHT_GOAL){
+    		addSequential(new DriveSpin(90));
+    		addSequential(new DriveForward(3*Navigation.fieldDefenseWidth,10,24));
+    		addSequential(new DriveSpin(-90));
+    		addSequential(new AutonRightGoal(goalHeight));
+    	}
+    	else if(goalSide == AutonSelection.CENTER_GOAL){
+    		addSequential(new DriveSpin(90));
+    		addSequential(new DriveForward(1.5*Navigation.fieldDefenseWidth,10,24));
+    		addSequential(new DriveSpin(-90));
+    		addSequential(new AutonCenterGoal(goalHeight));
+    	}
     }
 }
