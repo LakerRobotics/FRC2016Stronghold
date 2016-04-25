@@ -282,8 +282,8 @@ public class OI {
         
 //
         
-     //   fieldOrientToPOVButtons = new JoystickButton(driver, rightBlackButton);
-       // fieldOrientToPOVButtons.whileHeld(new DriveRotateFieldOrientation());
+        fieldOrientToPOVButtons = new JoystickButton(driver, rightBlackButton);
+        fieldOrientToPOVButtons.whileHeld(new DriveRotateFieldOrientation());
         //AlignToLowGoalAndShoot = new JoystickButton(driver, leftShoulder);
         //AlignToLowGoalAndShoot.whileHeld(new AlignToLowGoalAndShoot());
         kickerDriver = new JoystickButton(driver, rightShoulder);
