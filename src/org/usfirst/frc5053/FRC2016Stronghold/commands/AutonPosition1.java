@@ -30,17 +30,17 @@ public class AutonPosition1 extends CommandGroup {
     	addSequential(new DriveForward(
     			 distanceToTravelIntoCourtYard, 8, 24)); //Distance, speed (ft/sec), ramp/rampdown | FROM 6 ft/sec TO  8 ft/sec
    // addSequential(new AutonArmSetpoints(AutonArmSetpoints.NEUTRAL, 0.01));// Start Arms Traveling up
-    addSequential(new DriveSpin(39));// Should be facing the low goal | original 10 then 15 now 20 RPM FASTER
-    addSequential(new Wait(0.5));
+    addSequential(new DriveSpin(45));// Should be facing the low goal | original 10 then 15 now 20 RPM FASTER
+//    addSequential(new Wait(0.5));
 //    addSequential(new DriveSpin(Robot.visionHandler.getGoalOffset()));
     
     // Drive at Low goal and shoot
     if(goalHeight == AutonSelection.LOW_GOAL){
-    	addSequential(new DriveForward(12,driveSpeed,12));
+    	addSequential(new DriveForward(12,driveSpeed,2));//Distance, Speed, rampup/down
     	addSequential(new AutonLowGoal());
     	}
     else if(goalHeight == AutonSelection.HIGH_GOAL){
-    	addSequential(new DriveForward(12,driveSpeed,12));
+    	addSequential(new DriveForward(12,driveSpeed,2));
     	addSequential(new AutonHighGoal());
     	}
     }
