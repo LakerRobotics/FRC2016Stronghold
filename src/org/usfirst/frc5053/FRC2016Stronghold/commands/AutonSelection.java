@@ -37,7 +37,7 @@ public class AutonSelection extends CommandGroup {
 	
 	public static final int LOW_GOAL = -1;
 	public static final int HIGH_GOAL = 1;
-	public static final int NO_GOAL = 0;
+	public static final int NO_GOAL = -99;
 	
 	int m_StartPosition = 1;
 	int m_Defense      = LOW_BAR;

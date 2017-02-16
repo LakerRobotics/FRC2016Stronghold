@@ -104,7 +104,7 @@ public class RobotMap {
         
         rightShooterRightShooterWheelEncoder = new Encoder(6, 7, true, EncodingType.k4X);
         LiveWindow.addSensor("RightShooter", "RightShooterWheelEncoder", rightShooterRightShooterWheelEncoder);
-        rightShooterRightShooterWheelEncoder.setDistancePerPulse(1.5);
+        rightShooterRightShooterWheelEncoder.setDistancePerPulse(1.5);//Note the k4X multiplied the rate by 4 so the 60(sec/min)/(20ticks/rev) which should have been 3
         rightShooterRightShooterWheelEncoder.setPIDSourceType(PIDSourceType.kRate);
         rightShooterRightShooterMotor = new Talon(3);
         LiveWindow.addActuator("RightShooter", "RightShooterMotor", (Talon) rightShooterRightShooterMotor);

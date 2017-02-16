@@ -124,7 +124,8 @@ public class Robot extends IterativeRobot {
        camera.setSize(2/*camera.kSize320x240*/);
 //       camera.setImage(Image.SCALE_FAST);
        //camera.setQuality(100);
-       camera.startAutomaticCapture("cam0");
+//       camera.startAutomaticCapture("cam0");
+       camera.startAutomaticCapture();
     }
 
 	public static MotionControlPIDController createRotationPIDController(double targetAngle, double start, PIDOutput pidOutput) {
@@ -200,7 +201,7 @@ public class Robot extends IterativeRobot {
     	// Are we going for Left Center or Right goal?
     	//-----------------------------------------------------------------------
     	int goalSide = AutonSelection.LEFT_GOAL; // "Goal Position" // TEMP
-    	String goalPosition = "Left";
+    	String goalPosition = "";//
     	try{
 	    	goalPosition = SmartDashboard.getString("Goal Position"); 
 	    	}

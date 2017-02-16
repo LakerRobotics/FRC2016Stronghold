@@ -67,7 +67,7 @@ public class TalonCurrentLimited implements SpeedController {
 	/**
 	 * This is where we actually do something
 	 */
-	@Override
+/*	@Override
 	public void set(double power, byte syncGroup) {
 		double current = pdp.getCurrent(m_powerDistributionBordSlot);
 		SmartDashboard.putNumber("Arm Current2", current);
@@ -81,10 +81,16 @@ public class TalonCurrentLimited implements SpeedController {
 		}
 		m_speedController.set(power, syncGroup);
 	}
-
+*/
 	@Override
 	public void setInverted(boolean arg0) {
 		m_speedController.setInverted(arg0);
+		
+	}
+
+	@Override
+	public void stopMotor() {
+		// TODO Auto-generated method stub
 		
 	}
 

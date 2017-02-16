@@ -13,8 +13,7 @@ package org.usfirst.frc5053.FRC2016Stronghold.commands;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.vision.USBCamera;
-
+//import edu.wpi.first.wpilibj.
 import org.usfirst.frc5053.FRC2016Stronghold.Robot;
 
 import com.ni.vision.NIVision;
@@ -73,7 +72,7 @@ public class VisionDefault extends Command {
         	Image frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
         	NIVision.imaqSetImageSize(frame, 320, 240); //image, height, width 640x480, 320x240, 160x120 //TODO make sure it works and dosn't crash things
         	NIVision.IMAQdxGrab(session, frame, 10);
-        	cameraServer.getInstance().setImage(frame);
+//        	cameraServer.getInstance().setImage(frame);
         	NIVision.IMAQdxStopAcquisition(session);
         	NIVision.IMAQdxCloseCamera(session);
 

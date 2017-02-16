@@ -95,6 +95,35 @@ public class ADIS16448_IMU extends GyroBase implements Gyro, PIDSource, LiveWind
     public InterruptSource(int channel) {
       initDigitalPort(channel, true);
     }
+
+	private void initDigitalPort(int channel, boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isAnalogTrigger() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int getChannel() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getAnalogTriggerTypeForRouting() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getPortHandleForRouting() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
   }
   private InterruptSource m_interrupt;
   private static class ReadTask implements Runnable {
